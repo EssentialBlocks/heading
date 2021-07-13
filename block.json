@@ -1,0 +1,11 @@
+{
+	"apiVersion": 2,
+	"name": "advance-heading/advance-heading",
+	"title": "Advance Heading",
+	"category": "widgets",
+	"description": "Create Advance Heading with responsive controls and more features",
+	"textdomain": "advance-heading",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
