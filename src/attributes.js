@@ -1,15 +1,12 @@
 import {
-	BUTTON_ONE_BORDER_SHADOW,
-	BUTTON_TWO_BORDER_SHADOW,
-	BUTTON_ONE_BG,
-	BUTTON_TWO_BG,
+	WRAPPER_BG,
 	WRAPPER_MARGIN,
-	BUTTONS_MARGIN,
-	BUTTONS_PADDING,
-	BUTTONS_WIDTH,
-	BUTTONS_GAP,
-	BUTTONS_CONNECTOR_SIZE,
-	BUTTONS_CONNECTOR_ICON_SIZE,
+	WRAPPER_PADDING,
+	WRAPPER_BORDER_SHADOW,
+	TITLE_MARGIN,
+	SUBTITLE_MARGIN,
+	SEPARATOR_MARGIN,
+	SEPARATOR_SIZE,
 } from "./constants/constants";
 import {
 	generateDimensionsAttributes,
@@ -43,108 +40,82 @@ const attributes = {
 		type: "string",
 		default: "button-1"
 	},
-	contentPosition: {
+	tagName: {
 		type: "string",
-		default: "center"
+		default: "h2"
 	},
-	buttonWidth: {
-		type: "number",
-		default: "auto",
-	},
-	buttonTextOne: {
+	content: {
 		type: "string",
-		default: "Button One",
+		default: "Essential Block Heading"
 	},
-	buttonTextTwo: {
+	topSpace: {
+		type: "number"
+	},
+	topSpaceUnit: {
 		type: "string",
-		default: "Button Two",
+		default: "px"
 	},
-	buttonOneColor: {
+	bottomSpace: {
+		type: "number"
+	},
+	bottomSpaceUnit: {
 		type: "string",
-		default: "#7967ff"
+		default: "px"
 	},
-	hoverButtonOneColor: {
+	textColor: {
+		type: "string"
+	},
+	fontFamily: {
+		type: "string"
+	},
+	fontWeight: {
+		type: "string"
+	},
+	textTransform: {
+		type: "string"
+	},
+	fontSize: {
+		type: "number"
+	},
+	fontSizeUnit: {
 		type: "string",
-		default: "#513fd4",
+		default: "px"
 	},
-	textOneColor: {
+	lineHeight: {
+		type: "number"
+	},
+	lineHeightUnit: {
 		type: "string",
-		default: "#fff"
+		default: "px"
 	},
-	hoverTextOneColor: {
+	letterSpacing: {
+		type: "number"
+	},
+	letterSpacingUnit: {
 		type: "string",
+		default: "px"
 	},
-	buttonTwoColor: {
+	align: {
 		type: "string",
-		default: "#309bff"
+		default: "left"
 	},
-	hoverButtonTwoColor: {
-		type: "string",
-		default: "#2587e2",
-	},
-	textTwoColor: {
-		type: "string",
-		default: "#fff"
-	},
-	hoverTextTwoColor: {
-		type: "string",
-	},
-	buttonURLOne: {
-		type: "string",
-		selector: ".eb-advance-heading-link",
-		source: "attribute",
-		attribute: "href",
-		default: "#",
-	},
-	buttonURLTwo: {
-		type: "string",
-		selector: ".eb-advance-heading-link-two",
-		source: "attribute",
-		attribute: "href",
-		default: "#",
-	},
-	buttonTextAlign: {
-		type: "string",
-		default: "center",
-	},
-	isHoverOne: {
+	displaySeperator: {
 		type: "boolean",
-		default: false,
+		default: false
 	},
-	isHoverTwo: {
+	seperatorSize: {
+		type: "number"
+	},
+	seperatorColor: {
+		type: "string"
+	},
+	seperatorStyle: {
+		type: "string",
+		default: "solid"
+	},
+	onTop: {
 		type: "boolean",
-		default: false,
-	},
-	innerButtonText: {
-		type: "string",
-		default: "OR",
-	},
-	innerButtonColor: {
-		type: "string",
-		default: "#fff"
-	},
-	innerButtonTextColor: {
-		type: "string",
-		default: "#000"
-	},
-	innerButtonIcon: {
-		type: "string",
-	},
-	showConnector: {
-		type: "boolean",
-		default: true
-	},
-	connectorType: {
-		type: "string",
-		default: "text"
-	},
-	borderType: {
-		type: "string",
-		default: "normal",
-	},
-	buttonsColorType: {
-		type: "string",
-		default: "normal",
+		default: false
 	},
 
 	// typography attributes ⬇
@@ -152,71 +123,49 @@ const attributes = {
 
 	// margin padding attributes ⬇
 	...generateDimensionsAttributes(WRAPPER_MARGIN),
-	...generateDimensionsAttributes(BUTTONS_MARGIN),
-	...generateDimensionsAttributes(BUTTONS_PADDING, {
-		top: 10,
-		bottom: 10,
-		right: 25,
-		left: 25,
+	...generateDimensionsAttributes(WRAPPER_PADDING),
+	...generateDimensionsAttributes(TITLE_MARGIN, {
+		top: 0,
+		bottom: 20,
+		right: 0,
+		left: 0,
+		isLinked: false,
+	}),
+	...generateDimensionsAttributes(SUBTITLE_MARGIN, {
+		top: 0,
+		bottom: 20,
+		right: 0,
+		left: 0,
+		isLinked: false,
+	}),
+	...generateDimensionsAttributes(SEPARATOR_MARGIN, {
+		top: 0,
+		bottom: 20,
+		right: 0,
+		left: 0,
 		isLinked: false,
 	}),
 
 	// border shadow attributes ⬇
-	...generateBorderShadowAttributes(BUTTON_ONE_BORDER_SHADOW, {
-		bdrDefaults: {
-			top: 2,
-			bottom: 2,
-			right: 2,
-			left: 2,
-		},
-		rdsDefaults: {
-			top: 20,
-			bottom: 0,
-			right: 0,
-			left: 20,
-			isLinked: false,
-		},
-		noShadow: true,
-		// noBorder: true,
-	}),
-	...generateBorderShadowAttributes(BUTTON_TWO_BORDER_SHADOW, {
-		bdrDefaults: {
-			top: 2,
-			bottom: 2,
-			right: 2,
-			left: 2,
-		},
-		rdsDefaults: {
-			top: 0,
-			bottom: 20,
-			right: 20,
-			left: 0,
-			isLinked: false,
-		},
-		noShadow: true,
-		// noBorder: true,
-	}),
+	...generateBorderShadowAttributes(	WRAPPER_BORDER_SHADOW, 
+		{
+			bdrDefaults: {
+				top: 0,
+				bottom: 0,
+				right: 0,
+				left: 0,
+			},
+			// noShadow: true,
+			// noBorder: true,
+		}
+	),
 
 	// background attributes ⬇
-	...generateBackgroundAttributes(BUTTON_ONE_BG, {
-		defaultFillColor: "#3074ff",
-	}),
-	...generateBackgroundAttributes(BUTTON_TWO_BG, {
-		defaultFillColor: "#3074ff",
-	}),
+	...generateBackgroundAttributes(WRAPPER_BG),
 
 	// range controller
-	...generateResponsiveRangeAttributes(BUTTONS_WIDTH, {
-		defaultRange: 200,
-	}),
-	...generateResponsiveRangeAttributes(BUTTONS_GAP, {
-		defaultRange: 0,
-	}),
-	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_SIZE, {
-		defaultRange: 30,
-	}),
-	...generateResponsiveRangeAttributes(BUTTONS_CONNECTOR_ICON_SIZE, {
-		defaultRange: 16,
+	...generateResponsiveRangeAttributes(SEPARATOR_SIZE, {
+		defaultRange: 2,
 	}),
 };
 

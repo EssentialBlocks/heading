@@ -12,14 +12,14 @@ const { select } = wp.data;
 import Inspector from "./inspector";
 import "./editor.scss";
 import {
-	BUTTON_ONE_BORDER_SHADOW,
-	BUTTON_TWO_BORDER_SHADOW,
-	WRAPPER_MARGIN,
-	BUTTONS_PADDING,
-	BUTTONS_WIDTH,
-	BUTTONS_GAP,
-	BUTTONS_CONNECTOR_SIZE,
-	BUTTONS_CONNECTOR_ICON_SIZE,
+	WRAPPER_BG,
+	WRAPPER_MARGN,
+	WRAPPER_PADDING,
+	WRAPPER_BORDER_SHADOW,
+	TITLE_MARGIN,
+	SUBTITLE_MARGIN,
+	SEPARATOR_MARGIN,
+	SEPARATOR_SIZE,
 } from "./constants/constants";
 import { BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
@@ -41,23 +41,6 @@ export default function Edit(props) {
 		// responsive control attribute ⬇
 		resOption,
 		preset,
-		contentPosition,
-		buttonTextOne,
-		buttonTextTwo,
-		hoverButtonOneColor,
-		textOneColor,
-		hoverTextOneColor,
-		buttonTwoColor,
-		hoverButtonTwoColor,
-		textTwoColor,
-		hoverTextTwoColor,
-		innerButtonText,
-		innerButtonColor,
-		innerButtonTextColor,
-		innerButtonIcon,
-		showConnector,
-		connectorType,
-		buttonTextAlign,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -438,7 +421,21 @@ export default function Edit(props) {
 	}, [attributes]);
 
 	return [
-		isSelected && <Inspector {...props} />,
+		isSelected && (
+			<>
+				<Inspector {...props} />
+				<Fragment>
+					<BlockControls>
+						<AlignmentToolbar
+							value={align} 
+							onChange={(align) => setAttributes({ align })}
+							controls={["left", "center", "right"]}
+						/>
+					</BlockControls>
+					<Inspector attributes={attributes} setAttributes={setAttributes} />
+				</Fragment>
+			</>
+		),
 		//Edit view here
 		<div {...blockProps}>
 			<style>
@@ -470,57 +467,15 @@ export default function Edit(props) {
 				`}
 			</style>
 
-			<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
-				{/* Button One */}
-				<a
-					className={"eb-button-parent eb-button-one"}
-					// style={buttonStyleOne}
-					onMouseEnter={() => setAttributes({ isHoverOne: true })}
-					onMouseLeave={() => setAttributes({ isHoverOne: false })}
-				>
-					<RichText
-						// style={textStylesOne}
-						className={"eb-button-text eb-button-one-text"}
-						placeholder="Add Text.."
-						value={buttonTextOne}
-						onChange={(newText) => setAttributes({ buttonTextOne: newText })}
-						allowedFormats={["bold", "italic", "strikethrough"]}
-					/>
-				</a>
-
-				{/* Connector */}
-
-				{showConnector && (
-					<div
-						className="eb-advance-heading__midldeInner"
-						// style={buttonMiddleInnerStyles}
-					>
-						{connectorType === 'icon' && (
-							<span>
-								<i className={`${innerButtonIcon ? innerButtonIcon : "fas fa-arrows-alt-h"}`}></i>
-							</span>
-						)}
-
-						{connectorType === 'text' && <span>{innerButtonText}</span>}
-					</div>
-				)}
-
-				{/* Button Two */}
-				<a
-					className={"eb-button-parent eb-button-two"}
-					// style={buttonStyleTwo}
-					onMouseEnter={() => setAttributes({ isHoverTwo: true })}
-					onMouseLeave={() => setAttributes({ isHoverTwo: false })}
-				>
-					<RichText
-						// style={textStylesTwo}
-						className={"eb-button-text eb-button-two-text"}
-						placeholder="Add Text.."
-						value={buttonTextTwo}
-						onChange={(newText) => setAttributes({ buttonTextTwo: newText })}
-						allowedFormats={["bold", "italic", "strikethrough"]}
-					/>
-				</a>
+			<div className="eb-heading-wrapper">
+				<RichText
+					// tagName={tagName}
+					// style={headingStyle}
+					className="eb-heading"
+					// value={content}
+					formattingControl={["bold", "italic"]}
+					// onChange={(content) => setAttributes({ content })}
+				/>
 			</div>
 		</div>,
 	];
