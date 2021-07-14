@@ -44,9 +44,13 @@ const attributes = {
 		type: "string",
 		default: "h2"
 	},
-	content: {
+	titleText: {
 		type: "string",
-		default: "Essential Block Heading"
+		default: "Essential Block Advance Heading"
+	},
+	subtitleText: {
+		type: "string",
+		default: "Essential Block Advance Subtitle"
 	},
 	topSpace: {
 		type: "number"
@@ -62,8 +66,41 @@ const attributes = {
 		type: "string",
 		default: "px"
 	},
-	textColor: {
-		type: "string"
+	titleColor: {
+		type: "string",
+		default: "#333333"
+	},
+	titleHoverColor: {
+		type: "string",
+		default: "#333333"
+	},
+	titleColorType: {
+		type: "string",
+		default: "normal"
+	},
+	subtitleColor: {
+		type: "string",
+		default: "#333333"
+	},
+	subtitleHoverColor: {
+		type: "string",
+		default: "#333333"
+	},
+	subtitleColorType: {
+		type: "string",
+		default: "normal"
+	},
+	separatorColor: {
+		type: "string",
+		default: "#333333"
+	},
+	separatorHoverColor: {
+		type: "string",
+		default: "#333333"
+	},
+	separatorColorType: {
+		type: "string",
+		default: "normal"
 	},
 	fontFamily: {
 		type: "string"
@@ -99,14 +136,18 @@ const attributes = {
 		type: "string",
 		default: "left"
 	},
+	displaySubtitle: {
+		type: "boolean",
+		default: false
+	},
 	displaySeperator: {
 		type: "boolean",
 		default: false
 	},
-	seperatorSize: {
+	separatorSize: {
 		type: "number"
 	},
-	seperatorColor: {
+	separatorColor: {
 		type: "string"
 	},
 	seperatorStyle: {

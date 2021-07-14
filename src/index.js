@@ -8,11 +8,11 @@ import icon from "./icon";
 import attributes from "./attributes";
 import Example from "./example";
 
-registerBlockType("advance-headin/advance-headin", {
+registerBlockType("advance-heading/advance-heading", {
 	title: __("Advance Heading", "advance-heading"),
 	description: __(
 		"Create Advance Heading with responsive controls and more features",
-		"advance-headin"
+		"advance-heading"
 	),
 	keywords: [__("heading", "advance heading", "heading block", "heading box")],
 	icon,

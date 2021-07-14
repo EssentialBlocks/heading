@@ -5,13 +5,18 @@ const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { 
 	PanelBody,
+	PanelRow,
 	SelectControl,
 	ToggleControl,
 	TextControl,
+	TextareaControl,
 	Button,
 	ButtonGroup,
 	BaseControl,
 	TabPanel,
+	displaySubtitle,
+	displaySeperator,
+	seperatorStyle,
 } = wp.components;
 const { useEffect, useState } = wp.element;
 const { select } = wp.data;
@@ -34,7 +39,10 @@ import {
 	PRESETS,
 	TEXT_ALIGN,
 	CONTENT_POSITION,
+	HEADING,
+	SEPERATOR_STYLES,
 } from "./constants/constants";
+import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
 	mimmikCssForResBtns,
 	mimmikCssOnPreviewBtnClickWhileBlockSelected,
@@ -55,6 +63,23 @@ function Inspector(props) {
 	const {
 		resOption,
 		preset,
+		align,
+		tagName,
+		titleText,
+		subtitleText,
+		displaySubtitle,
+		displaySeperator,
+		separatorSize,
+		onTop,
+		titleColor,
+		titleHoverColor,
+		titleColorType,
+		subtitleColor, 
+		subtitleHoverColor, 
+		subtitleColorType,
+		separatorColor,
+		separatorHoverColor,
+		separatorColorType
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
@@ -196,14 +221,14 @@ function Inspector(props) {
 										/>
 										<BaseControl label={__("Alignment")} id="eb-advance-heading-alignment">
 											<ButtonGroup id="eb-advance-heading-alignment">
-												{CONTENT_POSITION.map((item) => (
+												{TEXT_ALIGN.map((item) => (
 													<Button
 														isLarge
-														isPrimary={contentPosition === item.value}
-														isSecondary={contentPosition !== item.value}
+														isPrimary={align === item.value}
+														isSecondary={align !== item.value}
 														onClick={() =>
 															setAttributes({
-																contentPosition: item.value,
+																align: item.value,
 															})
 														}
 													>
@@ -212,149 +237,56 @@ function Inspector(props) {
 												))}
 											</ButtonGroup>
 										</BaseControl>
-										<TextControl
-											label={__("Button One Text")}
-											value={buttonTextOne}
-											onChange={(text) => setAttributes({ buttonTextOne: text })}
-										/>
-										<TextControl
-											label={__("Button One Link")}
-											value={buttonURLOne}
-											onChange={(link) => setAttributes({ buttonURLOne: link })}
-										/>
-
-										<TextControl
-											label={__("Button Two Text")}
-											value={buttonTextTwo}
-											onChange={(text) => setAttributes({ buttonTextTwo: text })}
-										/>
-										<TextControl
-											label={__("Button Two Link")}
-											value={buttonURLTwo}
-											onChange={(link) => setAttributes({ buttonURLTwo: link })}
-										/>
-									</PanelBody>
-									<PanelBody title={__("Buttons")} initialOpen={true}>
-										<ResponsiveRangeController
-											baseLabel={__("Buttons Width", "advance-heading")}
-											controlName={BUTTONS_WIDTH}
-											resRequiredProps={resRequiredProps}
-											units={UNIT_TYPES}
-											min={0}
-											max={500}
-											step={1}
-										/>
-
-										<ResponsiveRangeController
-											baseLabel={__("Buttons Gap", "advance-heading")}
-											controlName={BUTTONS_GAP}
-											resRequiredProps={resRequiredProps}
-											units={UNIT_TYPES}
-											min={0}
-											max={100}
-											step={1}
-										/>
-
-										<BaseControl label={__("Text Align")} id="eb-advance-heading-text-align">
-											<ButtonGroup id="eb-advance-heading-text-align">
-												{TEXT_ALIGN.map((item) => (
+										<BaseControl label={__("Title Level")} id="eb-advance-heading-alignment">
+											<ButtonGroup className="eb-advance-heading-alignment">
+												{HEADING.map((item) => (
 													<Button
 														isLarge
-														isPrimary={buttonTextAlign === item.value}
-														isSecondary={buttonTextAlign !== item.value}
-														onClick={() =>
-															setAttributes({
-																buttonTextAlign: item.value,
-															})
-														}
+														isPrimary={tagName === item.value}
+														isSecondary={tagName !== item.value}
+														onClick={() => setAttributes({ tagName: item.value })}
 													>
-													{item.label}
+														{item.label}
 													</Button>
 												))}
 											</ButtonGroup>
 										</BaseControl>
-									</PanelBody>
-									<PanelBody title={__("Connector")} initialOpen={true}>
-										<ToggleControl
-											label={__("Show Connector?")}
-											checked={showConnector}
-											onChange={() => {
-												setAttributes({ showConnector: !showConnector });
-											}}
+										<TextControl
+											label={__("Title Text")}
+											value={titleText}
+											onChange={(text) => setAttributes({ titleText: text })}
 										/>
-										{showConnector && (
-											<>
-												<BaseControl label={__("Connector Type")}>
-													<ButtonGroup id="eb-advance-heading-connector-type">
-														{CONNECTOR_TYPE.map((item) => (
-															<Button
-																isLarge
-																isPrimary={connectorType === item.value}
-																isSecondary={connectorType !== item.value}
-																onClick={() =>
-																	setAttributes({
-																		connectorType: item.value,
-																	})
-																}
-															>
-																{item.label}
-															</Button>
-														))}
-													</ButtonGroup>
-												</BaseControl>
-
-												{connectorType === "icon" && (
-													<PanelBody title={__("Icon Settings")} initialOpen={true}>
-														<BaseControl label={__("Icon")}>
-															<FontIconPicker
-																icons={faIcons}
-																value={innerButtonIcon}
-																onChange={(icon) => setAttributes({ innerButtonIcon: icon })}
-																appendTo="body"
-															/>
-														</BaseControl>
-
-														<ResponsiveRangeController
-															baseLabel={__("Icon Size", "advance-heading")}
-															controlName={BUTTONS_CONNECTOR_ICON_SIZE}
-															resRequiredProps={resRequiredProps}
-															units={UNIT_TYPES}
-															min={0}
-															max={100}
-															step={1}
-														/>
-													</PanelBody>
-												)}
-
-												{connectorType === "text" && (
-													<TextControl
-														label={__("Text")}
-														value={innerButtonText}
-														onChange={(text) => setAttributes({ innerButtonText: text })}
-													/>
-												)}
-
-												<ResponsiveRangeController
-														baseLabel={__("Connector Size", "advance-heading")}
-														controlName={BUTTONS_CONNECTOR_SIZE}
-														resRequiredProps={resRequiredProps}
-														units={UNIT_TYPES}
-														min={0}
-														max={100}
-														step={1}
-												/>
-											</>
+										<ToggleControl
+											label={__("Display Subtilte")}
+											checked={displaySubtitle}
+											onChange={() =>
+												setAttributes({ displaySubtitle: !displaySubtitle })
+											}
+										/>
+										{displaySubtitle && (
+											<TextareaControl
+												label={__("Subtitle Text")}
+												value={subtitleText}
+												onChange={(text) => setAttributes({ subtitleText: text })}
+											/>
 										)}
+										<ToggleControl
+											label={__("Display Seperator")}
+											checked={displaySeperator}
+											onChange={() =>
+												setAttributes({ displaySeperator: !displaySeperator })
+											}
+										/>
 									</PanelBody>
 								</>
 							)}
 
 							{tab.name === "styles" && (
 								<>
-									<PanelBody title={__("Buttons")} initialOpen={true}>
+									<PanelBody title={__("Title")} initialOpen={true}>
 										<TypographyDropdown
 											baseLabel={__("Typography", "advance-heading")}
-											typographyPrefixConstant={BUTTONS_TYPOGRAPHY}
+											typographyPrefixConstant={TITLE_TYPOGRAPHY}
 											resRequiredProps={resRequiredProps}
 										/>
 
@@ -362,135 +294,174 @@ function Inspector(props) {
 											{NORMAL_HOVER.map((item) => (
 												<Button
 													isLarge
-													isPrimary={buttonsColorType === item.value}
-													isSecondary={buttonsColorType !== item.value}
-													onClick={() => setAttributes({ buttonsColorType: item.value })}
+													isPrimary={titleColorType === item.value}
+													isSecondary={titleColorType !== item.value}
+													onClick={() => setAttributes({ titleColorType: item.value })}
 												>
 													{item.label}
 												</Button>
 											))}
 										</ButtonGroup>
 
-										{buttonsColorType === "normal" && (
+										{titleColorType === "normal" && (
 											<PanelColorSettings
 												className={"eb-subpanel"}
-												title={__("Normal Colors")}
+												title={__("Normal Color")}
 												initialOpen={true}
 												colorSettings={[
 													{
-														value: buttonOneColor,
+														value: titleColor,
 														onChange: (newColor) =>
-															setAttributes({ buttonOneColor: newColor }),
+															setAttributes({ titleColor: newColor }),
 														label: __("Button One Color"),
-													},
-													{
-														value: textOneColor,
-														onChange: (newColor) => setAttributes({ textOneColor: newColor }),
-														label: __("Button One Text Color"),
-													},
-													{
-														value: buttonTwoColor,
-														onChange: (newColor) =>
-															setAttributes({
-																buttonTwoColor: newColor,
-															}),
-														label: __("Button Two Color"),
-													},
-													{
-														value: textTwoColor,
-														onChange: (newColor) =>
-															setAttributes({
-																textTwoColor: newColor,
-															}),
-														label: __("Button Two Text Color"),
-													},
+													}
 												]}
 											/>
 										)}
 
-										{buttonsColorType === "hover" && (
+										{titleColorType === "hover" && (
 											<PanelColorSettings
 												className={"eb-subpanel"}
-												title={__("Hover Colors")}
+												title={__("Hover Color")}
 												initialOpen={true}
 												colorSettings={[
 													{
-														value: hoverButtonOneColor,
+														value: titleHoverColor,
 														onChange: (newColor) =>
-															setAttributes({ hoverButtonOneColor: newColor }),
+															setAttributes({ titleHoverColor: newColor }),
 														label: __("Button One Color"),
-													},
-													{
-														value: hoverTextOneColor,
-														onChange: (newColor) => setAttributes({ hoverTextOneColor: newColor }),
-														label: __("Button One Text Color"),
-													},
-													{
-														value: hoverButtonTwoColor,
-														onChange: (newColor) =>
-															setAttributes({
-																hoverButtonTwoColor: newColor,
-															}),
-														label: __("Button Two Color"),
-													},
-													{
-														value: hoverTextTwoColor,
-														onChange: (newColor) =>
-															setAttributes({
-																hoverTextTwoColor: newColor,
-															}),
-														label: __("Button Two Text Color"),
-													},
+													}
 												]}
 											/>
 										)}
-
-										<PanelBody className={"eb-subpanel"} title={__("Button One Border")} initialOpen={true}>
-											<BorderShadowControl
-												controlName={BUTTON_ONE_BORDER_SHADOW}
-												resRequiredProps={resRequiredProps}
-												noShadow
-											/>
-										</PanelBody>
-
-										<PanelBody className={"eb-subpanel"} title={__("Button Two Border")} initialOpen={true}>
-											<BorderShadowControl
-												controlName={BUTTON_TWO_BORDER_SHADOW}
-												resRequiredProps={resRequiredProps}
-												noShadow
-											/>
-										</PanelBody>
-
-										<ResponsiveDimensionsControl
-											resRequiredProps={resRequiredProps}
-											controlName={BUTTONS_PADDING}
-											baseLabel="Padding"
-										/>
-										
 									</PanelBody>
 
-									<PanelBody title={__("Connector")} initialOpen={false}>
+									<PanelBody title={__("Sub Title")} initialOpen={false}>
 										<TypographyDropdown
-												baseLabel={__("Typography", "advance-heading")}
-												typographyPrefixConstant={BUTTONS_CONNECTOR_TYPOGRAPHY}
-												resRequiredProps={resRequiredProps}
+											baseLabel={__("Typography", "advance-heading")}
+											typographyPrefixConstant={SUBTITLE_TYPOGRAPHY}
+											resRequiredProps={resRequiredProps}
 										/>
 
-										<ColorControl
-											label={__("Background Color")}
-											color={innerButtonColor}
-											onChange={(innerButtonColor) =>
-												setAttributes({ innerButtonColor })
-											}
-										/>
+										<ButtonGroup className="eb-inspector-btn-group">
+											{NORMAL_HOVER.map((item) => (
+												<Button
+													isLarge
+													isPrimary={subtitleColorType === item.value}
+													isSecondary={subtitleColorType !== item.value}
+													onClick={() => setAttributes({ subtitleColorType: item.value })}
+												>
+													{item.label}
+												</Button>
+											))}
+										</ButtonGroup>
+										{subtitleColorType === "normal" && (
+											<PanelColorSettings
+												className={"eb-subpanel"}
+												title={__("Normal Color")}
+												initialOpen={true}
+												colorSettings={[
+													{
+														value: subtitleColor,
+														onChange: (newColor) =>
+															setAttributes({ subtitleColor: newColor }),
+														label: __("Button One Color"),
+													}
+												]}
+											/>
+										)}
 
-										<ColorControl
-											label={__("Text/ Icon Color")}
-											color={innerButtonTextColor}
-											onChange={(innerButtonTextColor) =>
-												setAttributes({ innerButtonTextColor })
-											}
-										/>
+										{subtitleColorType === "hover" && (
+											<PanelColorSettings
+												className={"eb-subpanel"}
+												title={__("Hover Color")}
+												initialOpen={true}
+												colorSettings={[
+													{
+														value: titleHoverColor,
+														onChange: (newColor) =>
+															setAttributes({ titleHoverColor: newColor }),
+														label: __("Button One Color"),
+													}
+												]}
+											/>
+										)}
+									</PanelBody>
+
+									<PanelBody title={__("Separator")} initialOpen={false}>
+										{displaySeperator && (
+											<Fragment>
+												<ToggleControl
+													label={__("On Top")}
+													checked={onTop}
+													onChange={() => setAttributes({ onTop: !onTop })}
+												/>
+												<ResponsiveRangeController
+													baseLabel={__("Size", "advance-heading")}
+													controlName={SEPARATOR_SIZE}
+													resRequiredProps={resRequiredProps}
+													units={UNIT_TYPES}
+													min={0}
+													max={100}
+													step={1}
+												/>
+
+												<SelectControl
+													label={__("Style")}
+													value={seperatorStyle}
+													options={SEPERATOR_STYLES}
+													onChange={(seperatorStyle) => setAttributes({ seperatorStyle })}
+												/>
+
+												<ButtonGroup className="eb-inspector-btn-group">
+													{NORMAL_HOVER.map((item) => (
+														<Button
+															isLarge
+															isPrimary={separatorColorType === item.value}
+															isSecondary={separatorColorType !== item.value}
+															onClick={() => setAttributes({ separatorColorType: item.value })}
+														>
+															{item.label}
+														</Button>
+													))}
+												</ButtonGroup>
+												
+												{separatorColorType === "normal" && (
+													<PanelColorSettings
+														className={"eb-subpanel"}
+														separator={__("Normal Color")}
+														initialOpen={true}
+														colorSettings={[
+															{
+																value: separatorColor,
+																onChange: (newColor) =>
+																	setAttributes({ separatorColor: newColor }),
+																label: __("Button One Color"),
+															}
+														]}
+													/>
+												)}
+
+												{separatorColorType === "hover" && (
+													<PanelColorSettings
+														className={"eb-subpanel"}
+														separator={__("Hover Color")}
+														initialOpen={true}
+														colorSettings={[
+															{
+																value: separatorHoverColor,
+																onChange: (newColor) =>
+																	setAttributes({ separatorHoverColor: newColor }),
+																label: __("Button One Color"),
+															}
+														]}
+													/>
+												)}
+											</Fragment>
+										)}
+										{!displaySeperator && (
+											<PanelRow>Separator is is Disabled</PanelRow>
+										)}
 									</PanelBody>
 								</>
 							)}

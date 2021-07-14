@@ -44,3 +44,22 @@ export const CONTENT_POSITION = [
 	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
 	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "flex-end" }
 ];
+
+export const HEADING = [
+	{ label: __("H1"), value: "h1" },
+	{ label: __("H2"), value: "h2" },
+	{ label: __("H3"), value: "h3" },
+	{ label: __("H4"), value: "h4" },
+	{ label: __("H5"), value: "h5" },
+	{ label: __("H6"), value: "h6" },
+];
+
+export const SEPERATOR_STYLES = [
+	{ label: __("Solid"), value: "solid" },
+	{ label: __("Dashed"), value: "dashed" },
+	{ label: __("Dotted"), value: "dotted" },
+	{ label: __("Double"), value: "double" },
+	{ label: __("Groove"), value: "groove" },
+	{ label: __("Outset"), value: "outset" },
+	{ label: __("Ridge"), value: "ridge" },
+];

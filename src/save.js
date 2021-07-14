@@ -4,18 +4,18 @@ const Save = ({ attributes }) => {
 	const {
 		blockId,
 		preset,
+		tagName,
+		titleText,
+		subtitleText,
 	} = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
 			<div className="eb-heading-wrapper">
-				<RichText
-					// tagName={tagName}
-					// style={headingStyle}
+				<RichText.Content
+					tagName={tagName}
 					className="eb-heading"
-					// value={content}
-					formattingControl={["bold", "italic"]}
-					// onChange={(content) => setAttributes({ content })}
+					value={titleText}
 				/>
 			</div>
 		</div>

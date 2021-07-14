@@ -3827,6 +3827,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
 
 
+var _objectSpread2;
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3835,7 +3837,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({
+var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread((_objectSpread2 = {
   resOption: {
     type: "string",
     default: "desktop"
@@ -3860,9 +3862,13 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     default: "h2"
   },
-  content: {
+  titleText: {
     type: "string",
-    default: "Essential Block Heading"
+    default: "Essential Block Advance Heading"
+  },
+  subtitleText: {
+    type: "string",
+    default: "Essential Block Advance Subtitle"
   },
   topSpace: {
     type: "number"
@@ -3878,8 +3884,41 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     default: "px"
   },
-  textColor: {
-    type: "string"
+  titleColor: {
+    type: "string",
+    default: "#333333"
+  },
+  titleHoverColor: {
+    type: "string",
+    default: "#333333"
+  },
+  titleColorType: {
+    type: "string",
+    default: "normal"
+  },
+  subtitleColor: {
+    type: "string",
+    default: "#333333"
+  },
+  subtitleHoverColor: {
+    type: "string",
+    default: "#333333"
+  },
+  subtitleColorType: {
+    type: "string",
+    default: "normal"
+  },
+  separatorColor: {
+    type: "string",
+    default: "#333333"
+  },
+  separatorHoverColor: {
+    type: "string",
+    default: "#333333"
+  },
+  separatorColorType: {
+    type: "string",
+    default: "normal"
   },
   fontFamily: {
     type: "string"
@@ -3915,25 +3954,26 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
     type: "string",
     default: "left"
   },
+  displaySubtitle: {
+    type: "boolean",
+    default: false
+  },
   displaySeperator: {
     type: "boolean",
     default: false
   },
-  seperatorSize: {
+  separatorSize: {
     type: "number"
-  },
-  seperatorColor: {
-    type: "string"
-  },
-  seperatorStyle: {
-    type: "string",
-    default: "solid"
-  },
-  onTop: {
-    type: "boolean",
-    default: false
   }
-}, Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__))), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_MARGIN"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_PADDING"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["TITLE_MARGIN"], {
+}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "separatorColor", {
+  type: "string"
+}), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "seperatorStyle", {
+  type: "string",
+  default: "solid"
+}), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(_objectSpread2, "onTop", {
+  type: "boolean",
+  default: false
+}), _objectSpread2), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateTypographyAttributes"])(Object.values(_constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__))), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_MARGIN"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_PADDING"])), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateDimensionsAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["TITLE_MARGIN"], {
   top: 0,
   bottom: 20,
   right: 0,
@@ -3972,7 +4012,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
 /*!************************************!*\
   !*** ./src/constants/constants.js ***!
   \************************************/
-/*! exports provided: WRAPPER_BG, WRAPPER_MARGIN, WRAPPER_PADDING, WRAPPER_BORDER_SHADOW, TITLE_MARGIN, SUBTITLE_MARGIN, SEPARATOR_MARGIN, SEPARATOR_SIZE, UNIT_TYPES, NORMAL_HOVER, SEPARATOR_TYPE, PRESETS, TEXT_ALIGN, CONTENT_POSITION */
+/*! exports provided: WRAPPER_BG, WRAPPER_MARGIN, WRAPPER_PADDING, WRAPPER_BORDER_SHADOW, TITLE_MARGIN, SUBTITLE_MARGIN, SEPARATOR_MARGIN, SEPARATOR_SIZE, UNIT_TYPES, NORMAL_HOVER, SEPARATOR_TYPE, PRESETS, TEXT_ALIGN, CONTENT_POSITION, HEADING, SEPERATOR_STYLES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3991,6 +4031,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PRESETS", function() { return PRESETS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TEXT_ALIGN", function() { return TEXT_ALIGN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONTENT_POSITION", function() { return CONTENT_POSITION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HEADING", function() { return HEADING; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEPERATOR_STYLES", function() { return SEPERATOR_STYLES; });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
@@ -4071,6 +4113,47 @@ var CONTENT_POSITION = [{
   })),
   value: "flex-end"
 }];
+var HEADING = [{
+  label: __("H1"),
+  value: "h1"
+}, {
+  label: __("H2"),
+  value: "h2"
+}, {
+  label: __("H3"),
+  value: "h3"
+}, {
+  label: __("H4"),
+  value: "h4"
+}, {
+  label: __("H5"),
+  value: "h5"
+}, {
+  label: __("H6"),
+  value: "h6"
+}];
+var SEPERATOR_STYLES = [{
+  label: __("Solid"),
+  value: "solid"
+}, {
+  label: __("Dashed"),
+  value: "dashed"
+}, {
+  label: __("Dotted"),
+  value: "dotted"
+}, {
+  label: __("Double"),
+  value: "double"
+}, {
+  label: __("Groove"),
+  value: "groove"
+}, {
+  label: __("Outset"),
+  value: "outset"
+}, {
+  label: __("Ridge"),
+  value: "ridge"
+}];
 
 /***/ }),
 
@@ -4116,8 +4199,8 @@ __webpack_require__.r(__webpack_exports__);
 */
 var __ = wp.i18n.__;
 var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    PanelColorSettings = _wp$blockEditor.PanelColorSettings,
+    BlockControls = _wp$blockEditor.BlockControls,
+    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
     RichText = _wp$blockEditor.RichText,
     useBlockProps = _wp$blockEditor.useBlockProps;
 var useEffect = wp.element.useEffect;
@@ -4139,7 +4222,10 @@ function Edit(props) {
   var blockId = attributes.blockId,
       blockMeta = attributes.blockMeta,
       resOption = attributes.resOption,
-      preset = attributes.preset; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
+      preset = attributes.preset,
+      align = attributes.align,
+      tagName = attributes.tagName,
+      titleText = attributes.titleText; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
 
   useEffect(function () {
     var bodyClasses = document.body.className;
@@ -4172,160 +4258,292 @@ function Edit(props) {
 
   var _generateTypographySt = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
     attributes: attributes,
-    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["BUTTONS_TYPOGRAPHY"],
-    defaultFontSize: 16
+    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["TITLE_TYPOGRAPHY"],
+    defaultFontSize: 24
   }),
-      buttonsTypoStylesDesktop = _generateTypographySt.typoStylesDesktop,
-      buttonsTypoStylesTab = _generateTypographySt.typoStylesTab,
-      buttonsTypoStylesMobile = _generateTypographySt.typoStylesMobile;
+      titleTypographyDesktop = _generateTypographySt.typoStylesDesktop,
+      titleTypographyTab = _generateTypographySt.typoStylesTab,
+      titleTypographyMobile = _generateTypographySt.typoStylesMobile;
 
   var _generateTypographySt2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateTypographyStyles"])({
     attributes: attributes,
-    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["BUTTONS_CONNECTOR_TYPOGRAPHY"],
-    defaultFontSize: 14
+    prefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_4__["SUBTITLE_TYPOGRAPHY"]
   }),
-      connectorTypoStylesDesktop = _generateTypographySt2.typoStylesDesktop,
-      connectorTypoStylesTab = _generateTypographySt2.typoStylesTab,
-      connectorTypoStylesMobile = _generateTypographySt2.typoStylesMobile;
+      subtitleTypographyDesktop = _generateTypographySt2.typoStylesDesktop,
+      subtitleTypographyTab = _generateTypographySt2.typoStylesTab,
+      subtitleTypographyMobile = _generateTypographySt2.typoStylesMobile;
+  /* Wrapper Margin */
+
 
   var _generateDimensionsCo = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateDimensionsControlStyles"])({
-    controlName: WRAPPER_MARGIN,
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["WRAPPER_MARGIN"],
     styleFor: "margin",
     attributes: attributes
   }),
-      wrapperMarginStylesDesktop = _generateDimensionsCo.dimensionStylesDesktop,
-      wrapperMarginStylesTab = _generateDimensionsCo.dimensionStylesTab,
-      wrapperMarginStylesMobile = _generateDimensionsCo.dimensionStylesMobile;
+      wrapperMarginDesktop = _generateDimensionsCo.dimensionStylesDesktop,
+      wrapperMarginTab = _generateDimensionsCo.dimensionStylesTab,
+      wrapperMarginMobile = _generateDimensionsCo.dimensionStylesMobile;
+  /* Wrapper Padding */
+
 
   var _generateDimensionsCo2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateDimensionsControlStyles"])({
-    controlName: BUTTONS_PADDING,
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["WRAPPER_PADDING"],
     styleFor: "padding",
     attributes: attributes
   }),
-      buttonsPaddingStylesDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
-      buttonsPaddingStylesTab = _generateDimensionsCo2.dimensionStylesTab,
-      buttonsPaddingStylesMobile = _generateDimensionsCo2.dimensionStylesMobile;
+      wrapperPaddingDesktop = _generateDimensionsCo2.dimensionStylesDesktop,
+      wrapperPaddingTab = _generateDimensionsCo2.dimensionStylesTab,
+      wrapperPaddingMobile = _generateDimensionsCo2.dimensionStylesMobile;
+  /* Title Margin */
+
+
+  var _generateDimensionsCo3 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateDimensionsControlStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["TITLE_MARGIN"],
+    styleFor: "margin",
+    attributes: attributes
+  }),
+      titleMarginDesktop = _generateDimensionsCo3.dimensionStylesDesktop,
+      titleMarginTab = _generateDimensionsCo3.dimensionStylesTab,
+      titleMarginMobile = _generateDimensionsCo3.dimensionStylesMobile;
+  /* Subtitle Margin */
+
+
+  var _generateDimensionsCo4 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateDimensionsControlStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["SUBTITLE_MARGIN"],
+    styleFor: "margin",
+    attributes: attributes
+  }),
+      subtitleMarginDesktop = _generateDimensionsCo4.dimensionStylesDesktop,
+      subtitleMarginTab = _generateDimensionsCo4.dimensionStylesTab,
+      subtitleMarginMobile = _generateDimensionsCo4.dimensionStylesMobile;
+  /* Separator Margin */
+
+
+  var _generateDimensionsCo5 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateDimensionsControlStyles"])({
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["SEPARATOR_MARGIN"],
+    styleFor: "margin",
+    attributes: attributes
+  }),
+      separatorMarginDesktop = _generateDimensionsCo5.dimensionStylesDesktop,
+      separatorMarginTab = _generateDimensionsCo5.dimensionStylesTab,
+      separatorMarginMobile = _generateDimensionsCo5.dimensionStylesMobile;
 
   var _generateBorderShadow = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateBorderShadowStyles"])({
-    controlName: BUTTON_ONE_BORDER_SHADOW,
-    attributes: attributes,
-    noShadow: true
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["WRAPPER_BORDER_SHADOW"],
+    attributes: attributes
   }),
-      buttonOneBDShadowDesktop = _generateBorderShadow.styesDesktop,
-      buttonOneBDShadowTab = _generateBorderShadow.styesTab,
-      buttonOneBDShadowMobile = _generateBorderShadow.styesMobile,
-      buttonOneBDShadowHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
-      buttonOneBDShadowHoverTab = _generateBorderShadow.stylesHoverTab,
-      buttonOneBDShadowHoverMobile = _generateBorderShadow.stylesHoverMobile;
-
-  var _generateBorderShadow2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateBorderShadowStyles"])({
-    controlName: BUTTON_TWO_BORDER_SHADOW,
-    attributes: attributes,
-    noShadow: true
-  }),
-      buttonTwoBDShadowDesktop = _generateBorderShadow2.styesDesktop,
-      buttonTwoBDShadowTab = _generateBorderShadow2.styesTab,
-      buttonTwoBDShadowMobile = _generateBorderShadow2.styesMobile,
-      buttonTwoBDShadowHoverDesktop = _generateBorderShadow2.stylesHoverDesktop,
-      buttonTwoBDShadowHoverTab = _generateBorderShadow2.stylesHoverTab,
-      buttonTwoBDShadowHoverMobile = _generateBorderShadow2.stylesHoverMobile; // responsive range controller
+      wrapperBDShadowDesktop = _generateBorderShadow.styesDesktop,
+      wrapperBDShadowTab = _generateBorderShadow.styesTab,
+      wrapperBDShadowMobile = _generateBorderShadow.styesMobile,
+      wrapperBDShadowHoverDesktop = _generateBorderShadow.stylesHoverDesktop,
+      wrapperBDShadowHoverTab = _generateBorderShadow.stylesHoverTab,
+      wrapperBDShadowHoverMobile = _generateBorderShadow.stylesHoverMobile; // responsive range controller
 
 
   var _generateResponsiveRa = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_WIDTH,
-    property: "width",
-    attributes: attributes
-  }),
-      buttonWidthStyleDesktop = _generateResponsiveRa.rangeStylesDesktop,
-      buttonWidthStyleTab = _generateResponsiveRa.rangeStylesTab,
-      buttonWidthStyleMobile = _generateResponsiveRa.rangeStylesMobile;
-
-  var _generateResponsiveRa2 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_GAP,
-    property: "margin",
-    attributes: attributes
-  }),
-      buttonGapDesktop = _generateResponsiveRa2.rangeStylesDesktop,
-      buttonGapTab = _generateResponsiveRa2.rangeStylesTab,
-      buttonGapMobile = _generateResponsiveRa2.rangeStylesMobile;
-
-  var _generateResponsiveRa3 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_CONNECTOR_SIZE,
+    controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["SEPARATOR_SIZE"],
     property: "height",
     attributes: attributes
   }),
-      buttonConnectorHeightDesktop = _generateResponsiveRa3.rangeStylesDesktop,
-      buttonConnectorHeightTab = _generateResponsiveRa3.rangeStylesTab,
-      buttonConnectorHeightMobile = _generateResponsiveRa3.rangeStylesMobile;
+      separatorSizeDesktop = _generateResponsiveRa.rangeStylesDesktop,
+      separatorSizeTab = _generateResponsiveRa.rangeStylesTab,
+      separatorSizeMobile = _generateResponsiveRa.rangeStylesMobile; // // wrapper styles css in strings ⬇
+  // const wrapperStylesDesktop = `
+  // 	.eb-advance-heading-wrapper.${blockId}{
+  // 		display: flex;
+  // 		flex-direction: row;
+  // 		align-items: ${contentPosition};
+  // 		justify-content: ${contentPosition};
+  // 		position: relative;
+  // 		${wrapperMarginDesktop}
+  // 	}
+  // `;
+  // const wrapperStylesTab = `
+  // 	.eb-advance-heading-wrapper.${blockId}{
+  // 		${wrapperMarginTab}
+  // 	}
+  // `;
+  // const wrapperStylesMobile = `
+  // 	.eb-advance-heading-wrapper.${blockId}{
+  // 		${wrapperMarginMobile}
+  // 	}
+  // `;
+  // // Buttons Common styles css in strings ⬇
+  // const buttonsCommonStyleDesktop = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
+  // 		${wrapperPaddingDesktop}
+  // 		${separatorSizeDesktop}
+  // 		${buttonGapDesktop}
+  // 		text-align: ${buttonTextAlign};
+  // 		cursor: pointer;
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
+  // 		${titleTypographyDesktop}
+  // 	}
+  // `;
+  // const buttonsCommonStyleTab = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
+  // 		${wrapperPaddingTab}
+  // 		${separatorSizeTab}
+  // 		${buttonGapTab}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
+  // 		${titleTypographyTab}
+  // 	}
+  // `;
+  // const buttonsCommonStyleMobile = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
+  // 		${wrapperPaddingMobile}
+  // 		${separatorSizeMobile}
+  // 		${buttonGapMobile}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
+  // 		${titleTypographyMobile}
+  // 	}
+  // `;
+  // // Buttons One styles css in strings ⬇
+  // const buttonOneStyleDesktop = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
+  // 		${wrapperBDShadowDesktop}
+  // 		background-color: ${attributes.buttonOneColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+  // 		${wrapperBDShadowHoverDesktop}
+  // 		background-color: ${hoverButtonOneColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+  // 		color: ${textOneColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
+  // 		color: ${hoverTextOneColor};
+  // 	}
+  // `;
+  // const buttonOneStyleTab = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
+  // 		${wrapperBDShadowTab}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+  // 		${wrapperBDShadowHoverTab}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+  // 	}
+  // `;
+  // const buttonOneStyleMobile = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
+  // 		${wrapperBDShadowMobile}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
+  // 		${wrapperBDShadowHoverMobile}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+  // 	}
+  // `;
+  // // Buttons Two styles css in strings ⬇
+  // const buttonTwoStyleDesktop = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
+  // 		${buttonTwoBDShadowDesktop}
+  // 		${buttonGapDesktop}
+  // 		background-color: ${buttonTwoColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+  // 		${buttonTwoBDShadowHoverDesktop}
+  // 		background-color: ${hoverButtonTwoColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+  // 		color: ${textTwoColor};
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
+  // 		color: ${hoverTextTwoColor};
+  // 	}
+  // `;
+  // const buttonTwoStyleTab = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
+  // 		${buttonTwoBDShadowTab}
+  // 		${buttonGapTab}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+  // 		${buttonTwoBDShadowHoverTab}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+  // 	}
+  // `;
+  // const buttonTwoStyleMobile = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
+  // 		${buttonTwoBDShadowMobile}
+  // 		${buttonGapMobile}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
+  // 		${buttonTwoBDShadowHoverMobile}
+  // 	}
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+  // 	}
+  // `;
+  // // Connector styles css in strings ⬇
+  // const connectorStylesDesktop = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
+  // 		${connectorType === "text"? subtitleTypographyDesktop : buttonConnectorIconSizeDesktop}
+  // 		${buttonConnectorHeightDesktop}
+  // 		${buttonConnectorWidthDesktop}
+  // 		${buttonConnectorLineHeightDesktop}
+  // 		${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : null};
+  // 		background: ${innerButtonColor};
+  // 		color: ${innerButtonTextColor};
+  // 	}
+  // `;
+  // const connectorStylesTab = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
+  // 		${connectorType === "text"? subtitleTypographyTab : buttonConnectorIconSizeTab}
+  // 		${buttonConnectorHeightTab}
+  // 		${buttonConnectorWidthTab}
+  // 		${buttonConnectorLineHeightTab}
+  // 	}
+  // `;
+  // const connectorStylesMobile = `
+  // 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
+  // 		${connectorType === "text"? subtitleTypographyMobile : buttonConnectorIconSizeMobile}
+  // 		${buttonConnectorHeightMobile}
+  // 		${buttonConnectorWidthMobile}
+  // 		${buttonConnectorLineHeightMobile}
+  // 	}
+  // `;
+  // // all css styles for large screen width (desktop/laptop) in strings ⬇
+  // const desktopAllStyles = softMinifyCssStrings(`
+  // 		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
+  // 		${isCssExists(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " "}
+  // 		${isCssExists(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " "}
+  // 		${isCssExists(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " "}
+  // 		${isCssExists(connectorStylesDesktop) ? connectorStylesDesktop : " "}
+  // 	`);
+  // // all css styles for Tab in strings ⬇
+  // const tabAllStyles = softMinifyCssStrings(`
+  // 		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
+  // 		${isCssExists(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " "}
+  // 		${isCssExists(buttonOneStyleTab) ? buttonOneStyleTab : " "}
+  // 		${isCssExists(buttonTwoStyleTab) ? buttonTwoStyleTab : " "}
+  // 		${isCssExists(connectorStylesTab) ? connectorStylesTab : " "}
+  // 	`);
+  // // all css styles for Mobile in strings ⬇
+  // const mobileAllStyles = softMinifyCssStrings(`
+  // 		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
+  // 		${isCssExists(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " "}
+  // 		${isCssExists(buttonOneStyleMobile) ? buttonOneStyleMobile : " "}
+  // 		${isCssExists(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " "}
+  // 		${isCssExists(connectorStylesMobile) ? connectorStylesMobile : " "}
+  // 	`);
+  // // Set All Style in "blockMeta" Attribute
+  // useEffect(() => {
+  // 	const styleObject = {
+  // 		desktop: desktopAllStyles,
+  // 		tab: tabAllStyles,
+  // 		mobile: mobileAllStyles,
+  // 	};
+  // 	if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+  // 		setAttributes({ blockMeta: styleObject });
+  // 	}
+  // }, [attributes]);
 
-  var _generateResponsiveRa4 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_CONNECTOR_SIZE,
-    property: "width",
-    attributes: attributes
-  }),
-      buttonConnectorWidthDesktop = _generateResponsiveRa4.rangeStylesDesktop,
-      buttonConnectorWidthTab = _generateResponsiveRa4.rangeStylesTab,
-      buttonConnectorWidthMobile = _generateResponsiveRa4.rangeStylesMobile;
 
-  var _generateResponsiveRa5 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_CONNECTOR_SIZE,
-    property: "line-height",
-    attributes: attributes
-  }),
-      buttonConnectorLineHeightDesktop = _generateResponsiveRa5.rangeStylesDesktop,
-      buttonConnectorLineHeightTab = _generateResponsiveRa5.rangeStylesTab,
-      buttonConnectorLineHeightMobile = _generateResponsiveRa5.rangeStylesMobile;
-
-  var _generateResponsiveRa6 = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["generateResponsiveRangeStyles"])({
-    controlName: BUTTONS_CONNECTOR_ICON_SIZE,
-    property: "font-size",
-    attributes: attributes
-  }),
-      buttonConnectorIconSizeDesktop = _generateResponsiveRa6.rangeStylesDesktop,
-      buttonConnectorIconSizeTab = _generateResponsiveRa6.rangeStylesTab,
-      buttonConnectorIconSizeMobile = _generateResponsiveRa6.rangeStylesMobile; // wrapper styles css in strings ⬇
-
-
-  var wrapperStylesDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\tdisplay: flex;\n\t\t\tflex-direction: row;\n\t\t\talign-items: ").concat(contentPosition, ";\n\t\t\tjustify-content: ").concat(contentPosition, ";\n\t\t\tposition: relative;\n\t\t\t").concat(wrapperMarginStylesDesktop, "\n\t\t}\n\t");
-  var wrapperStylesTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesTab, "\n\n\t\t}\n\t");
-  var wrapperStylesMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginStylesMobile, "\n\n\t\t}\n\t"); // Buttons Common styles css in strings ⬇
-
-  var buttonsCommonStyleDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesDesktop, "\n\t\t\t").concat(buttonWidthStyleDesktop, "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\ttext-align: ").concat(buttonTextAlign, ";\n\t\t\tcursor: pointer;\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesDesktop, "\n\t\t}\n\t");
-  var buttonsCommonStyleTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesTab, "\n\t\t\t").concat(buttonWidthStyleTab, "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesTab, "\n\t\t}\n\t");
-  var buttonsCommonStyleMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent {\n\t\t\t").concat(buttonsPaddingStylesMobile, "\n\t\t\t").concat(buttonWidthStyleMobile, "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent .eb-button-text {\n\t\t\t").concat(buttonsTypoStylesMobile, "\n\t\t}\n\t"); // Buttons One styles css in strings ⬇
-
-  var buttonOneStyleDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowDesktop, "\n\t\t\tbackground-color: ").concat(attributes.buttonOneColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonOneColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\t\t\tcolor: ").concat(textOneColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover .eb-button-one-text {\n\t\t\tcolor: ").concat(hoverTextOneColor, ";\n\t\t}\n\t");
-  var buttonOneStyleTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t");
-  var buttonOneStyleMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-one {\n\t\t\t").concat(buttonOneBDShadowMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one:hover {\n\t\t\t").concat(buttonOneBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-one .eb-button-one-text {\n\n\t\t}\n\t"); // Buttons Two styles css in strings ⬇
-
-  var buttonTwoStyleDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowDesktop, "\n\t\t\t").concat(buttonGapDesktop, "\n\t\t\tbackground-color: ").concat(buttonTwoColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverDesktop, "\n\t\t\tbackground-color: ").concat(hoverButtonTwoColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\t\t\tcolor: ").concat(textTwoColor, ";\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover .eb-button-two-text {\n\t\t\tcolor: ").concat(hoverTextTwoColor, ";\n\t\t}\n\t");
-  var buttonTwoStyleTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowTab, "\n\t\t\t").concat(buttonGapTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t");
-  var buttonTwoStyleMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-button-parent.eb-button-two {\n\t\t\t").concat(buttonTwoBDShadowMobile, "\n\t\t\t").concat(buttonGapMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two:hover {\n\t\t\t").concat(buttonTwoBDShadowHoverMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, " .eb-button-parent.eb-button-two .eb-button-two-text {\n\n\t\t}\n\t"); // Connector styles css in strings ⬇
-
-  var connectorStylesDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-advance-heading__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesDesktop : buttonConnectorIconSizeDesktop, "\n\t\t\t").concat(buttonConnectorHeightDesktop, "\n\t\t\t").concat(buttonConnectorWidthDesktop, "\n\t\t\t").concat(buttonConnectorLineHeightDesktop, "\n\t\t\t").concat(connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : null, ";\n\t\t\tbackground: ").concat(innerButtonColor, ";\n\t\t\tcolor: ").concat(innerButtonTextColor, ";\n\t\t}\n\t");
-  var connectorStylesTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-advance-heading__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesTab : buttonConnectorIconSizeTab, "\n\t\t\t").concat(buttonConnectorHeightTab, "\n\t\t\t").concat(buttonConnectorWidthTab, "\n\t\t\t").concat(buttonConnectorLineHeightTab, "\n\t\t}\n\t");
-  var connectorStylesMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, " .eb-advance-heading__midldeInner span {\n\t\t\t").concat(connectorType === "text" ? connectorTypoStylesMobile : buttonConnectorIconSizeMobile, "\n\t\t\t").concat(buttonConnectorHeightMobile, "\n\t\t\t").concat(buttonConnectorWidthMobile, "\n\t\t\t").concat(buttonConnectorLineHeightMobile, "\n\t\t}\n\t"); // all css styles for large screen width (desktop/laptop) in strings ⬇
-
-  var desktopAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesDesktop) ? wrapperStylesDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(connectorStylesDesktop) ? connectorStylesDesktop : " ", "\n\t\t")); // all css styles for Tab in strings ⬇
-
-  var tabAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesTab) ? wrapperStylesTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonOneStyleTab) ? buttonOneStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonTwoStyleTab) ? buttonTwoStyleTab : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(connectorStylesTab) ? connectorStylesTab : " ", "\n\t\t")); // all css styles for Mobile in strings ⬇
-
-  var mobileAllStyles = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])("\n\t\t\t".concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(wrapperStylesMobile) ? wrapperStylesMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonOneStyleMobile) ? buttonOneStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " ", "\n\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["isCssExists"])(connectorStylesMobile) ? connectorStylesMobile : " ", "\n\t\t")); // Set All Style in "blockMeta" Attribute
-
-  useEffect(function () {
-    var styleObject = {
-      desktop: desktopAllStyles,
-      tab: tabAllStyles,
-      mobile: mobileAllStyles
-    };
-
-    if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
-      setAttributes({
-        blockMeta: styleObject
-      });
-    }
-  }, [attributes]);
-  return [isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_inspector__WEBPACK_IMPORTED_MODULE_1__["default"], props), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
+  return [isSelected && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(AlignmentToolbar, {
     value: align,
     onChange: function onChange(align) {
       return setAttributes({
@@ -4337,15 +4555,18 @@ function Edit(props) {
     attributes: attributes,
     setAttributes: setAttributes
   }))), //Edit view here
-  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("style", null, "\n\t\t\t\t".concat(desktopAllStyles, "\n\n\t\t\t\t/* mimmikcssStart */\n\n\t\t\t\t").concat(resOption === "tab" ? tabAllStyles : " ", "\n\t\t\t\t").concat(resOption === "mobile" ? tabAllStyles + mobileAllStyles : " ", "\n\n\t\t\t\t/* mimmikcssEnd */\n\n\t\t\t\t@media all and (max-width: 1024px) {\t\n\n\t\t\t\t\t/* tabcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(tabAllStyles), "\n\t\t\t\t\t/* tabcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\t@media all and (max-width: 767px) {\n\t\t\t\t\t\n\t\t\t\t\t/* mobcssStart */\t\t\t\n\t\t\t\t\t").concat(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_5__["softMinifyCssStrings"])(mobileAllStyles), "\n\t\t\t\t\t/* mobcssEnd */\t\t\t\n\t\t\t\t\n\t\t\t\t}\n\t\t\t\t")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+  Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", blockProps, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "eb-heading-wrapper"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText // tagName={tagName}
-  // style={headingStyle}
-  , {
-    className: "eb-heading" // value={content}
-    ,
-    formattingControl: ["bold", "italic"] // onChange={(content) => setAttributes({ content })}
-
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
+    tagName: tagName,
+    className: "eb-heading",
+    value: titleText,
+    formattingControl: ["bold", "italic"],
+    onChange: function onChange(titleText) {
+      return setAttributes({
+        titleText: titleText
+      });
+    }
   })))];
 }
 ;
@@ -4460,9 +4681,9 @@ var __ = wp.i18n.__;
 
 
 
-registerBlockType("advance-headin/advance-headin", {
+registerBlockType("advance-heading/advance-heading", {
   title: __("Advance Heading", "advance-heading"),
-  description: __("Create Advance Heading with responsive controls and more features", "advance-headin"),
+  description: __("Create Advance Heading with responsive controls and more features", "advance-heading"),
   keywords: [__("heading", "advance heading", "heading block", "heading box")],
   icon: _icon__WEBPACK_IMPORTED_MODULE_3__["default"],
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -4486,8 +4707,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _constants_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants/constants */ "./src/constants/constants.js");
-/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
-/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants/typographyPrefixConstants */ "./src/constants/typographyPrefixConstants.js");
+/* harmony import */ var _util_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/helpers */ "./util/helpers/index.js");
 /* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.react.js");
 /* harmony import */ var _fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _fonticonpicker_react_fonticonpicker_dist_fonticonpicker_base_theme_react_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css */ "./node_modules/@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css");
@@ -4511,13 +4732,18 @@ var _wp$blockEditor = wp.blockEditor,
     PanelColorSettings = _wp$blockEditor.PanelColorSettings;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
     SelectControl = _wp$components.SelectControl,
     ToggleControl = _wp$components.ToggleControl,
     TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
     Button = _wp$components.Button,
     ButtonGroup = _wp$components.ButtonGroup,
     BaseControl = _wp$components.BaseControl,
-    TabPanel = _wp$components.TabPanel;
+    TabPanel = _wp$components.TabPanel,
+    displaySubtitle = _wp$components.displaySubtitle,
+    displaySeperator = _wp$components.displaySeperator,
+    seperatorStyle = _wp$components.seperatorStyle;
 var _wp$element = wp.element,
     useEffect = _wp$element.useEffect,
     useState = _wp$element.useState;
@@ -4539,11 +4765,29 @@ var select = wp.data.select;
 
 
 
+
 function Inspector(props) {
   var attributes = props.attributes,
       setAttributes = props.setAttributes;
   var resOption = attributes.resOption,
-      preset = attributes.preset; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
+      preset = attributes.preset,
+      align = attributes.align,
+      tagName = attributes.tagName,
+      titleText = attributes.titleText,
+      subtitleText = attributes.subtitleText,
+      displaySubtitle = attributes.displaySubtitle,
+      displaySeperator = attributes.displaySeperator,
+      separatorSize = attributes.separatorSize,
+      onTop = attributes.onTop,
+      titleColor = attributes.titleColor,
+      titleHoverColor = attributes.titleHoverColor,
+      titleColorType = attributes.titleColorType,
+      subtitleColor = attributes.subtitleColor,
+      subtitleHoverColor = attributes.subtitleHoverColor,
+      subtitleColorType = attributes.subtitleColorType,
+      separatorColor = attributes.separatorColor,
+      separatorHoverColor = attributes.separatorHoverColor,
+      separatorColorType = attributes.separatorColorType; // this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
 
   useEffect(function () {
     setAttributes({
@@ -4552,14 +4796,14 @@ function Inspector(props) {
   }, []); // this useEffect is for mimmiking css for all the eb blocks on resOption changing
 
   useEffect(function () {
-    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["mimmikCssForResBtns"])({
+    Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["mimmikCssForResBtns"])({
       domObj: document,
       resOption: resOption
     });
   }, [resOption]); // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
 
   useEffect(function () {
-    var cleanUp = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["mimmikCssOnPreviewBtnClickWhileBlockSelected"])({
+    var cleanUp = Object(_util_helpers__WEBPACK_IMPORTED_MODULE_3__["mimmikCssOnPreviewBtnClickWhileBlockSelected"])({
       domObj: document,
       select: select,
       setAttributes: setAttributes
@@ -4684,286 +4928,225 @@ function Inspector(props) {
       id: "eb-advance-heading-alignment"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
       id: "eb-advance-heading-alignment"
-    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["CONTENT_POSITION"].map(function (item) {
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["TEXT_ALIGN"].map(function (item) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
         isLarge: true,
-        isPrimary: contentPosition === item.value,
-        isSecondary: contentPosition !== item.value,
+        isPrimary: align === item.value,
+        isSecondary: align !== item.value,
         onClick: function onClick() {
           return setAttributes({
-            contentPosition: item.value
+            align: item.value
+          });
+        }
+      }, item.label);
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
+      label: __("Title Level"),
+      id: "eb-advance-heading-alignment"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
+      className: "eb-advance-heading-alignment"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["HEADING"].map(function (item) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        isLarge: true,
+        isPrimary: tagName === item.value,
+        isSecondary: tagName !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            tagName: item.value
           });
         }
       }, item.label);
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-      label: __("Button One Text"),
-      value: buttonTextOne,
+      label: __("Title Text"),
+      value: titleText,
       onChange: function onChange(text) {
         return setAttributes({
-          buttonTextOne: text
+          titleText: text
         });
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-      label: __("Button One Link"),
-      value: buttonURLOne,
-      onChange: function onChange(link) {
-        return setAttributes({
-          buttonURLOne: link
-        });
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-      label: __("Button Two Text"),
-      value: buttonTextTwo,
-      onChange: function onChange(text) {
-        return setAttributes({
-          buttonTextTwo: text
-        });
-      }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-      label: __("Button Two Link"),
-      value: buttonURLTwo,
-      onChange: function onChange(link) {
-        return setAttributes({
-          buttonURLTwo: link
-        });
-      }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Buttons"),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      baseLabel: __("Buttons Width", "advance-heading"),
-      controlName: BUTTONS_WIDTH,
-      resRequiredProps: resRequiredProps,
-      units: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["UNIT_TYPES"],
-      min: 0,
-      max: 500,
-      step: 1
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      baseLabel: __("Buttons Gap", "advance-heading"),
-      controlName: BUTTONS_GAP,
-      resRequiredProps: resRequiredProps,
-      units: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["UNIT_TYPES"],
-      min: 0,
-      max: 100,
-      step: 1
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-      label: __("Text Align"),
-      id: "eb-advance-heading-text-align"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
-      id: "eb-advance-heading-text-align"
-    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["TEXT_ALIGN"].map(function (item) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-        isLarge: true,
-        isPrimary: buttonTextAlign === item.value,
-        isSecondary: buttonTextAlign !== item.value,
-        onClick: function onClick() {
-          return setAttributes({
-            buttonTextAlign: item.value
-          });
-        }
-      }, item.label);
-    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Connector"),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
-      label: __("Show Connector?"),
-      checked: showConnector,
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+      label: __("Display Subtilte"),
+      checked: displaySubtitle,
       onChange: function onChange() {
-        setAttributes({
-          showConnector: !showConnector
+        return setAttributes({
+          displaySubtitle: !displaySubtitle
         });
       }
-    }), showConnector && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-      label: __("Connector Type")
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
-      id: "eb-advance-heading-connector-type"
-    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["CONNECTOR_TYPE"].map(function (item) {
-      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-        isLarge: true,
-        isPrimary: connectorType === item.value,
-        isSecondary: connectorType !== item.value,
-        onClick: function onClick() {
-          return setAttributes({
-            connectorType: item.value
-          });
-        }
-      }, item.label);
-    }))), connectorType === "icon" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Icon Settings"),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(BaseControl, {
-      label: __("Icon")
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      icons: _util_faIcons__WEBPACK_IMPORTED_MODULE_7__["default"],
-      value: innerButtonIcon,
-      onChange: function onChange(icon) {
-        return setAttributes({
-          innerButtonIcon: icon
-        });
-      },
-      appendTo: "body"
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      baseLabel: __("Icon Size", "advance-heading"),
-      controlName: BUTTONS_CONNECTOR_ICON_SIZE,
-      resRequiredProps: resRequiredProps,
-      units: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["UNIT_TYPES"],
-      min: 0,
-      max: 100,
-      step: 1
-    })), connectorType === "text" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
-      label: __("Text"),
-      value: innerButtonText,
+    }), displaySubtitle && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextareaControl, {
+      label: __("Subtitle Text"),
+      value: subtitleText,
       onChange: function onChange(text) {
         return setAttributes({
-          innerButtonText: text
+          subtitleText: text
         });
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      baseLabel: __("Connector Size", "advance-heading"),
-      controlName: BUTTONS_CONNECTOR_SIZE,
-      resRequiredProps: resRequiredProps,
-      units: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["UNIT_TYPES"],
-      min: 0,
-      max: 100,
-      step: 1
-    })))), tab.name === "styles" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Buttons"),
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+      label: __("Display Seperator"),
+      checked: displaySeperator,
+      onChange: function onChange() {
+        return setAttributes({
+          displaySeperator: !displaySeperator
+        });
+      }
+    }))), tab.name === "styles" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __("Title"),
       initialOpen: true
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_10__["default"], {
       baseLabel: __("Typography", "advance-heading"),
-      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__["BUTTONS_TYPOGRAPHY"],
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__["TITLE_TYPOGRAPHY"],
       resRequiredProps: resRequiredProps
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
       className: "eb-inspector-btn-group"
     }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["NORMAL_HOVER"].map(function (item) {
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
         isLarge: true,
-        isPrimary: buttonsColorType === item.value,
-        isSecondary: buttonsColorType !== item.value,
+        isPrimary: titleColorType === item.value,
+        isSecondary: titleColorType !== item.value,
         onClick: function onClick() {
           return setAttributes({
-            buttonsColorType: item.value
+            titleColorType: item.value
           });
         }
       }, item.label);
-    })), buttonsColorType === "normal" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+    })), titleColorType === "normal" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
       className: "eb-subpanel",
-      title: __("Normal Colors"),
+      title: __("Normal Color"),
       initialOpen: true,
       colorSettings: [{
-        value: buttonOneColor,
+        value: titleColor,
         onChange: function onChange(newColor) {
           return setAttributes({
-            buttonOneColor: newColor
+            titleColor: newColor
           });
         },
         label: __("Button One Color")
-      }, {
-        value: textOneColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            textOneColor: newColor
-          });
-        },
-        label: __("Button One Text Color")
-      }, {
-        value: buttonTwoColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            buttonTwoColor: newColor
-          });
-        },
-        label: __("Button Two Color")
-      }, {
-        value: textTwoColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            textTwoColor: newColor
-          });
-        },
-        label: __("Button Two Text Color")
       }]
-    }), buttonsColorType === "hover" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+    }), titleColorType === "hover" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
       className: "eb-subpanel",
-      title: __("Hover Colors"),
+      title: __("Hover Color"),
       initialOpen: true,
       colorSettings: [{
-        value: hoverButtonOneColor,
+        value: titleHoverColor,
         onChange: function onChange(newColor) {
           return setAttributes({
-            hoverButtonOneColor: newColor
+            titleHoverColor: newColor
           });
         },
         label: __("Button One Color")
-      }, {
-        value: hoverTextOneColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            hoverTextOneColor: newColor
-          });
-        },
-        label: __("Button One Text Color")
-      }, {
-        value: hoverButtonTwoColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            hoverButtonTwoColor: newColor
-          });
-        },
-        label: __("Button Two Color")
-      }, {
-        value: hoverTextTwoColor,
-        onChange: function onChange(newColor) {
-          return setAttributes({
-            hoverTextTwoColor: newColor
-          });
-        },
-        label: __("Button Two Text Color")
       }]
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      className: "eb-subpanel",
-      title: __("Button One Border"),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      controlName: BUTTON_ONE_BORDER_SHADOW,
-      resRequiredProps: resRequiredProps,
-      noShadow: true
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      className: "eb-subpanel",
-      title: __("Button Two Border"),
-      initialOpen: true
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_border_shadow_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      controlName: BUTTON_TWO_BORDER_SHADOW,
-      resRequiredProps: resRequiredProps,
-      noShadow: true
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      resRequiredProps: resRequiredProps,
-      controlName: BUTTONS_PADDING,
-      baseLabel: "Padding"
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
-      title: __("Connector"),
+      title: __("Sub Title"),
       initialOpen: false
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_typography_control_v2__WEBPACK_IMPORTED_MODULE_10__["default"], {
       baseLabel: __("Typography", "advance-heading"),
-      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_3__["BUTTONS_CONNECTOR_TYPOGRAPHY"],
+      typographyPrefixConstant: _constants_typographyPrefixConstants__WEBPACK_IMPORTED_MODULE_2__["SUBTITLE_TYPOGRAPHY"],
       resRequiredProps: resRequiredProps
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_color_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Background Color"),
-      color: innerButtonColor,
-      onChange: function onChange(innerButtonColor) {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
+      className: "eb-inspector-btn-group"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["NORMAL_HOVER"].map(function (item) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        isLarge: true,
+        isPrimary: subtitleColorType === item.value,
+        isSecondary: subtitleColorType !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            subtitleColorType: item.value
+          });
+        }
+      }, item.label);
+    })), subtitleColorType === "normal" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+      className: "eb-subpanel",
+      title: __("Normal Color"),
+      initialOpen: true,
+      colorSettings: [{
+        value: subtitleColor,
+        onChange: function onChange(newColor) {
+          return setAttributes({
+            subtitleColor: newColor
+          });
+        },
+        label: __("Button One Color")
+      }]
+    }), subtitleColorType === "hover" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+      className: "eb-subpanel",
+      title: __("Hover Color"),
+      initialOpen: true,
+      colorSettings: [{
+        value: titleHoverColor,
+        onChange: function onChange(newColor) {
+          return setAttributes({
+            titleHoverColor: newColor
+          });
+        },
+        label: __("Button One Color")
+      }]
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, {
+      title: __("Separator"),
+      initialOpen: false
+    }, displaySeperator && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ToggleControl, {
+      label: __("On Top"),
+      checked: onTop,
+      onChange: function onChange() {
         return setAttributes({
-          innerButtonColor: innerButtonColor
+          onTop: !onTop
         });
       }
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_color_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Text/ Icon Color"),
-      color: innerButtonTextColor,
-      onChange: function onChange(innerButtonTextColor) {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_responsive_range_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      baseLabel: __("Size", "advance-heading"),
+      controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["SEPARATOR_SIZE"],
+      resRequiredProps: resRequiredProps,
+      units: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["UNIT_TYPES"],
+      min: 0,
+      max: 100,
+      step: 1
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+      label: __("Style"),
+      value: seperatorStyle,
+      options: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["SEPERATOR_STYLES"],
+      onChange: function onChange(seperatorStyle) {
         return setAttributes({
-          innerButtonTextColor: innerButtonTextColor
+          seperatorStyle: seperatorStyle
         });
       }
-    }))), tab.name === "advance" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(ButtonGroup, {
+      className: "eb-inspector-btn-group"
+    }, _constants_constants__WEBPACK_IMPORTED_MODULE_1__["NORMAL_HOVER"].map(function (item) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        isLarge: true,
+        isPrimary: separatorColorType === item.value,
+        isSecondary: separatorColorType !== item.value,
+        onClick: function onClick() {
+          return setAttributes({
+            separatorColorType: item.value
+          });
+        }
+      }, item.label);
+    })), separatorColorType === "normal" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+      className: "eb-subpanel",
+      separator: __("Normal Color"),
+      initialOpen: true,
+      colorSettings: [{
+        value: separatorColor,
+        onChange: function onChange(newColor) {
+          return setAttributes({
+            separatorColor: newColor
+          });
+        },
+        label: __("Button One Color")
+      }]
+    }), separatorColorType === "hover" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelColorSettings, {
+      className: "eb-subpanel",
+      separator: __("Hover Color"),
+      initialOpen: true,
+      colorSettings: [{
+        value: separatorHoverColor,
+        onChange: function onChange(newColor) {
+          return setAttributes({
+            separatorHoverColor: newColor
+          });
+        },
+        label: __("Button One Color")
+      }]
+    })), !displaySeperator && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, "Separator is is Disabled"))), tab.name === "advance" && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_util_dimensions_control_v2__WEBPACK_IMPORTED_MODULE_9__["default"], {
       resRequiredProps: resRequiredProps,
       controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_MARGIN"],
       baseLabel: "Margin"
@@ -4994,16 +5177,16 @@ var _wp$blockEditor = wp.blockEditor,
 var Save = function Save(_ref) {
   var attributes = _ref.attributes;
   var blockId = attributes.blockId,
-      preset = attributes.preset;
+      preset = attributes.preset,
+      tagName = attributes.tagName,
+      titleText = attributes.titleText,
+      subtitleText = attributes.subtitleText;
   return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", useBlockProps.save(), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
     className: "eb-heading-wrapper"
-  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText // tagName={tagName}
-  // style={headingStyle}
-  , {
-    className: "eb-heading" // value={content}
-    ,
-    formattingControl: ["bold", "italic"] // onChange={(content) => setAttributes({ content })}
-
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+    tagName: tagName,
+    className: "eb-heading",
+    value: titleText
   })));
 };
 
