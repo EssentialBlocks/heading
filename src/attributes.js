@@ -70,7 +70,7 @@ const attributes = {
 	},
 	titleColor: {
 		type: "string",
-		default: "#2B68FF"
+		default: "#551ef7"
 	},
 	titleHoverColor: {
 		type: "string",
@@ -94,7 +94,7 @@ const attributes = {
 	},
 	separatorColor: {
 		type: "string",
-		default: "#333333"
+		default: "#551ef7"
 	},
 	separatorHoverColor: {
 		type: "string",
@@ -180,8 +180,7 @@ const attributes = {
 
 	// background attributes ⬇
 	...generateBackgroundAttributes(WRAPPER_BG, {
-		defaultFillColor: "#fff",
-		defaultBgGradient: "linear-gradient(45deg,#fff,#fff)",
+		defaultBgGradient: "linear-gradient(45deg,#ffffff,#ffffff)",
 	}),
 
 	// range controller Separator Line Border Size

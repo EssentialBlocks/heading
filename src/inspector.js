@@ -121,7 +121,18 @@ function Inspector(props) {
 					displaySubtitle: true,
 					displaySeperator: true,
 					align: "left",
+					titleColor: "#551ef7",
+					subtitleColor: "#555555",
+					separatorColor: "#551ef7",
 					seperatorType: "line",
+					wrpPaddingisLinked: false,
+					wrpPaddingUnit: "px",
+					wrpPaddingTop: "0",
+					wrpPaddingBottom: "0",
+					wrpPaddingLeft: "0",
+					wrpPaddingRight: "0",
+					wrprBgbackgroundColor: "rgba(255,255,255,1)",
+					wrprBgbackgroundType: "classic",
 				});
 				break;
 			case 'preset-2':
@@ -129,37 +140,40 @@ function Inspector(props) {
 					displaySubtitle: true,
 					displaySeperator: true,
 					align: "center",
+					titleColor: "#551ef7",
+					subtitleColor: "#555555",
+					separatorColor: "#551ef7",
 					seperatorType: "icon",
 					separatorIcon: "fas fa-bullhorn",
+					wrpPaddingisLinked: false,
+					wrpPaddingUnit: "px",
+					wrpPaddingTop: "0",
+					wrpPaddingBottom: "0",
+					wrpPaddingLeft: "0",
+					wrpPaddingRight: "0",
+					wrprBgbackgroundColor: "rgba(255,255,255,1)",
+					wrprBgbackgroundType: "classic",
 
 				});
 				break;
 			case 'preset-3':
 				setAttributes({
-					showConnector: false,
-					buttonOneBorderShadowRds_Top: "0",
-					buttonOneBorderShadowRds_Bottom: "0",
-					buttonOneBorderShadowRds_Left: "15",
-					buttonOneBorderShadowRds_Right: "15",
-					buttonTwoBorderShadowRds_Top: "15",
-					buttonTwoBorderShadowRds_Bottom: "15",
-					buttonTwoBorderShadowRds_Left: "0",
-					buttonTwoBorderShadowRds_Right: "0",
-					buttonsGapRange: 20,
-				});
-				break;
-			case 'preset-4':
-				setAttributes({
-					showConnector: false,
-					buttonOneBorderShadowRds_Top: "30",
-					buttonOneBorderShadowRds_Bottom: "30",
-					buttonOneBorderShadowRds_Left: "30",
-					buttonOneBorderShadowRds_Right: "30",
-					buttonTwoBorderShadowRds_Top: "30",
-					buttonTwoBorderShadowRds_Bottom: "30",
-					buttonTwoBorderShadowRds_Left: "30",
-					buttonTwoBorderShadowRds_Right: "30",
-					buttonsGapRange: 10,
+					displaySubtitle: true,
+					displaySeperator: true,
+					align: "center",
+					titleColor: "#551ef7",
+					subtitleColor: "#9b51e0",
+					separatorColor: "#551ef7",
+					seperatorType: "icon",
+					separatorIcon: "fas fa-exchange-alt",
+					wrpPaddingisLinked: false,
+					wrpPaddingUnit: "px",
+					wrpPaddingTop: "30",
+					wrpPaddingBottom: "30",
+					wrpPaddingLeft: "15",
+					wrpPaddingRight: "15",
+					wrprBgbackgroundColor: "rgba(206,190,255,1)",
+					wrprBgbackgroundType: "classic",
 				});
 				break;
 			default:

@@ -44,7 +44,6 @@ export const PRESETS = [
 	{ label: __("Preset 1"), value: "preset-1" },
 	{ label: __("Preset 2"), value: "preset-2" },
 	{ label: __("Preset 3"), value: "preset-3" },
-	{ label: __("Preset 4"), value: "preset-4" },
 ];
 
 export const TEXT_ALIGN = [

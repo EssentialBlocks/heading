@@ -3886,7 +3886,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   },
   titleColor: {
     type: "string",
-    default: "#2B68FF"
+    default: "#551ef7"
   },
   titleHoverColor: {
     type: "string",
@@ -3910,7 +3910,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   },
   separatorColor: {
     type: "string",
-    default: "#333333"
+    default: "#551ef7"
   },
   separatorHoverColor: {
     type: "string",
@@ -3974,8 +3974,7 @@ var attributes = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_object
   // noBorder: true,
 
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateBackgroundAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["WRAPPER_BG"], {
-  defaultFillColor: "#fff",
-  defaultBgGradient: "linear-gradient(45deg,#fff,#fff)"
+  defaultBgGradient: "linear-gradient(45deg,#ffffff,#ffffff)"
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateResponsiveRangeAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["SEPARATOR_LINE_SIZE"], {
   defaultRange: 2
 })), Object(_util_helpers__WEBPACK_IMPORTED_MODULE_2__["generateResponsiveRangeAttributes"])(_constants_constants__WEBPACK_IMPORTED_MODULE_1__["SEPARATOR_ICON_SIZE"], {
@@ -4082,9 +4081,6 @@ var PRESETS = [{
 }, {
   label: __("Preset 3"),
   value: "preset-3"
-}, {
-  label: __("Preset 4"),
-  value: "preset-4"
 }];
 var TEXT_ALIGN = [{
   label: __(Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Dashicon, {
@@ -4379,21 +4375,23 @@ function Edit(props) {
     attributes: attributes,
     controlName: _constants_constants__WEBPACK_IMPORTED_MODULE_3__["WRAPPER_BG"]
   }),
-      wrapperBackgroundStylesDesktop = _generateBackgroundCo.wrapperBackgroundStylesDesktop,
-      wrapperHoverBackgroundStylesDesktop = _generateBackgroundCo.wrapperHoverBackgroundStylesDesktop,
-      wrapperBackgroundStylesTab = _generateBackgroundCo.wrapperBackgroundStylesTab,
-      wrapperHoverBackgroundStylesTab = _generateBackgroundCo.wrapperHoverBackgroundStylesTab,
-      wrapperBackgroundStylesMobile = _generateBackgroundCo.wrapperBackgroundStylesMobile,
-      wrapperHoverBackgroundStylesMobile = _generateBackgroundCo.wrapperHoverBackgroundStylesMobile,
-      wrapperOverlayStylesDesktop = _generateBackgroundCo.wrapperOverlayStylesDesktop,
-      wrapperHoverOverlayStylesDesktop = _generateBackgroundCo.wrapperHoverOverlayStylesDesktop,
-      wrapperOverlayStylesTab = _generateBackgroundCo.wrapperOverlayStylesTab,
-      wrapperHoverOverlayStylesTab = _generateBackgroundCo.wrapperHoverOverlayStylesTab,
-      wrapperOverlayStylesMobile = _generateBackgroundCo.wrapperOverlayStylesMobile,
-      wrapperHoverOverlayStylesMobile = _generateBackgroundCo.wrapperHoverOverlayStylesMobile; // wrapper styles css in strings ⬇
+      wrapperBackgroundStylesDesktop = _generateBackgroundCo.backgroundStylesDesktop,
+      wrapperHoverBackgroundStylesDesktop = _generateBackgroundCo.hoverBackgroundStylesDesktop,
+      wrapperBackgroundStylesTab = _generateBackgroundCo.backgroundStylesTab,
+      wrapperHoverBackgroundStylesTab = _generateBackgroundCo.hoverBackgroundStylesTab,
+      wrapperBackgroundStylesMobile = _generateBackgroundCo.backgroundStylesMobile,
+      wrapperHoverBackgroundStylesMobile = _generateBackgroundCo.hoverBackgroundStylesMobile,
+      wrapperOverlayStylesDesktop = _generateBackgroundCo.overlayStylesDesktop,
+      wrapperHoverOverlayStylesDesktop = _generateBackgroundCo.hoverOverlayStylesDesktop,
+      wrapperOverlayStylesTab = _generateBackgroundCo.overlayStylesTab,
+      wrapperHoverOverlayStylesTab = _generateBackgroundCo.hoverOverlayStylesTab,
+      wrapperOverlayStylesMobile = _generateBackgroundCo.overlayStylesMobile,
+      wrapperHoverOverlayStylesMobile = _generateBackgroundCo.hoverOverlayStylesMobile,
+      wrapperBgTransitionStyle = _generateBackgroundCo.bgTransitionStyle,
+      wrapperOvlTransitionStyle = _generateBackgroundCo.ovlTransitionStyle; // wrapper styles css in strings ⬇
 
 
-  var wrapperStylesDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\tdisplay: block;\n\t\t\tposition: relative;\n\t\t\ttext-align: ").concat(align, ";\n\t\t\t").concat(wrapperMarginDesktop, "\n\t\t\t").concat(wrapperPaddingDesktop, "\n\t\t\t").concat(wrapperBDShadowDesktop, "\n\t\t\t").concat(wrapperBackgroundStylesDesktop, "\n\t\t\t").concat(wrapperOverlayStylesDesktop, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, ":hover {\n\t\t\t").concat(wrapperBDShadowHoverDesktop, "\n\t\t\t").concat(wrapperHoverBackgroundStylesDesktop, "\n\t\t\t").concat(wrapperHoverOverlayStylesDesktop, "\n\t\t}\n\t");
+  var wrapperStylesDesktop = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\tdisplay: block;\n\t\t\tposition: relative;\n\t\t\ttext-align: ").concat(align, ";\n\t\t\t").concat(wrapperMarginDesktop, "\n\t\t\t").concat(wrapperPaddingDesktop, "\n\t\t\t").concat(wrapperBDShadowDesktop, "\n\t\t\t").concat(wrapperBackgroundStylesDesktop, "\n\t\t\t").concat(wrapperOverlayStylesDesktop, "\n\t\t\t").concat(wrapperBgTransitionStyle, "\n\t\t\t").concat(wrapperOvlTransitionStyle, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, ":hover {\n\t\t\t").concat(wrapperBDShadowHoverDesktop, "\n\t\t\t").concat(wrapperHoverBackgroundStylesDesktop, "\n\t\t\t").concat(wrapperHoverOverlayStylesDesktop, "\n\t\t}\n\t");
   var wrapperStylesTab = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginTab, "\n\t\t\t").concat(wrapperPaddingTab, "\n\t\t\t").concat(wrapperBDShadowTab, "\n\t\t\t").concat(wrapperBackgroundStylesTab, "\n\t\t\t").concat(wrapperOverlayStylesTab, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, ":hover {\n\t\t\t").concat(wrapperBDShadowHoverTab, "\n\t\t\t").concat(wrapperHoverBackgroundStylesTab, "\n\t\t\t").concat(wrapperHoverOverlayStylesTab, "\n\t\t}\n\t");
   var wrapperStylesMobile = "\n\t\t.eb-advance-heading-wrapper.".concat(blockId, "{\n\t\t\t").concat(wrapperMarginMobile, "\n\t\t\t").concat(wrapperPaddingMobile, "\n\t\t\t").concat(wrapperBDShadowMobile, "\n\t\t\t").concat(wrapperBackgroundStylesMobile, "\n\t\t\t").concat(wrapperOverlayStylesMobile, "\n\t\t}\n\t\t.eb-advance-heading-wrapper.").concat(blockId, ":hover {\n\t\t\t").concat(wrapperBDShadowHoverMobile, "\n\t\t\t").concat(wrapperHoverBackgroundStylesMobile, "\n\t\t\t").concat(wrapperHoverOverlayStylesMobile, "\n\t\t}\n\t"); // Title styles css in strings ⬇
 
@@ -4725,7 +4723,18 @@ function Inspector(props) {
           displaySubtitle: true,
           displaySeperator: true,
           align: "left",
-          seperatorType: "line"
+          titleColor: "#551ef7",
+          subtitleColor: "#555555",
+          separatorColor: "#551ef7",
+          seperatorType: "line",
+          wrpPaddingisLinked: false,
+          wrpPaddingUnit: "px",
+          wrpPaddingTop: "0",
+          wrpPaddingBottom: "0",
+          wrpPaddingLeft: "0",
+          wrpPaddingRight: "0",
+          wrprBgbackgroundColor: "rgba(255,255,255,1)",
+          wrprBgbackgroundType: "classic"
         });
         break;
 
@@ -4734,38 +4743,40 @@ function Inspector(props) {
           displaySubtitle: true,
           displaySeperator: true,
           align: "center",
+          titleColor: "#551ef7",
+          subtitleColor: "#555555",
+          separatorColor: "#551ef7",
           seperatorType: "icon",
-          separatorIcon: "fas fa-bullhorn"
+          separatorIcon: "fas fa-bullhorn",
+          wrpPaddingisLinked: false,
+          wrpPaddingUnit: "px",
+          wrpPaddingTop: "0",
+          wrpPaddingBottom: "0",
+          wrpPaddingLeft: "0",
+          wrpPaddingRight: "0",
+          wrprBgbackgroundColor: "rgba(255,255,255,1)",
+          wrprBgbackgroundType: "classic"
         });
         break;
 
       case 'preset-3':
         setAttributes({
-          showConnector: false,
-          buttonOneBorderShadowRds_Top: "0",
-          buttonOneBorderShadowRds_Bottom: "0",
-          buttonOneBorderShadowRds_Left: "15",
-          buttonOneBorderShadowRds_Right: "15",
-          buttonTwoBorderShadowRds_Top: "15",
-          buttonTwoBorderShadowRds_Bottom: "15",
-          buttonTwoBorderShadowRds_Left: "0",
-          buttonTwoBorderShadowRds_Right: "0",
-          buttonsGapRange: 20
-        });
-        break;
-
-      case 'preset-4':
-        setAttributes({
-          showConnector: false,
-          buttonOneBorderShadowRds_Top: "30",
-          buttonOneBorderShadowRds_Bottom: "30",
-          buttonOneBorderShadowRds_Left: "30",
-          buttonOneBorderShadowRds_Right: "30",
-          buttonTwoBorderShadowRds_Top: "30",
-          buttonTwoBorderShadowRds_Bottom: "30",
-          buttonTwoBorderShadowRds_Left: "30",
-          buttonTwoBorderShadowRds_Right: "30",
-          buttonsGapRange: 10
+          displaySubtitle: true,
+          displaySeperator: true,
+          align: "center",
+          titleColor: "#551ef7",
+          subtitleColor: "#9b51e0",
+          separatorColor: "#551ef7",
+          seperatorType: "icon",
+          separatorIcon: "fas fa-exchange-alt",
+          wrpPaddingisLinked: false,
+          wrpPaddingUnit: "px",
+          wrpPaddingTop: "30",
+          wrpPaddingBottom: "30",
+          wrpPaddingLeft: "15",
+          wrpPaddingRight: "15",
+          wrprBgbackgroundColor: "rgba(206,190,255,1)",
+          wrprBgbackgroundType: "classic"
         });
         break;
 

@@ -222,18 +222,20 @@ export default function Edit(props) {
 
 	//Generate Background
 	const {
-		wrapperBackgroundStylesDesktop,
-		wrapperHoverBackgroundStylesDesktop,
-		wrapperBackgroundStylesTab,
-		wrapperHoverBackgroundStylesTab,
-		wrapperBackgroundStylesMobile,
-		wrapperHoverBackgroundStylesMobile,
-		wrapperOverlayStylesDesktop,
-		wrapperHoverOverlayStylesDesktop,
-		wrapperOverlayStylesTab,
-		wrapperHoverOverlayStylesTab,
-		wrapperOverlayStylesMobile,
-		wrapperHoverOverlayStylesMobile,
+		backgroundStylesDesktop: wrapperBackgroundStylesDesktop,
+		hoverBackgroundStylesDesktop: wrapperHoverBackgroundStylesDesktop,
+		backgroundStylesTab: wrapperBackgroundStylesTab,
+		hoverBackgroundStylesTab: wrapperHoverBackgroundStylesTab,
+		backgroundStylesMobile: wrapperBackgroundStylesMobile,
+		hoverBackgroundStylesMobile: wrapperHoverBackgroundStylesMobile,
+		overlayStylesDesktop: wrapperOverlayStylesDesktop,
+		hoverOverlayStylesDesktop: wrapperHoverOverlayStylesDesktop,
+		overlayStylesTab: wrapperOverlayStylesTab,
+		hoverOverlayStylesTab: wrapperHoverOverlayStylesTab,
+		overlayStylesMobile: wrapperOverlayStylesMobile,
+		hoverOverlayStylesMobile: wrapperHoverOverlayStylesMobile,
+		bgTransitionStyle: wrapperBgTransitionStyle,
+		ovlTransitionStyle: wrapperOvlTransitionStyle,
 	} = generateBackgroundControlStyles({
 		attributes,
 		controlName: WRAPPER_BG,
@@ -250,6 +252,8 @@ export default function Edit(props) {
 			${wrapperBDShadowDesktop}
 			${wrapperBackgroundStylesDesktop}
 			${wrapperOverlayStylesDesktop}
+			${wrapperBgTransitionStyle}
+			${wrapperOvlTransitionStyle}
 		}
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverDesktop}
