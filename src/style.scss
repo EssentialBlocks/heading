@@ -1,79 +1,24 @@
-.eb-advance-heading {
-	&-wrapper {
-		position: relative;
+.eb-advance-heading-wrapper {
+	h1.eb-ah-title {
+		font-size: 36px;
 	}
-	&__midldeInner {
-		align-self: center;
-		width: 0;
-		position: relative;
-		span {
-			position: absolute;
-			background-color: #fff;
-			border-radius: 50%;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
-			z-index: 9999;
-		}
+	h2.eb-ah-title {
+		font-size: 30px;
+	}
+	h3.eb-ah-title {
+		font-size: 24px;
+	}
+	h4.eb-ah-title {
+		font-size: 20px;
+	}
+	h5.eb-ah-title {
+		font-size: 18px;
+	}
+	h6.eb-ah-title {
+		font-size: 14px;
 	}
 }
 
 .eb-advance-heading {
 	transition: all 0.3s ease-in-out;
-
-	&-one,
-	&-two {
-		text-decoration: none;
-	}
-}
-
-.eb-advance-heading-link,
-.eb-advance-heading-link-two {
-	line-height: inherit;
-}
-
-// Typography style
-.eb-typography-base div {
-	display: flex;
-	justify-content: space-between;
-}
-
-// Normal, Hover inspector button styles
-.eb-inspector-btn-group {
-	display: flex;
-	padding-bottom: 5px;
-}
-.eb-inspector-btn-group button {
-	flex: 1;
-	padding-left: 40px !important;
-}
-
-//Styles for Preset Designs
-.eb-advance-heading-wrapper .eb-advance-heading-parent .eb-advance-heading-text {
-	line-height: 1.8;
-}
-.eb-advance-heading-wrapper.preset-4 {
-	flex-direction: column !important;
-	
-	.eb-advance-heading-parent.eb-advance-heading-one {
-		margin-top: 0 !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-	}
-	.eb-advance-heading-parent.eb-advance-heading-two {
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		margin-bottom: 0 !important;
-	}
-}
-.eb-advance-heading-wrapper:not(.preset-4) .eb-advance-heading-parent.eb-advance-heading-one {
-	margin-top: 0 !important;
-	margin-left: 0 !important;
-	margin-bottom: 0 !important;
-}
-.eb-advance-heading-wrapper:not(.preset-4) .eb-advance-heading-parent.eb-advance-heading-two {
-	margin-top: 0 !important;
-	margin-right: 0 !important;
-	margin-bottom: 0 !important;
 }

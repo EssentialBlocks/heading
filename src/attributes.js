@@ -6,7 +6,9 @@ import {
 	TITLE_MARGIN,
 	SUBTITLE_MARGIN,
 	SEPARATOR_MARGIN,
-	SEPARATOR_SIZE,
+	SEPARATOR_LINE_SIZE,
+	SEPARATOR_ICON_SIZE,
+	SEPARATOR_WIDTH,
 } from "./constants/constants";
 import {
 	generateDimensionsAttributes,
@@ -20,7 +22,7 @@ import * as typographyObjs from "./constants/typographyPrefixConstants";
 const attributes = {
 	resOption: {
 		type: "string",
-		default: "desktop",
+		default: "Desktop",
 	},
 
 	// blockId attribute for making unique className and other uniqueness
@@ -68,7 +70,7 @@ const attributes = {
 	},
 	titleColor: {
 		type: "string",
-		default: "#333333"
+		default: "#2B68FF"
 	},
 	titleHoverColor: {
 		type: "string",
@@ -80,7 +82,7 @@ const attributes = {
 	},
 	subtitleColor: {
 		type: "string",
-		default: "#333333"
+		default: "#555555"
 	},
 	subtitleHoverColor: {
 		type: "string",
@@ -102,36 +104,6 @@ const attributes = {
 		type: "string",
 		default: "normal"
 	},
-	fontFamily: {
-		type: "string"
-	},
-	fontWeight: {
-		type: "string"
-	},
-	textTransform: {
-		type: "string"
-	},
-	fontSize: {
-		type: "number"
-	},
-	fontSizeUnit: {
-		type: "string",
-		default: "px"
-	},
-	lineHeight: {
-		type: "number"
-	},
-	lineHeightUnit: {
-		type: "string",
-		default: "px"
-	},
-	letterSpacing: {
-		type: "number"
-	},
-	letterSpacingUnit: {
-		type: "string",
-		default: "px"
-	},
 	align: {
 		type: "string",
 		default: "left"
@@ -144,19 +116,24 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
-	separatorSize: {
-		type: "number"
-	},
 	separatorColor: {
-		type: "string"
+		type: "string",
+		default: "#2B68FF"
+	},
+	seperatorPosition: {
+		type: "string",
+		default: "bottom"
+	},
+	seperatorType: {
+		type: "string",
+		default: "line"
 	},
 	seperatorStyle: {
 		type: "string",
 		default: "solid"
 	},
-	onTop: {
-		type: "boolean",
-		default: false
+	separatorIcon: {
+		type: "string",
 	},
 
 	// typography attributes ⬇
@@ -167,7 +144,7 @@ const attributes = {
 	...generateDimensionsAttributes(WRAPPER_PADDING),
 	...generateDimensionsAttributes(TITLE_MARGIN, {
 		top: 0,
-		bottom: 20,
+		bottom: 15,
 		right: 0,
 		left: 0,
 		isLinked: false,
@@ -181,7 +158,7 @@ const attributes = {
 	}),
 	...generateDimensionsAttributes(SEPARATOR_MARGIN, {
 		top: 0,
-		bottom: 20,
+		bottom: 0,
 		right: 0,
 		left: 0,
 		isLinked: false,
@@ -202,11 +179,22 @@ const attributes = {
 	),
 
 	// background attributes ⬇
-	...generateBackgroundAttributes(WRAPPER_BG),
+	...generateBackgroundAttributes(WRAPPER_BG, {
+		defaultFillColor: "#fff",
+		defaultBgGradient: "linear-gradient(45deg,#fff,#fff)",
+	}),
 
-	// range controller
-	...generateResponsiveRangeAttributes(SEPARATOR_SIZE, {
+	// range controller Separator Line Border Size
+	...generateResponsiveRangeAttributes(SEPARATOR_LINE_SIZE, {
 		defaultRange: 2,
+	}),
+	// range controller Separator Icon Size
+	...generateResponsiveRangeAttributes(SEPARATOR_ICON_SIZE, {
+		defaultRange: 30,
+	}),
+	// range controller Separator Line Width
+	...generateResponsiveRangeAttributes(SEPARATOR_WIDTH, {
+		defaultRange: 100,
 	}),
 };
 

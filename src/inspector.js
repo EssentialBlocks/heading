@@ -5,7 +5,6 @@ const { __ } = wp.i18n;
 const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 const { 
 	PanelBody,
-	PanelRow,
 	SelectControl,
 	ToggleControl,
 	TextControl,
@@ -14,11 +13,8 @@ const {
 	ButtonGroup,
 	BaseControl,
 	TabPanel,
-	displaySubtitle,
-	displaySeperator,
-	seperatorStyle,
 } = wp.components;
-const { useEffect, useState } = wp.element;
+const { useEffect } = wp.element;
 const { select } = wp.data;
 
 /**
@@ -32,31 +28,30 @@ import {
 	TITLE_MARGIN,
 	SUBTITLE_MARGIN,
 	SEPARATOR_MARGIN,
-	SEPARATOR_SIZE,
+	SEPARATOR_LINE_SIZE,
+	SEPARATOR_ICON_SIZE,
+	SEPARATOR_WIDTH,
+	SEPARATOR_POSITION,
 	NORMAL_HOVER,
 	UNIT_TYPES,
-	CONNECTOR_TYPE,
+	SEPARATOR_UNIT_TYPES,
 	PRESETS,
 	TEXT_ALIGN,
-	CONTENT_POSITION,
 	HEADING,
 	SEPERATOR_STYLES,
+	SEPARATOR_TYPE,
 } from "./constants/constants";
-import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
-import {
-	mimmikCssForResBtns,
-	mimmikCssOnPreviewBtnClickWhileBlockSelected,
-} from "../util/helpers";
-import {BUTTONS_TYPOGRAPHY, BUTTONS_CONNECTOR_TYPOGRAPHY} from "./constants/typographyPrefixConstants";
+import {TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
+import {mimmikCssForResBtns, mimmikCssOnPreviewBtnClickWhileBlockSelected} from "../util/helpers";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css';
 import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
 import faIcons from "../util/faIcons";
-import ColorControl from "../util/color-control";
 import ResponsiveDimensionsControl from "../util/dimensions-control-v2";
 import TypographyDropdown from "../util/typography-control-v2";
 import BorderShadowControl from "../util/border-shadow-control";
 import ResponsiveRangeController from "../util/responsive-range-control";
+import BackgroundControl from "../util/background-control";
 
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
@@ -69,8 +64,6 @@ function Inspector(props) {
 		subtitleText,
 		displaySubtitle,
 		displaySeperator,
-		separatorSize,
-		onTop,
 		titleColor,
 		titleHoverColor,
 		titleColorType,
@@ -79,7 +72,11 @@ function Inspector(props) {
 		subtitleColorType,
 		separatorColor,
 		separatorHoverColor,
-		separatorColorType
+		separatorColorType,
+		seperatorPosition,
+		seperatorType,
+		seperatorStyle,
+		separatorIcon,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
@@ -115,35 +112,26 @@ function Inspector(props) {
 		attributes,
 	};
 
+	console.log("Attributes", attributes);
 	const changePreset = (selected) => {
 		setAttributes({ preset: selected });
 		switch(selected) {
 			case 'preset-1':
 				setAttributes({
-					showConnector: "true",
-					buttonOneBorderShadowRds_Top: 20,
-					buttonOneBorderShadowRds_Bottom: 0,
-					buttonOneBorderShadowRds_Left: 20,
-					buttonOneBorderShadowRds_Right: 0,
-					buttonTwoBorderShadowRds_Top: 0,
-					buttonTwoBorderShadowRds_Bottom: 20,
-					buttonTwoBorderShadowRds_Left: 0,
-					buttonTwoBorderShadowRds_Right: 20,
-					buttonsGapRange: 0,
+					displaySubtitle: true,
+					displaySeperator: true,
+					align: "left",
+					seperatorType: "line",
 				});
 				break;
 			case 'preset-2':
 				setAttributes({
-					showConnector: false,
-					buttonOneBorderShadowRds_Top: "30",
-					buttonOneBorderShadowRds_Bottom: "30",
-					buttonOneBorderShadowRds_Left: "30",
-					buttonOneBorderShadowRds_Right: "30",
-					buttonTwoBorderShadowRds_Top: "30",
-					buttonTwoBorderShadowRds_Bottom: "30",
-					buttonTwoBorderShadowRds_Left: "30",
-					buttonTwoBorderShadowRds_Right: "30",
-					buttonsGapRange: 20,
+					displaySubtitle: true,
+					displaySeperator: true,
+					align: "center",
+					seperatorType: "icon",
+					separatorIcon: "fas fa-bullhorn",
+
 				});
 				break;
 			case 'preset-3':
@@ -334,6 +322,11 @@ function Inspector(props) {
 												]}
 											/>
 										)}
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={TITLE_MARGIN}
+											baseLabel="Margin"
+										/>
 									</PanelBody>
 
 									<PanelBody title={__("Sub Title")} initialOpen={false}>
@@ -365,7 +358,7 @@ function Inspector(props) {
 														value: subtitleColor,
 														onChange: (newColor) =>
 															setAttributes({ subtitleColor: newColor }),
-														label: __("Button One Color"),
+														label: __("Subtitle Color"),
 													}
 												]}
 											/>
@@ -378,91 +371,152 @@ function Inspector(props) {
 												initialOpen={true}
 												colorSettings={[
 													{
-														value: titleHoverColor,
+														value: subtitleHoverColor,
 														onChange: (newColor) =>
-															setAttributes({ titleHoverColor: newColor }),
-														label: __("Button One Color"),
+															setAttributes({ subtitleHoverColor: newColor }),
+														label: __("Subtitle Hover Color"),
 													}
 												]}
 											/>
 										)}
+
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={SUBTITLE_MARGIN}
+											baseLabel="Margin"
+										/>
 									</PanelBody>
-
-									<PanelBody title={__("Separator")} initialOpen={false}>
-										{displaySeperator && (
-											<Fragment>
-												<ToggleControl
-													label={__("On Top")}
-													checked={onTop}
-													onChange={() => setAttributes({ onTop: !onTop })}
-												/>
-												<ResponsiveRangeController
-													baseLabel={__("Size", "advance-heading")}
-													controlName={SEPARATOR_SIZE}
-													resRequiredProps={resRequiredProps}
-													units={UNIT_TYPES}
-													min={0}
-													max={100}
-													step={1}
-												/>
-
-												<SelectControl
-													label={__("Style")}
-													value={seperatorStyle}
-													options={SEPERATOR_STYLES}
-													onChange={(seperatorStyle) => setAttributes({ seperatorStyle })}
-												/>
-
-												<ButtonGroup className="eb-inspector-btn-group">
-													{NORMAL_HOVER.map((item) => (
+									
+									{displaySeperator && (
+										<PanelBody title={__("Separator")} initialOpen={false}>
+											<SelectControl
+												label={__("Separator Position")}
+												value={seperatorPosition}
+												options={SEPARATOR_POSITION}
+												onChange={(seperatorStyle) => setAttributes({ seperatorStyle })}
+											/>
+											<BaseControl label={__("Separator Type")} id="eb-advance-heading-alignment">
+												<ButtonGroup id="eb-advance-heading-alignment">
+													{SEPARATOR_TYPE.map((item) => (
 														<Button
 															isLarge
-															isPrimary={separatorColorType === item.value}
-															isSecondary={separatorColorType !== item.value}
-															onClick={() => setAttributes({ separatorColorType: item.value })}
+															isPrimary={seperatorType === item.value}
+															isSecondary={seperatorType !== item.value}
+															onClick={() =>
+																setAttributes({
+																	seperatorType: item.value,
+																})
+															}
 														>
 															{item.label}
 														</Button>
 													))}
 												</ButtonGroup>
-												
-												{separatorColorType === "normal" && (
-													<PanelColorSettings
-														className={"eb-subpanel"}
-														separator={__("Normal Color")}
-														initialOpen={true}
-														colorSettings={[
-															{
-																value: separatorColor,
-																onChange: (newColor) =>
-																	setAttributes({ separatorColor: newColor }),
-																label: __("Button One Color"),
-															}
-														]}
-													/>
-												)}
+											</BaseControl>
 
-												{separatorColorType === "hover" && (
-													<PanelColorSettings
-														className={"eb-subpanel"}
-														separator={__("Hover Color")}
-														initialOpen={true}
-														colorSettings={[
-															{
-																value: separatorHoverColor,
-																onChange: (newColor) =>
-																	setAttributes({ separatorHoverColor: newColor }),
-																label: __("Button One Color"),
-															}
-														]}
+											{seperatorType === "line" && (
+												<>
+													<SelectControl
+														label={__("Separator Style")}
+														value={seperatorStyle}
+														options={SEPERATOR_STYLES}
+														onChange={(seperatorStyle) => setAttributes({ seperatorStyle })}
 													/>
-												)}
-											</Fragment>
-										)}
-										{!displaySeperator && (
-											<PanelRow>Separator is is Disabled</PanelRow>
-										)}
-									</PanelBody>
+													<ResponsiveRangeController
+														baseLabel={__("Separator Height", "advance-heading")}
+														controlName={SEPARATOR_LINE_SIZE}
+														resRequiredProps={resRequiredProps}
+														units={UNIT_TYPES}
+														min={0}
+														max={100}
+														step={1}
+													/>
+												</>
+											)}
+
+											{seperatorType === "icon" && (
+												<>
+													<BaseControl label={__("Icon")}>
+														<FontIconPicker
+															icons={faIcons}
+															value={separatorIcon}
+															onChange={(icon) => setAttributes({ separatorIcon: icon })}
+															appendTo="body"
+														/>
+													</BaseControl>
+													<ResponsiveRangeController
+														baseLabel={__("Icon Size", "advance-heading")}
+														controlName={SEPARATOR_ICON_SIZE}
+														resRequiredProps={resRequiredProps}
+														units={UNIT_TYPES}
+														min={0}
+														max={100}
+														step={1}
+													/>
+												</>
+											)}
+											<ResponsiveRangeController
+												baseLabel={__("Separator Width", "advance-heading")}
+												controlName={SEPARATOR_WIDTH}
+												resRequiredProps={resRequiredProps}
+												units={SEPARATOR_UNIT_TYPES}
+												min={0}
+												max={100}
+												step={1}
+											/>
+											
+											<ButtonGroup className="eb-inspector-btn-group">
+												{NORMAL_HOVER.map((item) => (
+													<Button
+														isLarge
+														isPrimary={separatorColorType === item.value}
+														isSecondary={separatorColorType !== item.value}
+														onClick={() => setAttributes({ separatorColorType: item.value })}
+													>
+														{item.label}
+													</Button>
+												))}
+											</ButtonGroup>
+											
+											{separatorColorType === "normal" && (
+												<PanelColorSettings
+													className={"eb-subpanel"}
+													separator={__("Normal Color")}
+													initialOpen={true}
+													colorSettings={[
+														{
+															value: separatorColor,
+															onChange: (newColor) =>
+																setAttributes({ separatorColor: newColor }),
+															label: __("Color"),
+														}
+													]}
+												/>
+											)}
+
+											{separatorColorType === "hover" && (
+												<PanelColorSettings
+													className={"eb-subpanel"}
+													separator={__("Hover Color")}
+													initialOpen={true}
+													colorSettings={[
+														{
+															value: separatorHoverColor,
+															onChange: (newColor) =>
+																setAttributes({ separatorHoverColor: newColor }),
+															label: __("Color"),
+														}
+													]}
+												/>
+											)}
+
+											<ResponsiveDimensionsControl
+												resRequiredProps={resRequiredProps}
+												controlName={SEPARATOR_MARGIN}
+												baseLabel="Margin"
+											/>
+										</PanelBody>
+									)}
 								</>
 							)}
 
@@ -473,6 +527,25 @@ function Inspector(props) {
 											resRequiredProps={resRequiredProps}
 											controlName={WRAPPER_MARGIN}
 											baseLabel="Margin"
+										/>
+										<ResponsiveDimensionsControl
+											resRequiredProps={resRequiredProps}
+											controlName={WRAPPER_PADDING}
+											baseLabel="Padding"
+										/>
+									</PanelBody>
+									<PanelBody title={__("Background")} initialOpen={false}>
+										<BackgroundControl
+											controlName={WRAPPER_BG}
+											resRequiredProps={resRequiredProps}
+										/>
+									</PanelBody>
+									<PanelBody title={__("Border & Shadow")} initialOpen={false}>
+										<BorderShadowControl
+											controlName={WRAPPER_BORDER_SHADOW}
+											resRequiredProps={resRequiredProps}
+											// noShadow
+											// noBorder
 										/>
 									</PanelBody>
 								</>

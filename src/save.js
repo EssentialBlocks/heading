@@ -6,17 +6,40 @@ const Save = ({ attributes }) => {
 		preset,
 		tagName,
 		titleText,
+		displaySubtitle,
 		subtitleText,
+		seperatorType,
+		displaySeperator,
+		separatorIcon,
 	} = attributes;
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className="eb-heading-wrapper">
+			<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				<RichText.Content
 					tagName={tagName}
-					className="eb-heading"
+					className="eb-ah-title"
 					value={titleText}
+					formattingControl={["bold", "italic"]}
+					onChange={(titleText) => setAttributes({ titleText })}
 				/>
+				{displaySubtitle && (
+					<RichText.Content
+						tagName={"p"}
+						className="eb-ah-subtitle"
+						value={subtitleText}
+						formattingControl={["bold", "italic"]}
+						onChange={(subtitleText) => setAttributes({ subtitleText })}
+					/>
+				)}
+				{displaySeperator && (
+					<div className={"eb-ah-separator " + seperatorType}>
+						{seperatorType === "icon" && (
+							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+						)}
+					</div>
+				)}
+				
 			</div>
 		</div>
 	);

@@ -9,10 +9,18 @@ export const WRAPPER_BORDER_SHADOW = "wrpBorderShadow";
 export const TITLE_MARGIN = "titleMargin";
 export const SUBTITLE_MARGIN = "subtitleMargin";
 export const SEPARATOR_MARGIN = "separatorMargin";
-export const SEPARATOR_SIZE = "separatorSize";
+export const SEPARATOR_LINE_SIZE = "separatorLineSize";
+export const SEPARATOR_ICON_SIZE = "separatorIconSize";
+export const SEPARATOR_WIDTH = "separatorWidth";
 
 export const UNIT_TYPES = [
 	{ label: "px", value: "px" },
+	{ label: "em", value: "em" },
+];
+
+export const SEPARATOR_UNIT_TYPES = [
+	{ label: "px", value: "px" },
+	{ label: "%", value: "%" },
 	{ label: "em", value: "em" },
 ];
 
@@ -26,7 +34,13 @@ export const SEPARATOR_TYPE = [
 	{ label: __("Icon"), value: "icon" },
 ];
 
+export const SEPARATOR_POSITION = [
+	{ label: __("Top"), value: "top" },
+	{ label: __("Bottom"), value: "bottom" },
+];
+
 export const PRESETS = [
+	{ label: __("Select Preset"), value: "preset-0" },
 	{ label: __("Preset 1"), value: "preset-1" },
 	{ label: __("Preset 2"), value: "preset-2" },
 	{ label: __("Preset 3"), value: "preset-3" },
@@ -37,12 +51,6 @@ export const TEXT_ALIGN = [
 	{ label: __(<Dashicon icon={"editor-alignleft"} />), value: "left" },
 	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
 	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "right" }
-];
-
-export const CONTENT_POSITION = [
-	{ label: __(<Dashicon icon={"editor-alignleft"} />), value: "flex-start" },
-	{ label: __(<Dashicon icon={"editor-aligncenter"} />), value: "center" },
-	{ label: __(<Dashicon icon={"editor-alignright"} />), value: "flex-end" }
 ];
 
 export const HEADING = [

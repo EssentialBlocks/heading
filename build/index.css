@@ -129,6 +129,10 @@
 }
 
 /* Select control style */
+.wp-core-ui .eb-panel-control select.components-select-control__input {
+  line-height: 1.4;
+}
+
 .wp-core-ui .eb-panel-control select.components-select-control__input option:hover {
   color: white;
   background: #551ef7 !important;
@@ -554,34 +558,9 @@ button.eb-res-btn:focus {
   outline: none;
 }
 
-.edit-post-visual-editor.editor-styles-wrapper {
-  margin: auto;
-  width: 100%;
-}
-
 .eb-typography-component-panel {
   min-width: 220px;
   padding: 1rem;
-}
-
-/* 
-* making the edit page respond to the responsive width
-*/
-.editor-styles-wrapper {
-  margin: auto;
-  transition: 0.5s;
-}
-
-body.eb-res-option-desktop .editor-styles-wrapper {
-  max-width: 100%;
-}
-
-body.eb-res-option-tab .editor-styles-wrapper {
-  max-width: 768px;
-}
-
-body.eb-res-option-mobile .editor-styles-wrapper {
-  max-width: 480px;
 }
 
 .typoResButton {

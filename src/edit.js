@@ -19,7 +19,9 @@ import {
 	TITLE_MARGIN,
 	SUBTITLE_MARGIN,
 	SEPARATOR_MARGIN,
-	SEPARATOR_SIZE,
+	SEPARATOR_LINE_SIZE,
+	SEPARATOR_ICON_SIZE,
+	SEPARATOR_WIDTH,
 } from "./constants/constants";
 import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
@@ -29,6 +31,7 @@ import {
 	generateDimensionsControlStyles,
 	generateBorderShadowStyles,
 	generateResponsiveRangeStyles,
+	generateBackgroundControlStyles,
 	mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
 } from "../util/helpers";
@@ -36,14 +39,30 @@ import {
 export default function Edit(props) {
 	const { attributes, setAttributes, clientId, isSelected } = props;
 	const {
-		blockId,
-		blockMeta,
-		// responsive control attribute ⬇
 		resOption,
+		blockId,
+		blockRoot,
+		blockMeta,
 		preset,
 		align,
 		tagName,
 		titleText,
+		subtitleText,
+		displaySubtitle,
+		displaySeperator,
+		titleColor,
+		titleHoverColor,
+		titleColorType,
+		subtitleColor, 
+		subtitleHoverColor, 
+		subtitleColorType,
+		separatorColor,
+		separatorHoverColor,
+		separatorColorType,
+		seperatorPosition,
+		seperatorType,
+		seperatorStyle,
+		separatorIcon,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -90,7 +109,6 @@ export default function Edit(props) {
 	} = generateTypographyStyles({
 		attributes,
 		prefixConstant: TITLE_TYPOGRAPHY,
-		defaultFontSize: 24,
 	});
 
 	const {
@@ -99,7 +117,7 @@ export default function Edit(props) {
 		typoStylesMobile: subtitleTypographyMobile,
 	} = generateTypographyStyles({
 		attributes,
-		prefixConstant: SUBTITLE_TYPOGRAPHY
+		prefixConstant: SUBTITLE_TYPOGRAPHY,
 	});
 
 	/* Wrapper Margin */
@@ -169,229 +187,235 @@ export default function Edit(props) {
 		attributes,
 	});
 
-	// responsive range controller
+	// responsive range controller Separator Line Border Size
 	const {
-		rangeStylesDesktop: separatorSizeDesktop,
-		rangeStylesTab: separatorSizeTab,
-		rangeStylesMobile: separatorSizeMobile,
+		rangeStylesDesktop: separatorLineSizeDesktop,
+		rangeStylesTab: separatorLineSizeTab,
+		rangeStylesMobile: separatorLineSizeMobile,
 	} = generateResponsiveRangeStyles({
-		controlName: SEPARATOR_SIZE,
-		property: "height",
+		controlName: SEPARATOR_LINE_SIZE,
+		property: "border-width",
 		attributes,
 	});
 
-	// // wrapper styles css in strings ⬇
-	// const wrapperStylesDesktop = `
-	// 	.eb-advance-heading-wrapper.${blockId}{
-	// 		display: flex;
-	// 		flex-direction: row;
-	// 		align-items: ${contentPosition};
-	// 		justify-content: ${contentPosition};
-	// 		position: relative;
-	// 		${wrapperMarginDesktop}
-	// 	}
-	// `;
-	// const wrapperStylesTab = `
-	// 	.eb-advance-heading-wrapper.${blockId}{
-	// 		${wrapperMarginTab}
+	// responsive range controller Separator Icon Size
+	const {
+		rangeStylesDesktop: separatorIconSizeDesktop,
+		rangeStylesTab: separatorIconSizeTab,
+		rangeStylesMobile: separatorIconSizeMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: SEPARATOR_ICON_SIZE,
+		property: "font-size",
+		attributes,
+	});
 
-	// 	}
-	// `;
-	// const wrapperStylesMobile = `
-	// 	.eb-advance-heading-wrapper.${blockId}{
-	// 		${wrapperMarginMobile}
+	// responsive range controller Separator Width
+	const {
+		rangeStylesDesktop: separatorLineWidthDesktop,
+		rangeStylesTab: separatorLineWidthTab,
+		rangeStylesMobile: separatorLineWidthMobile,
+	} = generateResponsiveRangeStyles({
+		controlName: SEPARATOR_WIDTH,
+		property: "width",
+		attributes,
+	});
 
-	// 	}
-	// `;
+	//Generate Background
+	const {
+		wrapperBackgroundStylesDesktop,
+		wrapperHoverBackgroundStylesDesktop,
+		wrapperBackgroundStylesTab,
+		wrapperHoverBackgroundStylesTab,
+		wrapperBackgroundStylesMobile,
+		wrapperHoverBackgroundStylesMobile,
+		wrapperOverlayStylesDesktop,
+		wrapperHoverOverlayStylesDesktop,
+		wrapperOverlayStylesTab,
+		wrapperHoverOverlayStylesTab,
+		wrapperOverlayStylesMobile,
+		wrapperHoverOverlayStylesMobile,
+	} = generateBackgroundControlStyles({
+		attributes,
+		controlName: WRAPPER_BG,
+	});
 
-	// // Buttons Common styles css in strings ⬇
-	// const buttonsCommonStyleDesktop = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
-	// 		${wrapperPaddingDesktop}
-	// 		${separatorSizeDesktop}
-	// 		${buttonGapDesktop}
-	// 		text-align: ${buttonTextAlign};
-	// 		cursor: pointer;
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
-	// 		${titleTypographyDesktop}
-	// 	}
-	// `;
+	// wrapper styles css in strings ⬇
+	const wrapperStylesDesktop = `
+		.eb-advance-heading-wrapper.${blockId}{
+			display: block;
+			position: relative;
+			text-align: ${align};
+			${wrapperMarginDesktop}
+			${wrapperPaddingDesktop}
+			${wrapperBDShadowDesktop}
+			${wrapperBackgroundStylesDesktop}
+			${wrapperOverlayStylesDesktop}
+		}
+		.eb-advance-heading-wrapper.${blockId}:hover {
+			${wrapperBDShadowHoverDesktop}
+			${wrapperHoverBackgroundStylesDesktop}
+			${wrapperHoverOverlayStylesDesktop}
+		}
+	`;
+	const wrapperStylesTab = `
+		.eb-advance-heading-wrapper.${blockId}{
+			${wrapperMarginTab}
+			${wrapperPaddingTab}
+			${wrapperBDShadowTab}
+			${wrapperBackgroundStylesTab}
+			${wrapperOverlayStylesTab}
+		}
+		.eb-advance-heading-wrapper.${blockId}:hover {
+			${wrapperBDShadowHoverTab}
+			${wrapperHoverBackgroundStylesTab}
+			${wrapperHoverOverlayStylesTab}
+		}
+	`;
+	const wrapperStylesMobile = `
+		.eb-advance-heading-wrapper.${blockId}{
+			${wrapperMarginMobile}
+			${wrapperPaddingMobile}
+			${wrapperBDShadowMobile}
+			${wrapperBackgroundStylesMobile}
+			${wrapperOverlayStylesMobile}
+		}
+		.eb-advance-heading-wrapper.${blockId}:hover {
+			${wrapperBDShadowHoverMobile}
+			${wrapperHoverBackgroundStylesMobile}
+			${wrapperHoverOverlayStylesMobile}
+		}
+	`;
 
-	// const buttonsCommonStyleTab = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
-	// 		${wrapperPaddingTab}
-	// 		${separatorSizeTab}
-	// 		${buttonGapTab}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
-	// 		${titleTypographyTab}
-	// 	}
-	// `;
+	// Title styles css in strings ⬇
+	const titleStylesDesktop = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-title {
+			text-align: ${align};
+			color: ${titleColor};
+			${titleTypographyDesktop}
+			${titleMarginDesktop}
+		}
+	`;
 
-	// const buttonsCommonStyleMobile = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent {
-	// 		${wrapperPaddingMobile}
-	// 		${separatorSizeMobile}
-	// 		${buttonGapMobile}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent .eb-button-text {
-	// 		${titleTypographyMobile}
-	// 	}
-	// `;
+	const titleStylesTab = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-title {
+			${titleTypographyTab}
+			${titleMarginTab}
+		}
+	`;
 
-	// // Buttons One styles css in strings ⬇
-	// const buttonOneStyleDesktop = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
-	// 		${wrapperBDShadowDesktop}
-	// 		background-color: ${attributes.buttonOneColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
-	// 		${wrapperBDShadowHoverDesktop}
-	// 		background-color: ${hoverButtonOneColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
-	// 		color: ${textOneColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover .eb-button-one-text {
-	// 		color: ${hoverTextOneColor};
-	// 	}
-	// `;
-	// const buttonOneStyleTab = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
-	// 		${wrapperBDShadowTab}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
-	// 		${wrapperBDShadowHoverTab}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+	const titleStylesMobile = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-title {
+			${titleTypographyMobile}
+			${titleMarginMobile}
+		}
+	`;
 
-	// 	}
-	// `;
-	// const buttonOneStyleMobile = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one {
-	// 		${wrapperBDShadowMobile}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one:hover {
-	// 		${wrapperBDShadowHoverMobile}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-one .eb-button-one-text {
+	// Sub Title styles css in strings ⬇
+	const subtitleStylesDesktop = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-subtitle {
+			text-align: ${align};
+			color: ${subtitleColor};
+			${subtitleTypographyDesktop}
+			${subtitleMarginDesktop}
+		}
+	`;
 
-	// 	}
-	// `;
+	const subtitleStylesTab = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-subtitle {
+			${subtitleTypographyTab}
+			${subtitleMarginTab}
+		}
+	`;
 
-	// // Buttons Two styles css in strings ⬇
-	// const buttonTwoStyleDesktop = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
-	// 		${buttonTwoBDShadowDesktop}
-	// 		${buttonGapDesktop}
-	// 		background-color: ${buttonTwoColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
-	// 		${buttonTwoBDShadowHoverDesktop}
-	// 		background-color: ${hoverButtonTwoColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
-	// 		color: ${textTwoColor};
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover .eb-button-two-text {
-	// 		color: ${hoverTextTwoColor};
-	// 	}
-	// `;
-	// const buttonTwoStyleTab = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
-	// 		${buttonTwoBDShadowTab}
-	// 		${buttonGapTab}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
-	// 		${buttonTwoBDShadowHoverTab}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+	const subtitleStylesMobile = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-subtitle {
+			${subtitleTypographyMobile}
+			${subtitleMarginMobile}
+		}
+	`;
 
-	// 	}
-	// `;
-	// const buttonTwoStyleMobile = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two {
-	// 		${buttonTwoBDShadowMobile}
-	// 		${buttonGapMobile}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two:hover {
-	// 		${buttonTwoBDShadowHoverMobile}
-	// 	}
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-button-parent.eb-button-two .eb-button-two-text {
+	// Separator styles css in strings ⬇
+	const separatorStylesDesktop = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
+			color: ${subtitleColor};
+			${subtitleMarginDesktop}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
+			border-style: ${seperatorStyle};
+			border-color: ${separatorColor};
+			${separatorLineSizeDesktop}
+			${separatorLineWidthDesktop}
+			${align === "center" ? "margin-left: auto; margin-right: auto" : ""}
+			${align === "right" ? "margin-left: auto; margin-right: 0" : ""}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.icon {
+			text-align: ${align};
+			color: ${separatorColor};
+			${separatorIconSizeDesktop}
+		}
+	`;
 
-	// 	}
-	// `;
+	const separatorStylesTab = `
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
+			${subtitleMarginTab}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
+			${separatorLineSizeTab}
+			${separatorLineWidthTab}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.icon {
+			${separatorIconSizeTab}
+		}
+	`;
 
-	// // Connector styles css in strings ⬇
-	// const connectorStylesDesktop = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
-	// 		${connectorType === "text"? subtitleTypographyDesktop : buttonConnectorIconSizeDesktop}
-	// 		${buttonConnectorHeightDesktop}
-	// 		${buttonConnectorWidthDesktop}
-	// 		${buttonConnectorLineHeightDesktop}
-	// 		${connectorType === "icon" ? 'font-family: "Font Awesome 5 Brands" !important' : null};
-	// 		background: ${innerButtonColor};
-	// 		color: ${innerButtonTextColor};
-	// 	}
-	// `;
+	const separatorStylesMobile = `
+	.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
+			${subtitleMarginMobile}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
+			${separatorLineSizeMobile}
+			${separatorLineWidthMobile}
+		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.icon {
+			${separatorIconSizeMobile}
+		}
+	`;
 
-	// const connectorStylesTab = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
-	// 		${connectorType === "text"? subtitleTypographyTab : buttonConnectorIconSizeTab}
-	// 		${buttonConnectorHeightTab}
-	// 		${buttonConnectorWidthTab}
-	// 		${buttonConnectorLineHeightTab}
-	// 	}
-	// `;
+	// all css styles for large screen width (desktop/laptop) in strings ⬇
+	const desktopAllStyles = softMinifyCssStrings(`
+			${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
+			${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
+			${isCssExists(subtitleStylesDesktop) ? subtitleStylesDesktop : " "}
+			${isCssExists(separatorStylesDesktop) ? separatorStylesDesktop : " "}
+		`);
 
-	// const connectorStylesMobile = `
-	// 	.eb-advance-heading-wrapper.${blockId} .eb-advance-heading__midldeInner span {
-	// 		${connectorType === "text"? subtitleTypographyMobile : buttonConnectorIconSizeMobile}
-	// 		${buttonConnectorHeightMobile}
-	// 		${buttonConnectorWidthMobile}
-	// 		${buttonConnectorLineHeightMobile}
-	// 	}
-	// `;
+	// all css styles for Tab in strings ⬇
+	const tabAllStyles = softMinifyCssStrings(`
+			${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
+			${isCssExists(titleStylesTab) ? titleStylesTab : " "}
+			${isCssExists(subtitleStylesTab) ? subtitleStylesTab : " "}
+			${isCssExists(separatorStylesTab) ? separatorStylesTab : " "}
+		`);
 
-	// // all css styles for large screen width (desktop/laptop) in strings ⬇
-	// const desktopAllStyles = softMinifyCssStrings(`
-	// 		${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
-	// 		${isCssExists(buttonsCommonStyleDesktop) ? buttonsCommonStyleDesktop : " "}
-	// 		${isCssExists(buttonOneStyleDesktop) ? buttonOneStyleDesktop : " "}
-	// 		${isCssExists(buttonTwoStyleDesktop) ? buttonTwoStyleDesktop : " "}
-	// 		${isCssExists(connectorStylesDesktop) ? connectorStylesDesktop : " "}
-	// 	`);
+	// all css styles for Mobile in strings ⬇
+	const mobileAllStyles = softMinifyCssStrings(`
+			${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
+			${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
+			${isCssExists(subtitleStylesMobile) ? subtitleStylesMobile : " "}
+			${isCssExists(separatorStylesMobile) ? separatorStylesMobile : " "}
+		`);
 
-	// // all css styles for Tab in strings ⬇
-	// const tabAllStyles = softMinifyCssStrings(`
-	// 		${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
-	// 		${isCssExists(buttonsCommonStyleTab) ? buttonsCommonStyleTab : " "}
-	// 		${isCssExists(buttonOneStyleTab) ? buttonOneStyleTab : " "}
-	// 		${isCssExists(buttonTwoStyleTab) ? buttonTwoStyleTab : " "}
-	// 		${isCssExists(connectorStylesTab) ? connectorStylesTab : " "}
-	// 	`);
-
-	// // all css styles for Mobile in strings ⬇
-	// const mobileAllStyles = softMinifyCssStrings(`
-	// 		${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
-	// 		${isCssExists(buttonsCommonStyleMobile) ? buttonsCommonStyleMobile : " "}
-	// 		${isCssExists(buttonOneStyleMobile) ? buttonOneStyleMobile : " "}
-	// 		${isCssExists(buttonTwoStyleMobile) ? buttonTwoStyleMobile : " "}
-	// 		${isCssExists(connectorStylesMobile) ? connectorStylesMobile : " "}
-	// 	`);
-
-	// // Set All Style in "blockMeta" Attribute
-	// useEffect(() => {
-	// 	const styleObject = {
-	// 		desktop: desktopAllStyles,
-	// 		tab: tabAllStyles,
-	// 		mobile: mobileAllStyles,
-	// 	};
-	// 	if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
-	// 		setAttributes({ blockMeta: styleObject });
-	// 	}
-	// }, [attributes]);
+	// Set All Style in "blockMeta" Attribute
+	useEffect(() => {
+		const styleObject = {
+			desktop: desktopAllStyles,
+			tab: tabAllStyles,
+			mobile: mobileAllStyles,
+		};
+		if (JSON.stringify(blockMeta) != JSON.stringify(styleObject)) {
+			setAttributes({ blockMeta: styleObject });
+		}
+	}, [attributes]);
 
 	return [
 		isSelected && (
@@ -410,14 +434,59 @@ export default function Edit(props) {
 		),
 		//Edit view here
 		<div {...blockProps}>
-			<div className="eb-heading-wrapper">
+			<style>
+				{`
+				${desktopAllStyles}
+
+				/* mimmikcssStart */
+
+				${resOption === "Tablet" ? tabAllStyles : " "}
+				${resOption === "Mobile" ? tabAllStyles + mobileAllStyles : " "}
+
+				/* mimmikcssEnd */
+
+				@media all and (max-width: 1024px) {	
+
+					/* tabcssStart */			
+					${softMinifyCssStrings(tabAllStyles)}
+					/* tabcssEnd */			
+				
+				}
+				
+				@media all and (max-width: 767px) {
+					
+					/* mobcssStart */			
+					${softMinifyCssStrings(mobileAllStyles)}
+					/* mobcssEnd */			
+				
+				}
+				`}
+			</style>
+			<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
 				<RichText
 					tagName={tagName}
-					className="eb-heading"
+					className="eb-ah-title"
 					value={titleText}
 					formattingControl={["bold", "italic"]}
 					onChange={(titleText) => setAttributes({ titleText })}
 				/>
+				{displaySubtitle && (
+					<RichText
+						tagName={"p"}
+						className="eb-ah-subtitle"
+						value={subtitleText}
+						formattingControl={["bold", "italic"]}
+						onChange={(subtitleText) => setAttributes({ subtitleText })}
+					/>
+				)}
+				{displaySeperator && (
+					<div className={"eb-ah-separator " + seperatorType}>
+						{seperatorType === "icon" && (
+							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+						)}
+					</div>
+				)}
+				
 			</div>
 		</div>,
 	];
