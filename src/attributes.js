@@ -185,7 +185,7 @@ const attributes = {
 
 	// range controller Separator Line Border Size
 	...generateResponsiveRangeAttributes(SEPARATOR_LINE_SIZE, {
-		defaultRange: 2,
+		defaultRange: 4,
 	}),
 	// range controller Separator Icon Size
 	...generateResponsiveRangeAttributes(SEPARATOR_ICON_SIZE, {

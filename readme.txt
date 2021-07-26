@@ -1,20 +1,19 @@
-=== Button Group ===
+=== Advance Heading ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
-Tags: block, blocks, button, Button Group, grouped button, Button Group, buttons, gutenberg, gutenberg blocks
+Tags: block, blocks, heading, Advance Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks
 Requires at least: 5.0
 Tested up to: 5.5
-Stable tag: 1.1.0
+Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Create Two Buttons To Be Stacked Together
+Create Advance Heading with Title, Subtitle and Separator Controls
 
 == Description ==
 
-**Button Group** is a great way to create two buttons to be stacked together. Using this block plugin, you can create a Button Group inside your WordPress block editor and improve your website design without spending much time or any coding.
+**Advance Heading** is an amazing block to display title with subtitle and separator. Advance Heading offers many responsive controls to design and modify your title, substitle and separator. You can enable/disable subtitle and seperator. Separator has Line and Icon styles so you can use solid, dotted, hashed etc. line as separator also 100+ incons. The heading wrapper has Margin, Padding, Background and Border controls with full responsive options.
 
-
-⚙️ **Completely Customizable:** YYou can customize the content, colors etc. to make it suitable for your website design
+⚙️ **Completely Customizable:** You can customize the content, colors etc. to make it suitable for your website design
 
 ⚡ **Super Light-weight:** No extra resources used and it's highly optimized for super fast loading & instant Live editing
 
@@ -28,8 +27,8 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 ## 👨‍💻 DOCUMENTATION AND SUPPORT ##
 
 - For documentation and tutorials go to our [documentation](https://essential-blocks.com/docs/)
-- To report issue and contribution visit [Github](https://github.com/EssentialBlocks/button-group/).
-- If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/button-group/).
+- To report issue and contribution visit [Github](https://github.com/EssentialBlocks/advanced-heading/).
+- If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/advanced-heading/).
 - For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.net/).
 
 ## 🙌 JOIN THE COMMUNITY ##
@@ -38,7 +37,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
-🧡 LOVED Button Group Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/button-group/reviews/#new-post)
+🧡 LOVED on Advance Heading Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/advanced-heading/reviews/#new-post)
 
 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
 
@@ -66,7 +65,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 3. Install in 1-click
 
 = Old Way: =
-1. Upload `button-group` to the `/wp-content/plugins/` directory
+1. Upload `advanced-heading` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Follow the [Documentation](https://essential-blocks.com/docs/)
 
@@ -81,19 +80,6 @@ Yes, it will work with any standard WordPress theme.
 
 
 == Changelog ==
-
-= 1.1.0 - 12/07/2021 =
-* Added: 4 Preset Layouts
-* Added: Responsive Controls
-* Added: Margin Option in Wrapper
-* Added: Buttons Alignment
-* Added: Responsive Connector Size option
-* Added: Advance and Responsive Typography option
-* Added: Advanced and Responsive Border Radius Option
-
-= 1.0.1 =
-* Added: Keywords
-* Fixed: Missing css, js files
 
 = 1.0.0 =
 * Initial Release

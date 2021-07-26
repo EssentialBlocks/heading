@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     Advance Heading
- * Description:     Create Advance Heading with responsive controls
+ * Description:     Create Advance Heading with Title, Subtitle and Separator Controls
  * Version:         1.0.0
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net

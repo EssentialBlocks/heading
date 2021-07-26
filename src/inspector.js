@@ -53,6 +53,8 @@ import BorderShadowControl from "../util/border-shadow-control";
 import ResponsiveRangeController from "../util/responsive-range-control";
 import BackgroundControl from "../util/background-control";
 
+import objAttributes from "./attributes";
+
 function Inspector(props) {
 	const { attributes, setAttributes } = props;
 	const {
@@ -112,10 +114,16 @@ function Inspector(props) {
 		attributes,
 	};
 
-	console.log("Attributes", attributes);
 	const changePreset = (selected) => {
 		setAttributes({ preset: selected });
 		switch(selected) {
+			case 'preset-0':
+				for (const [key, value] of Object.entries(attributes)) {
+					setAttributes({
+						[key]: objAttributes[key].default
+					});
+				}
+				break;
 			case 'preset-1':
 				setAttributes({
 					displaySubtitle: true,
@@ -407,7 +415,7 @@ function Inspector(props) {
 												label={__("Separator Position")}
 												value={seperatorPosition}
 												options={SEPARATOR_POSITION}
-												onChange={(seperatorStyle) => setAttributes({ seperatorStyle })}
+												onChange={(seperatorPosition) => setAttributes({ seperatorPosition })}
 											/>
 											<BaseControl label={__("Separator Type")} id="eb-advance-heading-alignment">
 												<ButtonGroup id="eb-advance-heading-alignment">
@@ -475,7 +483,7 @@ function Inspector(props) {
 												resRequiredProps={resRequiredProps}
 												units={SEPARATOR_UNIT_TYPES}
 												min={0}
-												max={100}
+												max={300}
 												step={1}
 											/>
 											

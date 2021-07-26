@@ -40,7 +40,7 @@ export const SEPARATOR_POSITION = [
 ];
 
 export const PRESETS = [
-	{ label: __("Select Preset"), value: "preset-0" },
+	{ label: __("Default"), value: "preset-0" },
 	{ label: __("Preset 1"), value: "preset-1" },
 	{ label: __("Preset 2"), value: "preset-2" },
 	{ label: __("Preset 3"), value: "preset-3" },

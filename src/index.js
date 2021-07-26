@@ -11,7 +11,7 @@ import Example from "./example";
 registerBlockType("advance-heading/advance-heading", {
 	title: __("Advance Heading", "advance-heading"),
 	description: __(
-		"Create Advance Heading with responsive controls and more features",
+		"Create Advance Heading with Title, Subtitle and Separator Controls",
 		"advance-heading"
 	),
 	keywords: [__("heading", "advance heading", "heading block", "heading box")],

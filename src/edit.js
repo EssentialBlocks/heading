@@ -298,6 +298,9 @@ export default function Edit(props) {
 			${titleTypographyDesktop}
 			${titleMarginDesktop}
 		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-title:hover {
+			color: ${titleHoverColor};
+		}
 	`;
 
 	const titleStylesTab = `
@@ -322,6 +325,9 @@ export default function Edit(props) {
 			${subtitleTypographyDesktop}
 			${subtitleMarginDesktop}
 		}
+		.eb-advance-heading-wrapper.${blockId} .eb-ah-subtitle:hover {
+			color: ${subtitleHoverColor};
+		}
 	`;
 
 	const subtitleStylesTab = `
@@ -345,7 +351,7 @@ export default function Edit(props) {
 			${subtitleMarginDesktop}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
-			border-style: ${seperatorStyle};
+			border-style: none none ${seperatorStyle};
 			border-color: ${separatorColor};
 			${separatorLineSizeDesktop}
 			${separatorLineWidthDesktop}
@@ -467,6 +473,13 @@ export default function Edit(props) {
 				`}
 			</style>
 			<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
+				{displaySeperator && seperatorPosition === "top" && (
+					<div className={"eb-ah-separator " + seperatorType}>
+						{seperatorType === "icon" && (
+							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+						)}
+					</div>
+				)}
 				<RichText
 					tagName={tagName}
 					className="eb-ah-title"
@@ -483,7 +496,7 @@ export default function Edit(props) {
 						onChange={(subtitleText) => setAttributes({ subtitleText })}
 					/>
 				)}
-				{displaySeperator && (
+				{displaySeperator && seperatorPosition === "bottom" && (
 					<div className={"eb-ah-separator " + seperatorType}>
 						{seperatorType === "icon" && (
 							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
