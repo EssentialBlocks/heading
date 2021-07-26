@@ -1,17 +1,17 @@
-=== Advance Heading ===
+=== Advanced Heading ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
-Tags: block, blocks, heading, Advance Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks
+Tags: block, blocks, heading, Advanced Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks
 Requires at least: 5.0
 Tested up to: 5.5
 Stable tag: 1.0.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Create Advance Heading with Title, Subtitle and Separator Controls
+Create Advanced Heading with Title, Subtitle and Separator Controls
 
 == Description ==
 
-**Advance Heading** is an amazing block to display title with subtitle and separator. Advance Heading offers many responsive controls to design and modify your title, substitle and separator. You can enable/disable subtitle and seperator. Separator has Line and Icon styles so you can use solid, dotted, hashed etc. line as separator also 100+ incons. The heading wrapper has Margin, Padding, Background and Border controls with full responsive options.
+**Advanced Heading** is an amazing block to display title with subtitle and separator. Advanced Heading offers many responsive controls to design and modify your title, substitle and separator. You can enable/disable subtitle and seperator. Separator has Line and Icon styles so you can use solid, dotted, hashed etc. line as separator also 100+ incons. The heading wrapper has Margin, Padding, Background and Border controls with full responsive options.
 
 ⚙️ **Completely Customizable:** You can customize the content, colors etc. to make it suitable for your website design
 
@@ -37,7 +37,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.net), the team
 
 🤝 Join our [Facebook Community](https://www.facebook.com/groups/wpdeveloper.net/) & get connected with expert web creators like yourself.
 
-🧡 LOVED on Advance Heading Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/advanced-heading/reviews/#new-post)
+🧡 LOVED on Advanced Heading Block? Rate us on [WordPress Repository](https://wordpress.org/support/plugin/advanced-heading/reviews/#new-post)
 
 🔥 GET FREEBIES FOR YOUR WORDPRESS SITE
 

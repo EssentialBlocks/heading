@@ -48,7 +48,7 @@ const attributes = {
 	},
 	titleText: {
 		type: "string",
-		default: "Essential Block Advance Heading"
+		default: "Essential Block Advanced Heading"
 	},
 	subtitleText: {
 		type: "string",

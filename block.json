@@ -1,9 +1,9 @@
 {
 	"apiVersion": 2,
 	"name": "advance-heading/advance-heading",
-	"title": "Advance Heading",
+	"title": "Advanced Heading",
 	"category": "widgets",
-	"description": "Create Advance Heading with Title, Subtitle and Separator Controls",
+	"description": "Create Advanced Heading with Title, Subtitle and Separator Controls",
 	"textdomain": "advance-heading",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",

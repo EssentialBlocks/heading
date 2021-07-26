@@ -9,12 +9,12 @@ import attributes from "./attributes";
 import Example from "./example";
 
 registerBlockType("advance-heading/advance-heading", {
-	title: __("Advance Heading", "advance-heading"),
+	title: __("Advanced Heading", "advance-heading"),
 	description: __(
-		"Create Advance Heading with Title, Subtitle and Separator Controls",
+		"Create Advanced Heading with Title, Subtitle and Separator Controls",
 		"advance-heading"
 	),
-	keywords: [__("heading", "advance heading", "heading block", "heading box")],
+	keywords: [__("heading", "Advanced Heading", "heading block", "heading box")],
 	icon,
 	attributes,
 	category: "widgets",
