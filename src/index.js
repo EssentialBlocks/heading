@@ -4,7 +4,7 @@ const { __ } = wp.i18n;
 import "./style.scss";
 import Edit from "./edit";
 import save from "./save";
-import icon from "./icon";
+import { HeadingIcon } from "../util/icons";
 import attributes from "./attributes";
 import Example from "./example";
 
@@ -15,7 +15,7 @@ registerBlockType("advance-heading/advance-heading", {
 		"advance-heading"
 	),
 	keywords: [__("heading", "Advanced Heading", "heading block", "heading box")],
-	icon,
+	icon: HeadingIcon,
 	attributes,
 	category: "widgets",
 	edit: Edit,

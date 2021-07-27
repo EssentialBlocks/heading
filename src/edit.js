@@ -430,16 +430,14 @@ export default function Edit(props) {
 	return [
 		isSelected && (
 			<>
-				<Fragment>
-					<BlockControls>
-						<AlignmentToolbar
-							value={align} 
-							onChange={(align) => setAttributes({ align })}
-							controls={["left", "center", "right"]}
-						/>
-					</BlockControls>
-					<Inspector attributes={attributes} setAttributes={setAttributes} />
-				</Fragment>
+				<BlockControls>
+					<AlignmentToolbar
+						value={align} 
+						onChange={(align) => setAttributes({ align })}
+						controls={["left", "center", "right"]}
+					/>
+				</BlockControls>
+				<Inspector attributes={attributes} setAttributes={setAttributes} />
 			</>
 		),
 		//Edit view here

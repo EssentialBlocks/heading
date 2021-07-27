@@ -70,7 +70,7 @@ function create_block_heading_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/heading2' ) ) {
+	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/advanced-heading' ) ) {
 		register_block_type(
 			'advance-heading/advance-heading',
 			array (

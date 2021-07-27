@@ -1,15 +1,20 @@
 const Example = {
 	attributes: {
-		showConnector: "true",
-		buttonOneBorderShadowRds_Top: 20,
-		buttonOneBorderShadowRds_Bottom: 0,
-		buttonOneBorderShadowRds_Left: 20,
-		buttonOneBorderShadowRds_Right: 0,
-		buttonTwoBorderShadowRds_Top: 0,
-		buttonTwoBorderShadowRds_Bottom: 20,
-		buttonTwoBorderShadowRds_Left: 0,
-		buttonTwoBorderShadowRds_Right: 20,
-		buttonsGapRange: 0,
+		displaySubtitle: true,
+		displaySeperator: true,
+		align: "left",
+		titleColor: "#551ef7",
+		subtitleColor: "#555555",
+		separatorColor: "#551ef7",
+		seperatorType: "line",
+		wrpPaddingisLinked: false,
+		wrpPaddingUnit: "px",
+		wrpPaddingTop: "0",
+		wrpPaddingBottom: "0",
+		wrpPaddingLeft: "0",
+		wrpPaddingRight: "0",
+		wrprBgbackgroundColor: "rgba(255,255,255,1)",
+		wrprBgbackgroundType: "classic",
 	}
 };
 export default Example;
