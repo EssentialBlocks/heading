@@ -1,6 +1,6 @@
 === Advanced Heading ===
 Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
-Tags: block, blocks, heading, Advanced Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks
+Tags: block, blocks, heading, Advanced Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks, Gutenberg block library, essential blocks
 Requires at least: 5.0
 Tested up to: 5.8
 Stable tag: 1.0.0
@@ -11,14 +11,13 @@ Create Advanced Heading with Title, Subtitle and Separator Controls
 
 == Description ==
 
-**Advanced Heading** is an amazing block to display title with subtitle and separator. Advanced Heading offers many responsive controls to design and modify your title, substitle and separator. You can enable/disable subtitle and seperator. Separator has Line and Icon styles so you can use solid, dotted, hashed etc. line as separator also 100+ incons. The heading wrapper has Margin, Padding, Background and Border controls with full responsive options.
+**Advanced Heading** Use this amazing block to display the web pages and post titles more stunningly with subtitles and separators. Using Advanced Heading, you can adjust title, subtitle, and separator according to your needs. The subtitle and separator can be enabled or disabled. The Separator has 2 styles: Line and Icon, so you can use a solid, dotted, hashed, etc. line and 100+ icons. Margin, padding, background, and border of the heading wrapper can be customized with responsive options.
 
-⚙️ **Completely Customizable:** You can customize the content, colors etc. to make it suitable for your website design
+⚙️ **Completely Customizable:** You can customize the content, colors, etc. to make it suitable for your website design
 
-⚡ **Super Light-weight:** No extra resources used and it's highly optimized for super fast loading & instant Live editing
+⚡ **Super Light-weight:** No extra resources used and it's highly optimized for super-fast loading & instant Live editing
 
-🧑‍💻 **Dedicated Support:** We’ve an extraordinary support team ready to help you. Ask your questions in the support forum, we’ll get back to you immediately
-
+🧑‍💻 **Dedicated Support:** We have an extraordinary support team ready to help you. Ask your questions in the support forum, we’ll get back to you immediately
 
 ## 🚀 BACKED BY A TRUSTED TEAM ##
 
@@ -61,7 +60,7 @@ Consider checking out our other WordPress solutions & boost your WordPress websi
 
 = Modern Way: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For "Image Comparison".
+2. Search For "Advanced Heading".
 3. Install in 1-click
 
 = Old Way: =

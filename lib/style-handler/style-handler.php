@@ -1,9 +1,14 @@
 <?php
-namespace EssentialBlocks\Util;
-if(!class_exists('\EssentialBlocks\Util\EbStyleHandler')){
+// Exit if accessed directly.
+if (!defined('ABSPATH')) {
+	exit;
+}
+
+if(!class_exists('EbStyleHandler')){
 	class EbStyleHandler
 	{
 		private static $instance;
+
 		private $media_desktop = [
 			'name' => 'desktop',
 			'screen_size' => ''
@@ -18,7 +23,7 @@ if(!class_exists('\EssentialBlocks\Util\EbStyleHandler')){
 		];
 
 
-		public static function init(): EbStyleHandler
+		public static function init()
 		{
 			if (null === self::$instance) {
 				self::$instance = new self;
@@ -73,11 +78,11 @@ if(!class_exists('\EssentialBlocks\Util\EbStyleHandler')){
 		{
 			global $post;
 			if(!empty($post) && !empty($post->ID)){
-                $upload_dir = wp_upload_dir();
-                if (file_exists($upload_dir['basedir'] . '/eb-style/eb-style-' . $post->ID . '.min.css')) {
-                    wp_enqueue_style('eb-block-style-' . $post->ID, $upload_dir['baseurl'] . '/eb-style/eb-style-' . $post->ID . '.min.css', [], substr(md5(microtime(true)), 0, 10));
-                }
-            }
+					$upload_dir = wp_upload_dir();
+					if (file_exists($upload_dir['basedir'] . '/eb-style/eb-style-' . $post->ID . '.min.css')) {
+							wp_enqueue_style('eb-block-style-' . $post->ID, $upload_dir['baseurl'] . '/eb-style/eb-style-' . $post->ID . '.min.css', [], substr(md5(microtime(true)), 0, 10));
+					}
+			}
 		}
 
 		/**
@@ -115,7 +120,6 @@ if(!class_exists('\EssentialBlocks\Util\EbStyleHandler')){
 			return trim($css);
 		}
 	}
-
 	EbStyleHandler::init();
 }
 
