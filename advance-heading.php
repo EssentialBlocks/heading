@@ -50,7 +50,7 @@ function create_block_heading_block_init() {
 	wp_register_style(
 		'advance-heading-advance-heading-editor',
 		plugins_url($editor_css, __FILE__),
-		array(),
+		array('advance-heading-advance-heading-block', 'fontawesome-frontend-css'),
 		filemtime("$dir/$editor_css")
 	);
 
@@ -67,7 +67,7 @@ function create_block_heading_block_init() {
 		'advance-heading-advance-heading-block',
 		plugins_url( $style_css, __FILE__ ),
 		array('fontawesome-frontend-css'),
-		filemtime( "$dir/$style_css" )
+		filemtime( "$dir/$style_css" ) 
 	);
 
 	if( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/advanced-heading' ) ) {
@@ -76,7 +76,17 @@ function create_block_heading_block_init() {
 			array (
 				'editor_script' => 'advance-heading-advance-heading-editor',
 				'editor_style'  => 'advance-heading-advance-heading-editor',
-				'style'  		=> 'advance-heading-advance-heading-block',
+				'render_callback' => function( $attributes, $content ) {
+					if( !is_admin() ) {
+						wp_enqueue_style('advance-heading-advance-heading-block');
+						wp_enqueue_style(
+							'eb-fontawesome-frontend',
+							plugins_url('assets/css/font-awesome5.css', dirname(__FILE__)),
+							array()
+						);
+					}
+					  return $content;
+				  }
 			)
 		);
 	}
