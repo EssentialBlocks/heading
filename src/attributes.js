@@ -34,7 +34,6 @@ const attributes = {
 		default: "essential_block",
 	},
 	blockMeta: {
-		source: '',
 		type: "object",
 	},
 

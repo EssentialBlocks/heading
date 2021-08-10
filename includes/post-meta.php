@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class Dual_Button_Post_Meta
+class Advanced_Heading_Post_Meta
 {
     public function __construct()
     {
@@ -39,4 +39,4 @@ class Dual_Button_Post_Meta
     }
 }
 
-new Dual_Button_Post_Meta();
+new Advanced_Heading_Post_Meta();

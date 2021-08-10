@@ -43,6 +43,7 @@ export default function Edit(props) {
 		blockId,
 		blockRoot,
 		blockMeta,
+		blockMeta2,
 		preset,
 		align,
 		tagName,
@@ -426,6 +427,8 @@ export default function Edit(props) {
 			setAttributes({ blockMeta: styleObject });
 		}
 	}, [attributes]);
+
+	// console.log("Advance Heading Block Meta", blockMeta);
 
 	return [
 		isSelected && (
