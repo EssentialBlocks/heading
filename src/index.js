@@ -8,11 +8,11 @@ import { HeadingIcon } from "../util/icons";
 import attributes from "./attributes";
 import Example from "./example";
 
-registerBlockType("advance-heading/advance-heading", {
-	title: __("Advanced Heading", "advance-heading"),
+registerBlockType("advanced-heading/advanced-heading", {
+	title: __("Advanced Heading", "advanced-heading"),
 	description: __(
 		"Create Advanced Heading with Title, Subtitle and Separator Controls",
-		"advance-heading"
+		"advanced-heading"
 	),
 	keywords: [__("heading", "Advanced Heading", "heading block", "heading box")],
 	icon: HeadingIcon,
