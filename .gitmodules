@@ -1,6 +1,6 @@
-[submodule "lib/style-handler"]
-	path = lib/style-handler
-	url = git@github.com:EssentialBlocks/style-handler.git
 [submodule "util"]
 	path = util
 	url = git@github.com:EssentialBlocks/controls.git
+[submodule "lib/style-handler-inline"]
+	path = lib/style-handler-inline
+	url = git@github.com:EssentialBlocks/style-handler-inline.git

@@ -26,7 +26,6 @@ import {
 import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
 	softMinifyCssStrings,
-	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
 	generateBorderShadowStyles,
@@ -41,9 +40,7 @@ export default function Edit(props) {
 	const {
 		resOption,
 		blockId,
-		blockRoot,
 		blockMeta,
-		blockMeta2,
 		preset,
 		align,
 		tagName,
@@ -183,6 +180,7 @@ export default function Edit(props) {
 		stylesHoverDesktop: wrapperBDShadowHoverDesktop,
 		stylesHoverTab: wrapperBDShadowHoverTab,
 		stylesHoverMobile: wrapperBDShadowHoverMobile,
+		transitionStyle: wrapperBDShadowTransition
 	} = generateBorderShadowStyles({
 		controlName: WRAPPER_BORDER_SHADOW,
 		attributes,
@@ -252,13 +250,20 @@ export default function Edit(props) {
 			${wrapperPaddingDesktop}
 			${wrapperBDShadowDesktop}
 			${wrapperBackgroundStylesDesktop}
-			${wrapperOverlayStylesDesktop}
-			${wrapperBgTransitionStyle}
-			${wrapperOvlTransitionStyle}
+			transition:${wrapperBgTransitionStyle}, ${wrapperBDShadowTransition};
 		}
+		
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverDesktop}
 			${wrapperHoverBackgroundStylesDesktop}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesDesktop}
+			transition:${wrapperOvlTransitionStyle};
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesDesktop}
 		}
 	`;
@@ -268,11 +273,17 @@ export default function Edit(props) {
 			${wrapperPaddingTab}
 			${wrapperBDShadowTab}
 			${wrapperBackgroundStylesTab}
-			${wrapperOverlayStylesTab}
 		}
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverTab}
 			${wrapperHoverBackgroundStylesTab}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesTab}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesTab}
 		}
 	`;
@@ -282,11 +293,17 @@ export default function Edit(props) {
 			${wrapperPaddingMobile}
 			${wrapperBDShadowMobile}
 			${wrapperBackgroundStylesMobile}
-			${wrapperOverlayStylesMobile}
 		}
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverMobile}
 			${wrapperHoverBackgroundStylesMobile}
+		}
+
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesMobile}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesMobile}
 		}
 	`;
@@ -349,7 +366,7 @@ export default function Edit(props) {
 	const separatorStylesDesktop = `
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
 			color: ${subtitleColor};
-			${subtitleMarginDesktop}
+			${separatorMarginDesktop}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			border-style: none none ${seperatorStyle};
@@ -368,7 +385,7 @@ export default function Edit(props) {
 
 	const separatorStylesTab = `
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
-			${subtitleMarginTab}
+			${separatorMarginTab}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			${separatorLineSizeTab}
@@ -381,7 +398,7 @@ export default function Edit(props) {
 
 	const separatorStylesMobile = `
 	.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
-			${subtitleMarginMobile}
+			${separatorMarginMobile}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			${separatorLineSizeMobile}
@@ -394,26 +411,26 @@ export default function Edit(props) {
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
-			${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
-			${isCssExists(subtitleStylesDesktop) ? subtitleStylesDesktop : " "}
-			${isCssExists(separatorStylesDesktop) ? separatorStylesDesktop : " "}
+			${wrapperStylesDesktop}
+			${titleStylesDesktop}
+			${subtitleStylesDesktop}
+			${separatorStylesDesktop}
 		`);
 
 	// all css styles for Tab in strings ⬇
 	const tabAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
-			${isCssExists(titleStylesTab) ? titleStylesTab : " "}
-			${isCssExists(subtitleStylesTab) ? subtitleStylesTab : " "}
-			${isCssExists(separatorStylesTab) ? separatorStylesTab : " "}
+			${wrapperStylesTab}
+			${titleStylesTab}
+			${subtitleStylesTab}
+			${separatorStylesTab}
 		`);
 
 	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
-			${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
-			${isCssExists(subtitleStylesMobile) ? subtitleStylesMobile : " "}
-			${isCssExists(separatorStylesMobile) ? separatorStylesMobile : " "}
+			${wrapperStylesMobile}
+			${titleStylesMobile}
+			${subtitleStylesMobile}
+			${separatorStylesMobile}
 		`);
 
 	// Set All Style in "blockMeta" Attribute
@@ -427,8 +444,6 @@ export default function Edit(props) {
 			setAttributes({ blockMeta: styleObject });
 		}
 	}, [attributes]);
-
-	// console.log("Advance Heading Block Meta", blockMeta);
 
 	return [
 		isSelected && (

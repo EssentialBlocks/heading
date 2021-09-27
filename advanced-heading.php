@@ -21,7 +21,7 @@
 
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
-require_once __DIR__ . '/lib/style-handler/style-handler.php';
+require_once __DIR__ . '/lib/style-handler-inline/style-handler.php';
 
 function advanced_heading_block_init() {
 	$dir = dirname( __FILE__ );
@@ -79,13 +79,8 @@ function advanced_heading_block_init() {
 				'render_callback' => function( $attributes, $content ) {
 					if( !is_admin() ) {
 						wp_enqueue_style('advanced-heading-advanced-heading-block');
-						wp_enqueue_style(
-							'eb-fontawesome-frontend',
-							plugins_url('assets/css/font-awesome5.css', dirname(__FILE__)),
-							array()
-						);
 					}
-					  return $content;
+					return $content;
 				  }
 			)
 		);
