@@ -80,7 +80,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.0 - 27/09/2021 =
 * Initial Release
 
 == Upgrade Notice ==
