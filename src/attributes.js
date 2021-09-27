@@ -115,10 +115,6 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
-	separatorColor: {
-		type: "string",
-		default: "#2B68FF"
-	},
 	seperatorPosition: {
 		type: "string",
 		default: "bottom"
