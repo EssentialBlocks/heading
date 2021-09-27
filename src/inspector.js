@@ -50,6 +50,8 @@
  import BorderShadowControl from "../util/border-shadow-control";
  import ResponsiveRangeController from "../util/responsive-range-control";
  import BackgroundControl from "../util/background-control";
+ import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.react.css';
+ import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
  
  import objAttributes from "./attributes";
  

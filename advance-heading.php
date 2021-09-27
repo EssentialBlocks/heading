@@ -79,13 +79,8 @@ function create_block_heading_block_init() {
 				'render_callback' => function( $attributes, $content ) {
 					if( !is_admin() ) {
 						wp_enqueue_style('advance-heading-advance-heading-block');
-						wp_enqueue_style(
-							'eb-fontawesome-frontend',
-							plugins_url('assets/css/font-awesome5.css', dirname(__FILE__)),
-							array()
-						);
 					}
-					  return $content;
+					return $content;
 				  }
 			)
 		);
