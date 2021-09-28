@@ -86,4 +86,4 @@ function advanced_heading_block_init() {
 		);
 	}
 }
-add_action( 'init', 'create_block_heading_block_init' );
+add_action( 'init', 'advanced_heading_block_init' );
