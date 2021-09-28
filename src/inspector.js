@@ -119,9 +119,15 @@
 		 switch(selected) {
 			 case 'preset-0':
 				 for (const [key, value] of Object.entries(attributes)) {
-					 setAttributes({
-						 [key]: objAttributes[key].default
-					 });
+					const nonChangedAttrs = [
+						"titleText", 
+						"subtitleText"
+					]
+					if (!nonChangedAttrs.includes(key)) {
+						setAttributes({
+							[key]: objAttributes[key].default
+						});
+					}
 				 }
 				 break;
 			 case 'preset-1':
