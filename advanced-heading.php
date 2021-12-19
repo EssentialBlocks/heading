@@ -23,7 +23,7 @@ require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/lib/style-handler-inline/style-handler.php';
 
-function advanced_heading_block_init() {
+function advanced_heading_single_block_init() {
 	$dir = dirname( __FILE__ );
 
 	$script_asset_path = "$dir/build/index.asset.php";
@@ -86,4 +86,4 @@ function advanced_heading_block_init() {
 		);
 	}
 }
-add_action( 'init', 'advanced_heading_block_init' );
+add_action( 'init', 'advanced_heading_single_block_init' );
