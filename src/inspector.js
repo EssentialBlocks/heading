@@ -48,19 +48,7 @@ import {
 } from "./constants/constants";
 import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 
-// import {mimmikCssForResBtns, mimmikCssOnPreviewBtnClickWhileBlockSelected} from "../../../util/helpers";
-// import faIcons from "../../../util/faIcons";
-// import ResponsiveDimensionsControl from "../../../util/dimensions-control-v2";
-// import TypographyDropdown from "../../../util/typography-control-v2";
-// import BorderShadowControl from "../../../util/border-shadow-control";
-// import ResponsiveRangeController from "../../../util/responsive-range-control";
-// import BackgroundControl from "../../../util/background-control";
-
 const {
-	// mimmikCssForResBtns,
-	// mimmikCssOnPreviewBtnClickWhileBlockSelected,
-
-	//
 	faIcons,
 	ResponsiveDimensionsControl,
 	TypographyDropdown,

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Advanced Heading
  * Description:     Create Advanced Heading with Title, Subtitle and Separator Controls
- * Version:         1.0.0
+ * Version:         1.1.0
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -22,7 +22,7 @@
 require_once __DIR__ . '/includes/font-loader.php';
 require_once __DIR__ . '/includes/post-meta.php';
 require_once __DIR__ . '/includes/helpers.php';
-require_once __DIR__ . '/lib/style-handler-inline/style-handler.php';
+require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_advanced_heading_block_init()
 {
@@ -54,15 +54,43 @@ function create_block_advanced_heading_block_init()
 		true
 	);
 
-	$fontawesome_css = 'lib/resources/css/font-awesome5.css';
+	$fontawesome_css = ADVANCEDHEADING_BLOCK_ADMIN_URL . 'lib/resources/css/font-awesome5.css';
 	wp_register_style(
 		'fontawesome-frontend-css',
-		plugins_url( $fontawesome_css, __FILE__),
+		$fontawesome_css,
 		array(),
-		filemtime( "$dir/$fontawesome_css" )
+		ADVANCEDHEADING_BLOCK_VERSION
+	);
+
+	wp_register_style(
+		'fontpicker-default-theme',
+		ADVANCEDHEADING_BLOCK_ADMIN_URL . 'lib/resources/css/fonticonpicker.base-theme.react.css',
+		array(),
+		ADVANCEDHEADING_BLOCK_VERSION,
+		'all'
+	);
+
+	wp_register_style(
+		'fontpicker-material-theme',
+		ADVANCEDHEADING_BLOCK_ADMIN_URL . 'lib/resources/css/fonticonpicker.material-theme.react.css',
+		array(),
+		ADVANCEDHEADING_BLOCK_VERSION,
+		'all'
 	);
 
 	$style_css = ADVANCEDHEADING_BLOCK_ADMIN_URL . 'dist/style.css';
+	//Editor Style
+	wp_register_style(
+		'create-block-advancedheading-block-editor-style',
+		$style_css,
+		array(
+			'fontawesome-frontend-css', 
+			'fontpicker-default-theme',
+			'fontpicker-material-theme'
+		),
+		ADVANCEDHEADING_BLOCK_VERSION
+	);
+	//Frontend Style
 	wp_register_style(
 		'create-block-advancedheading-block-frontend-style',
 		$style_css,
@@ -72,10 +100,10 @@ function create_block_advanced_heading_block_init()
 
 	if (!WP_Block_Type_Registry::get_instance()->is_registered('essential-blocks/advanced-heading')) {
 		register_block_type(
-			Testimonial_Helper::get_block_register_path("advanced-heading/advanced-heading", ADVANCEDHEADING_BLOCK_ADMIN_PATH),
+			Advanced_Heading_Helper::get_block_register_path("advanced-heading/advanced-heading", ADVANCEDHEADING_BLOCK_ADMIN_PATH),
 			array(
 				'editor_script'	=> 'create-block-advancedheading-block-editor-script',
-				'editor_style' 	=> 'create-block-advancedheading-block-frontend-style',
+				'editor_style' 	=> 'create-block-advancedheading-block-editor-style',
 				'render_callback' => function ($attributes, $content) {
 					if (!is_admin()) {
 						wp_enqueue_style('create-block-advancedheading-block-frontend-style');
