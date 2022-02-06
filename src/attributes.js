@@ -10,13 +10,23 @@ import {
 	SEPARATOR_ICON_SIZE,
 	SEPARATOR_WIDTH,
 } from "./constants/constants";
-import {
+
+// import {
+// 	generateDimensionsAttributes,
+// 	generateTypographyAttributes,
+// 	generateBackgroundAttributes,
+// 	generateBorderShadowAttributes,
+// 	generateResponsiveRangeAttributes
+// } from "../../../util/helpers";
+
+const {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
 	generateBackgroundAttributes,
 	generateBorderShadowAttributes,
-	generateResponsiveRangeAttributes
-} from "../util/helpers";
+	generateResponsiveRangeAttributes,
+} = window.EBAdvHeadingControls;
+
 import * as typographyObjs from "./constants/typographyPrefixConstants";
 
 const attributes = {
@@ -39,93 +49,90 @@ const attributes = {
 
 	preset: {
 		type: "string",
-		default: "button-1"
+		default: "button-1",
 	},
 	tagName: {
 		type: "string",
-		default: "h2"
+		default: "h2",
 	},
 	titleText: {
 		type: "string",
-		default: "Essential Block Advanced Heading"
+		default: "Essential Block Advanced Heading",
 	},
 	subtitleText: {
 		type: "string",
-		default: "Essential Block Advance Subtitle"
+		default: "Essential Block Advance Subtitle",
 	},
 	topSpace: {
-		type: "number"
+		type: "number",
 	},
 	topSpaceUnit: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	bottomSpace: {
-		type: "number"
+		type: "number",
 	},
 	bottomSpaceUnit: {
 		type: "string",
-		default: "px"
+		default: "px",
 	},
 	titleColor: {
 		type: "string",
-		default: "#551ef7"
+		default: "#551ef7",
 	},
 	titleHoverColor: {
 		type: "string",
-		default: "#333333"
 	},
 	titleColorType: {
 		type: "string",
-		default: "normal"
+		default: "normal",
 	},
 	subtitleColor: {
 		type: "string",
-		default: "#555555"
+		default: "#555555",
 	},
 	subtitleHoverColor: {
 		type: "string",
-		default: "#333333"
 	},
 	subtitleColorType: {
 		type: "string",
-		default: "normal"
+		default: "normal",
 	},
 	separatorColor: {
 		type: "string",
-		default: "#551ef7"
+		default: "#551ef7",
 	},
 	separatorHoverColor: {
 		type: "string",
-		default: "#333333"
 	},
 	separatorColorType: {
 		type: "string",
-		default: "normal"
+		default: "normal",
 	},
 	align: {
 		type: "string",
-		default: "left"
+		default: "left",
 	},
 	displaySubtitle: {
 		type: "boolean",
-		default: false
+		default: false,
 	},
 	displaySeperator: {
 		type: "boolean",
-		default: false
+		default: false,
 	},
 	seperatorPosition: {
 		type: "string",
-		default: "bottom"
+		default: "bottom",
 	},
 	seperatorType: {
 		type: "string",
-		default: "line"
+		default: "line",
 	},
 	seperatorStyle: {
 		type: "string",
-		default: "solid"
+		default: "solid",
 	},
 	separatorIcon: {
 		type: "string",
@@ -160,18 +167,16 @@ const attributes = {
 	}),
 
 	// border shadow attributes ⬇
-	...generateBorderShadowAttributes(	WRAPPER_BORDER_SHADOW, 
-		{
-			bdrDefaults: {
-				top: 0,
-				bottom: 0,
-				right: 0,
-				left: 0,
-			},
-			// noShadow: true,
-			// noBorder: true,
-		}
-	),
+	...generateBorderShadowAttributes(WRAPPER_BORDER_SHADOW, {
+		bdrDefaults: {
+			top: 0,
+			bottom: 0,
+			right: 0,
+			left: 0,
+		},
+		// noShadow: true,
+		// noBorder: true,
+	}),
 
 	// background attributes ⬇
 	...generateBackgroundAttributes(WRAPPER_BG, {

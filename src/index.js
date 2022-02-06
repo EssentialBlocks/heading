@@ -1,23 +1,45 @@
-const { registerBlockType } = wp.blocks;
-const { __ } = wp.i18n;
+import { __ } from "@wordpress/i18n";
+import { registerBlockType } from "@wordpress/blocks";
 
 import "./style.scss";
 import Edit from "./edit";
 import save from "./save";
-import { HeadingIcon } from "../util/icons";
+// import { HeadingIcon } from "../../../util/icons";
+import { HeadingIcon } from "./icon";
 import attributes from "./attributes";
 import Example from "./example";
+import metadata from "../block.json";
+const { ebConditionalRegisterBlockType } = EBAdvHeadingControls;
 
-registerBlockType("advanced-heading/advanced-heading", {
-	title: __("Advanced Heading", "advanced-heading"),
-	description: __(
-		"Create Advanced Heading with Title, Subtitle and Separator Controls",
-		"advanced-heading"
-	),
-	keywords: [__("heading", "Advanced Heading", "heading block", "heading box")],
+const { name, category } = metadata;
+
+// registerBlockType(
+// 	// { name, ...metadata },
+// 	"essential-blocks/advanced-heading",
+// 	{
+// 		keywords: [
+// 			__("heading", "essential-blocks"),
+// 			__("Advanced Heading", "essential-blocks"),
+// 			__("heading block", "essential-blocks"),
+// 			__("heading box", "essential-blocks"),
+// 		],
+// 		icon: HeadingIcon,
+// 		attributes,
+// 		edit: Edit,
+// 		save,
+// 		example: Example,
+// 	}
+// );
+
+ebConditionalRegisterBlockType(metadata, {
+	keywords: [
+		__("heading", "essential-blocks"),
+		__("Advanced Heading", "essential-blocks"),
+		__("heading block", "essential-blocks"),
+		__("heading box", "essential-blocks"),
+	],
 	icon: HeadingIcon,
 	attributes,
-	category: "widgets",
 	edit: Edit,
 	save,
 	example: Example,

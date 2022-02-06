@@ -1,5 +1,5 @@
-const { __ } = wp.i18n;
-const {Dashicon} = wp.components;
+import { __ } from "@wordpress/i18n";
+import { Dashicon } from "@wordpress/components";
 
 // the consts defined here should be unique from one another
 export const WRAPPER_BG = "wrprBg";
@@ -30,20 +30,20 @@ export const NORMAL_HOVER = [
 ];
 
 export const SEPARATOR_TYPE = [
-	{ label: __("Line"), value: "line" },
-	{ label: __("Icon"), value: "icon" },
+	{ label: __("Line", "essential-blocks"), value: "line" },
+	{ label: __("Icon", "essential-blocks"), value: "icon" },
 ];
 
 export const SEPARATOR_POSITION = [
-	{ label: __("Top"), value: "top" },
-	{ label: __("Bottom"), value: "bottom" },
+	{ label: __("Top", "essential-blocks"), value: "top" },
+	{ label: __("Bottom", "essential-blocks"), value: "bottom" },
 ];
 
 export const PRESETS = [
-	{ label: __("Default"), value: "preset-0" },
-	{ label: __("Preset 1"), value: "preset-1" },
-	{ label: __("Preset 2"), value: "preset-2" },
-	{ label: __("Preset 3"), value: "preset-3" },
+	{ label: __("Default", "essential-blocks"), value: "preset-0" },
+	{ label: __("Preset 1", "essential-blocks"), value: "preset-1" },
+	{ label: __("Preset 2", "essential-blocks"), value: "preset-2" },
+	{ label: __("Preset 3", "essential-blocks"), value: "preset-3" },
 ];
 
 export const TEXT_ALIGN = [
@@ -53,20 +53,20 @@ export const TEXT_ALIGN = [
 ];
 
 export const HEADING = [
-	{ label: __("H1"), value: "h1" },
-	{ label: __("H2"), value: "h2" },
-	{ label: __("H3"), value: "h3" },
-	{ label: __("H4"), value: "h4" },
-	{ label: __("H5"), value: "h5" },
-	{ label: __("H6"), value: "h6" },
+	{ label: __("H1", "essential-blocks"), value: "h1" },
+	{ label: __("H2", "essential-blocks"), value: "h2" },
+	{ label: __("H3", "essential-blocks"), value: "h3" },
+	{ label: __("H4", "essential-blocks"), value: "h4" },
+	{ label: __("H5", "essential-blocks"), value: "h5" },
+	{ label: __("H6", "essential-blocks"), value: "h6" },
 ];
 
 export const SEPERATOR_STYLES = [
-	{ label: __("Solid"), value: "solid" },
-	{ label: __("Dashed"), value: "dashed" },
-	{ label: __("Dotted"), value: "dotted" },
-	{ label: __("Double"), value: "double" },
-	{ label: __("Groove"), value: "groove" },
-	{ label: __("Outset"), value: "outset" },
-	{ label: __("Ridge"), value: "ridge" },
+	{ label: __("Solid", "essential-blocks"), value: "solid" },
+	{ label: __("Dashed", "essential-blocks"), value: "dashed" },
+	{ label: __("Dotted", "essential-blocks"), value: "dotted" },
+	{ label: __("Double", "essential-blocks"), value: "double" },
+	{ label: __("Groove", "essential-blocks"), value: "groove" },
+	{ label: __("Outset", "essential-blocks"), value: "outset" },
+	{ label: __("Ridge", "essential-blocks"), value: "ridge" },
 ];
