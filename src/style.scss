@@ -17,8 +17,7 @@
 	h6.eb-ah-title {
 		font-size: 14px;
 	}
-}
-
-.eb-advance-heading {
-	transition: all 0.3s ease-in-out;
+	& > * {
+		transition: all 0.3s ease-in-out;
+	}
 }

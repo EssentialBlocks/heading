@@ -3,7 +3,7 @@ Contributors: wpdevteam, re_enter_rupok, Asif2BD, rahat89, jamilbd07
 Tags: block, blocks, heading, Advanced Heading, title, title block, title with subtitle, separator, gutenberg, gutenberg blocks, Gutenberg block library, essential blocks
 Requires at least: 5.0
 Tested up to: 5.8
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,7 +80,12 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.1.0 - 07/02/2022 =
+* Fixed: Block Base theme support
+* Improved: Font Library Updated
+* Improved: Controls and structure
+
+= 1.0.0 - 28/09/2021 =
 * Initial Release
 
 == Upgrade Notice ==

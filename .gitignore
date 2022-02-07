@@ -24,5 +24,9 @@ node_modules/
 *.tgz
 
 # dotenv environment variables file
-.env
+.env 
 .DS_Store
+
+index.js.map
+package-lock.json
+yarn.lock

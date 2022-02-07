@@ -1,16 +1,22 @@
 /**
  * WordPress dependencies
-*/
-const { __ } = wp.i18n;
-const { BlockControls, AlignmentToolbar, RichText, useBlockProps } = wp.blockEditor;
-const { useEffect } = wp.element;
-const { select } = wp.data;
+ */
+import { __ } from "@wordpress/i18n";
+import { useEffect } from "@wordpress/element";
+import {
+	BlockControls,
+	AlignmentToolbar,
+	RichText,
+	useBlockProps,
+} from "@wordpress/block-editor";
+import { select } from "@wordpress/data";
 
 /**
-  * Internal depencencies
-*/
+ * Internal depencencies
+ */
+ import classnames from "classnames";
+
 import Inspector from "./inspector";
-import "./editor.scss";
 import {
 	WRAPPER_BG,
 	WRAPPER_MARGIN,
@@ -23,27 +29,51 @@ import {
 	SEPARATOR_ICON_SIZE,
 	SEPARATOR_WIDTH,
 } from "./constants/constants";
-import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
 import {
+	TITLE_TYPOGRAPHY,
+	SUBTITLE_TYPOGRAPHY,
+} from "./constants/typographyPrefixConstants";
+
+// import {
+// 	softMinifyCssStrings,
+// 	generateTypographyStyles,
+// 	generateDimensionsControlStyles,
+// 	generateBorderShadowStyles,
+// 	generateResponsiveRangeStyles,
+// 	generateBackgroundControlStyles,
+// 	mimmikCssForPreviewBtnClick,
+// 	duplicateBlockIdFix,
+// } from "../../../util/helpers";
+
+/**
+ * External depencencies
+ */
+ 
+
+const {
+	// classnames,
 	softMinifyCssStrings,
-	isCssExists,
 	generateTypographyStyles,
 	generateDimensionsControlStyles,
 	generateBorderShadowStyles,
 	generateResponsiveRangeStyles,
 	generateBackgroundControlStyles,
-	mimmikCssForPreviewBtnClick,
+	// mimmikCssForPreviewBtnClick,
 	duplicateBlockIdFix,
-} from "../util/helpers";
+} = window.EBAdvHeadingControls;
+
+const editorStoreForGettingPreivew =
+	eb_style_handler.editor_type === "edit-site"
+		? "core/edit-site"
+		: "core/edit-post";
+
 
 export default function Edit(props) {
-	const { attributes, setAttributes, clientId, isSelected } = props;
+	const { attributes, setAttributes, className, clientId, isSelected } = props;
 	const {
 		resOption,
 		blockId,
-		blockRoot,
 		blockMeta,
-		blockMeta2,
 		preset,
 		align,
 		tagName,
@@ -53,13 +83,10 @@ export default function Edit(props) {
 		displaySeperator,
 		titleColor,
 		titleHoverColor,
-		titleColorType,
-		subtitleColor, 
-		subtitleHoverColor, 
-		subtitleColorType,
+		subtitleColor,
+		subtitleHoverColor,
 		separatorColor,
 		separatorHoverColor,
-		separatorColorType,
 		seperatorPosition,
 		seperatorType,
 		seperatorStyle,
@@ -71,10 +98,9 @@ export default function Edit(props) {
 		const bodyClasses = document.body.className;
 
 		setAttributes({
-			resOption: select("core/edit-post").__experimentalGetPreviewDeviceType(),
+			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
-
-	}, []);	
+	}, []);
 
 	// this useEffect is for creating a unique id for each block's unique className by a random unique number
 	useEffect(() => {
@@ -88,16 +114,16 @@ export default function Edit(props) {
 		});
 	}, []);
 
-	// this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	useEffect(() => {
-		mimmikCssForPreviewBtnClick({
-			domObj: document,
-			select,
-		});
-	}, []);
+	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
+	// useEffect(() => {
+	// 	mimmikCssForPreviewBtnClick({
+	// 		domObj: document,
+	// 		select,
+	// 	});
+	// }, []);
 
 	const blockProps = useBlockProps({
-		className: `eb-guten-block-main-parent-wrapper`,
+		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
 	//
@@ -183,6 +209,7 @@ export default function Edit(props) {
 		stylesHoverDesktop: wrapperBDShadowHoverDesktop,
 		stylesHoverTab: wrapperBDShadowHoverTab,
 		stylesHoverMobile: wrapperBDShadowHoverMobile,
+		transitionStyle: wrapperBDShadowTransition,
 	} = generateBorderShadowStyles({
 		controlName: WRAPPER_BORDER_SHADOW,
 		attributes,
@@ -252,13 +279,20 @@ export default function Edit(props) {
 			${wrapperPaddingDesktop}
 			${wrapperBDShadowDesktop}
 			${wrapperBackgroundStylesDesktop}
-			${wrapperOverlayStylesDesktop}
-			${wrapperBgTransitionStyle}
-			${wrapperOvlTransitionStyle}
+			transition:${wrapperBgTransitionStyle}, ${wrapperBDShadowTransition};
 		}
+		
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverDesktop}
 			${wrapperHoverBackgroundStylesDesktop}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesDesktop}
+			transition:${wrapperOvlTransitionStyle};
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesDesktop}
 		}
 	`;
@@ -268,11 +302,17 @@ export default function Edit(props) {
 			${wrapperPaddingTab}
 			${wrapperBDShadowTab}
 			${wrapperBackgroundStylesTab}
-			${wrapperOverlayStylesTab}
 		}
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverTab}
 			${wrapperHoverBackgroundStylesTab}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesTab}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesTab}
 		}
 	`;
@@ -282,11 +322,17 @@ export default function Edit(props) {
 			${wrapperPaddingMobile}
 			${wrapperBDShadowMobile}
 			${wrapperBackgroundStylesMobile}
-			${wrapperOverlayStylesMobile}
 		}
 		.eb-advance-heading-wrapper.${blockId}:hover {
 			${wrapperBDShadowHoverMobile}
 			${wrapperHoverBackgroundStylesMobile}
+		}
+
+		.eb-advance-heading-wrapper.${blockId}:before{
+			${wrapperOverlayStylesMobile}
+		}
+		
+		.eb-advance-heading-wrapper.${blockId}:hover:before{
 			${wrapperHoverOverlayStylesMobile}
 		}
 	`;
@@ -299,7 +345,7 @@ export default function Edit(props) {
 			${titleTypographyDesktop}
 			${titleMarginDesktop}
 		}
-		.eb-advance-heading-wrapper.${blockId} .eb-ah-title:hover {
+		.eb-advance-heading-wrapper.${blockId}:hover .eb-ah-title {
 			color: ${titleHoverColor};
 		}
 	`;
@@ -326,7 +372,7 @@ export default function Edit(props) {
 			${subtitleTypographyDesktop}
 			${subtitleMarginDesktop}
 		}
-		.eb-advance-heading-wrapper.${blockId} .eb-ah-subtitle:hover {
+		.eb-advance-heading-wrapper.${blockId}:hover .eb-ah-subtitle {
 			color: ${subtitleHoverColor};
 		}
 	`;
@@ -349,7 +395,7 @@ export default function Edit(props) {
 	const separatorStylesDesktop = `
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
 			color: ${subtitleColor};
-			${subtitleMarginDesktop}
+			${separatorMarginDesktop}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			border-style: none none ${seperatorStyle};
@@ -359,16 +405,22 @@ export default function Edit(props) {
 			${align === "center" ? "margin-left: auto; margin-right: auto" : ""}
 			${align === "right" ? "margin-left: auto; margin-right: 0" : ""}
 		}
+		.eb-advance-heading-wrapper.${blockId}:hover .eb-ah-separator.line {
+			border-color: ${separatorHoverColor};
+		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.icon {
 			text-align: ${align};
 			color: ${separatorColor};
 			${separatorIconSizeDesktop}
 		}
+		.eb-advance-heading-wrapper.${blockId}:hover .eb-ah-separator.icon {
+			color: ${separatorHoverColor};
+		}
 	`;
 
 	const separatorStylesTab = `
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
-			${subtitleMarginTab}
+			${separatorMarginTab}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			${separatorLineSizeTab}
@@ -381,7 +433,7 @@ export default function Edit(props) {
 
 	const separatorStylesMobile = `
 	.eb-advance-heading-wrapper.${blockId} .eb-ah-separator {
-			${subtitleMarginMobile}
+			${separatorMarginMobile}
 		}
 		.eb-advance-heading-wrapper.${blockId} .eb-ah-separator.line {
 			${separatorLineSizeMobile}
@@ -394,26 +446,26 @@ export default function Edit(props) {
 
 	// all css styles for large screen width (desktop/laptop) in strings ⬇
 	const desktopAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesDesktop) ? wrapperStylesDesktop : " "}
-			${isCssExists(titleStylesDesktop) ? titleStylesDesktop : " "}
-			${isCssExists(subtitleStylesDesktop) ? subtitleStylesDesktop : " "}
-			${isCssExists(separatorStylesDesktop) ? separatorStylesDesktop : " "}
+			${wrapperStylesDesktop}
+			${titleStylesDesktop}
+			${subtitleStylesDesktop}
+			${separatorStylesDesktop}
 		`);
 
 	// all css styles for Tab in strings ⬇
 	const tabAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesTab) ? wrapperStylesTab : " "}
-			${isCssExists(titleStylesTab) ? titleStylesTab : " "}
-			${isCssExists(subtitleStylesTab) ? subtitleStylesTab : " "}
-			${isCssExists(separatorStylesTab) ? separatorStylesTab : " "}
+			${wrapperStylesTab}
+			${titleStylesTab}
+			${subtitleStylesTab}
+			${separatorStylesTab}
 		`);
 
 	// all css styles for Mobile in strings ⬇
 	const mobileAllStyles = softMinifyCssStrings(`
-			${isCssExists(wrapperStylesMobile) ? wrapperStylesMobile : " "}
-			${isCssExists(titleStylesMobile) ? titleStylesMobile : " "}
-			${isCssExists(subtitleStylesMobile) ? subtitleStylesMobile : " "}
-			${isCssExists(separatorStylesMobile) ? separatorStylesMobile : " "}
+			${wrapperStylesMobile}
+			${titleStylesMobile}
+			${subtitleStylesMobile}
+			${separatorStylesMobile}
 		`);
 
 	// Set All Style in "blockMeta" Attribute
@@ -428,22 +480,22 @@ export default function Edit(props) {
 		}
 	}, [attributes]);
 
-	// console.log("Advance Heading Block Meta", blockMeta);
+	return <>{
 
-	return [
 		isSelected && (
 			<>
 				<BlockControls>
 					<AlignmentToolbar
-						value={align} 
+						value={align}
 						onChange={(align) => setAttributes({ align })}
 						controls={["left", "center", "right"]}
 					/>
 				</BlockControls>
 				<Inspector attributes={attributes} setAttributes={setAttributes} />
 			</>
-		),
-		//Edit view here
+		)
+	}
+
 		<div {...blockProps}>
 			<style>
 				{`
@@ -473,11 +525,18 @@ export default function Edit(props) {
 				}
 				`}
 			</style>
-			<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
+			<div
+				className={`eb-advance-heading-wrapper ${blockId} ${preset}`}
+				data-id={blockId}
+			>
 				{displaySeperator && seperatorPosition === "top" && (
 					<div className={"eb-ah-separator " + seperatorType}>
 						{seperatorType === "icon" && (
-							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+							<i
+								className={`${
+									separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+								}`}
+							></i>
 						)}
 					</div>
 				)}
@@ -500,12 +559,15 @@ export default function Edit(props) {
 				{displaySeperator && seperatorPosition === "bottom" && (
 					<div className={"eb-ah-separator " + seperatorType}>
 						{seperatorType === "icon" && (
-							<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+							<i
+								className={`${
+									separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+								}`}
+							></i>
 						)}
 					</div>
 				)}
-				
 			</div>
-		</div>,
-	];
-};
+		</div>
+	</>
+}
