@@ -7,6 +7,7 @@ import save from "./save";
 // import { HeadingIcon } from "../../../util/icons";
 import { HeadingIcon } from "./icon";
 import attributes from "./attributes";
+import deprecated from "./deprecated";
 import Example from "./example";
 import metadata from "../block.json";
 const { ebConditionalRegisterBlockType } = EBAdvHeadingControls;
@@ -25,4 +26,5 @@ ebConditionalRegisterBlockType(metadata, {
 	edit: Edit,
 	save,
 	example: Example,
+	deprecated
 });

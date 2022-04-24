@@ -14,7 +14,7 @@ import { select } from "@wordpress/data";
 /**
  * Internal depencencies
  */
- import classnames from "classnames";
+import classnames from "classnames";
 
 import Inspector from "./inspector";
 import {
@@ -34,22 +34,9 @@ import {
 	SUBTITLE_TYPOGRAPHY,
 } from "./constants/typographyPrefixConstants";
 
-// import {
-// 	softMinifyCssStrings,
-// 	generateTypographyStyles,
-// 	generateDimensionsControlStyles,
-// 	generateBorderShadowStyles,
-// 	generateResponsiveRangeStyles,
-// 	generateBackgroundControlStyles,
-// 	mimmikCssForPreviewBtnClick,
-// 	duplicateBlockIdFix,
-// } from "../../../util/helpers";
-
 /**
  * External depencencies
  */
- 
-
 const {
 	// classnames,
 	softMinifyCssStrings,
@@ -63,7 +50,7 @@ const {
 } = window.EBAdvHeadingControls;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
 
@@ -78,6 +65,7 @@ export default function Edit(props) {
 		align,
 		tagName,
 		titleText,
+		subtitleTagName,
 		subtitleText,
 		displaySubtitle,
 		displaySeperator,
@@ -91,6 +79,7 @@ export default function Edit(props) {
 		seperatorType,
 		seperatorStyle,
 		separatorIcon,
+		classHook,
 	} = attributes;
 
 	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class
@@ -114,21 +103,11 @@ export default function Edit(props) {
 		});
 	}, []);
 
-	// // this useEffect is for mimmiking css when responsive options clicked from wordpress's 'preview' button
-	// useEffect(() => {
-	// 	mimmikCssForPreviewBtnClick({
-	// 		domObj: document,
-	// 		select,
-	// 	});
-	// }, []);
-
 	const blockProps = useBlockProps({
 		className: classnames(className, `eb-guten-block-main-parent-wrapper`),
 	});
 
-	//
 	// CSS/styling Codes Starts from Here
-
 	const {
 		typoStylesDesktop: titleTypographyDesktop,
 		typoStylesTab: titleTypographyTab,
@@ -272,7 +251,6 @@ export default function Edit(props) {
 	// wrapper styles css in strings ⬇
 	const wrapperStylesDesktop = `
 		.eb-advance-heading-wrapper.${blockId}{
-			display: block;
 			position: relative;
 			text-align: ${align};
 			${wrapperMarginDesktop}
@@ -525,48 +503,48 @@ export default function Edit(props) {
 				}
 				`}
 			</style>
-			<div
-				className={`eb-advance-heading-wrapper ${blockId} ${preset}`}
-				data-id={blockId}
-			>
-				{displaySeperator && seperatorPosition === "top" && (
-					<div className={"eb-ah-separator " + seperatorType}>
-						{seperatorType === "icon" && (
-							<i
-								className={`${
-									separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
-								}`}
-							></i>
-						)}
-					</div>
-				)}
-				<RichText
-					tagName={tagName}
-					className="eb-ah-title"
-					value={titleText}
-					formattingControl={["bold", "italic"]}
-					onChange={(titleText) => setAttributes({ titleText })}
-				/>
-				{displaySubtitle && (
+			<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
+				<div
+					className={`eb-advance-heading-wrapper ${blockId} ${preset}`}
+					data-id={blockId}
+				>
+					{displaySeperator && seperatorPosition === "top" && (
+						<div className={"eb-ah-separator " + seperatorType}>
+							{seperatorType === "icon" && (
+								<i
+									className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+										}`}
+								></i>
+							)}
+						</div>
+					)}
 					<RichText
-						tagName={"p"}
-						className="eb-ah-subtitle"
-						value={subtitleText}
+						tagName={tagName}
+						className="eb-ah-title"
+						value={titleText}
 						formattingControl={["bold", "italic"]}
-						onChange={(subtitleText) => setAttributes({ subtitleText })}
+						onChange={(titleText) => setAttributes({ titleText })}
 					/>
-				)}
-				{displaySeperator && seperatorPosition === "bottom" && (
-					<div className={"eb-ah-separator " + seperatorType}>
-						{seperatorType === "icon" && (
-							<i
-								className={`${
-									separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
-								}`}
-							></i>
-						)}
-					</div>
-				)}
+					{displaySubtitle && (
+						<RichText
+							tagName={subtitleTagName}
+							className="eb-ah-subtitle"
+							value={subtitleText}
+							formattingControl={["bold", "italic"]}
+							onChange={(subtitleText) => setAttributes({ subtitleText })}
+						/>
+					)}
+					{displaySeperator && seperatorPosition === "bottom" && (
+						<div className={"eb-ah-separator " + seperatorType}>
+							{seperatorType === "icon" && (
+								<i
+									className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+										}`}
+								></i>
+							)}
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	</>

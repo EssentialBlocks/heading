@@ -11,14 +11,6 @@ import {
 	SEPARATOR_WIDTH,
 } from "./constants/constants";
 
-// import {
-// 	generateDimensionsAttributes,
-// 	generateTypographyAttributes,
-// 	generateBackgroundAttributes,
-// 	generateBorderShadowAttributes,
-// 	generateResponsiveRangeAttributes
-// } from "../../../util/helpers";
-
 const {
 	generateDimensionsAttributes,
 	generateTypographyAttributes,
@@ -58,6 +50,10 @@ const attributes = {
 	titleText: {
 		type: "string",
 		default: "Essential Block Advanced Heading",
+	},
+	subtitleTagName: {
+		type: "string",
+		default: "p",
 	},
 	subtitleText: {
 		type: "string",

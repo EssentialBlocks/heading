@@ -47,7 +47,6 @@ import {
 	SEPARATOR_TYPE,
 } from "./constants/constants";
 import { TITLE_TYPOGRAPHY, SUBTITLE_TYPOGRAPHY } from "./constants/typographyPrefixConstants";
-
 const {
 	faIcons,
 	ResponsiveDimensionsControl,
@@ -55,10 +54,11 @@ const {
 	BorderShadowControl,
 	ResponsiveRangeController,
 	BackgroundControl,
+	AdvancedControls,
 } = window.EBAdvHeadingControls;
 
 const editorStoreForGettingPreivew =
-	eb_style_handler.editor_type === "edit-site"
+	eb_conditional_localize.editor_type === "edit-site"
 		? "core/edit-site"
 		: "core/edit-post";
 
@@ -72,6 +72,7 @@ function Inspector(props) {
 		align,
 		tagName,
 		titleText,
+		subtitleTagName,
 		subtitleText,
 		displaySubtitle,
 		displaySeperator,
@@ -96,26 +97,6 @@ function Inspector(props) {
 			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
 		});
 	}, []);
-
-	// // this useEffect is for mimmiking css for all the eb blocks on resOption changing
-	// useEffect(() => {
-	// 	mimmikCssForResBtns({
-	// 		domObj: document,
-	// 		resOption,
-	// 	});
-	// }, [resOption]);
-
-	// // this useEffect is to mimmik css for responsive preview in the editor page when clicking the buttons in the 'Preview button of wordpress' located beside the 'update' button while any block is selected and it's inspector panel is mounted in the DOM
-	// useEffect(() => {
-	// 	const cleanUp = mimmikCssOnPreviewBtnClickWhileBlockSelected({
-	// 		domObj: document,
-	// 		select,
-	// 		setAttributes,
-	// 	});
-	// 	return () => {
-	// 		cleanUp();
-	// 	};
-	// }, []);
 
 	const resRequiredProps = {
 		setAttributes,
@@ -239,6 +220,7 @@ function Inspector(props) {
 										title={__("General", "essential-blocks")}
 										initialOpen={true}
 									>
+
 										<SelectControl
 											label={__("Preset Designs", "essential-blocks")}
 											value={preset}
@@ -265,7 +247,7 @@ function Inspector(props) {
 											</ButtonGroup>
 										</BaseControl>
 										<BaseControl label={__("Title Level", "essential-blocks")} id="eb-advance-heading-alignment">
-											<ButtonGroup className="eb-advance-heading-alignment">
+											<ButtonGroup className="eb-advance-heading-alignment eb-html-tag-buttongroup">
 												{HEADING.map((item, key) => (
 													<Button
 														key={key}
@@ -292,14 +274,31 @@ function Inspector(props) {
 											}
 										/>
 										{displaySubtitle && (
-											<TextareaControl
-												label={__("Subtitle Text", "essential-blocks")}
-												value={subtitleText}
-												onChange={(text) => setAttributes({ subtitleText: text })}
-											/>
+											<>
+												<BaseControl label={__("Subtitle Level", "essential-blocks")} id="eb-advance-heading-alignment">
+													<ButtonGroup className="eb-advance-heading-alignment eb-html-tag-buttongroup">
+														{HEADING.map((item, key) => (
+															<Button
+																key={key}
+																// isLarge
+																isPrimary={subtitleTagName === item.value}
+																isSecondary={subtitleTagName !== item.value}
+																onClick={() => setAttributes({ subtitleTagName: item.value })}
+															>
+																{item.label}
+															</Button>
+														))}
+													</ButtonGroup>
+												</BaseControl>
+												<TextareaControl
+													label={__("Subtitle Text", "essential-blocks")}
+													value={subtitleText}
+													onChange={(text) => setAttributes({ subtitleText: text })}
+												/>
+											</>
 										)}
 										<ToggleControl
-											label={__("Display Seperator", "essential-blocks")}
+											label={__("Display Separator", "essential-blocks")}
 											checked={displaySeperator}
 											onChange={() =>
 												setAttributes({ displaySeperator: !displaySeperator })
@@ -594,6 +593,8 @@ function Inspector(props) {
 										// noBorder
 										/>
 									</PanelBody>
+
+									<AdvancedControls attributes={attributes} setAttributes={setAttributes} />
 								</>
 							)}
 

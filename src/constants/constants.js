@@ -59,6 +59,7 @@ export const HEADING = [
 	{ label: __("H4", "essential-blocks"), value: "h4" },
 	{ label: __("H5", "essential-blocks"), value: "h5" },
 	{ label: __("H6", "essential-blocks"), value: "h6" },
+	{ label: __("P", "essential-blocks"), value: "p" },
 ];
 
 export const SEPERATOR_STYLES = [
