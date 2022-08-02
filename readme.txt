@@ -82,6 +82,7 @@ Yes, it will work with any standard WordPress theme.
 
 = 1.1.1 - dev =
 * Improved: Converted style-handler to php for working perfectly with Reusable blocks and FSE
+* Improved: Update contorls
 
 = 1.1.0 - 07/02/2022 =
 * Fixed: Block Base theme support
