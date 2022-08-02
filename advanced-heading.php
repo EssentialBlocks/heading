@@ -1,8 +1,9 @@
 <?php
+
 /**
  * Plugin Name:     Advanced Heading
  * Description:     Create Advanced Heading with Title, Subtitle and Separator Controls
- * Version:         1.1.0
+ * Version:         1.1.1
  * Author:          WPDeveloper
  * Author URI:      https://wpdeveloper.net
  * License:         GPL-3.0-or-later
@@ -26,7 +27,7 @@ require_once __DIR__ . '/lib/style-handler/style-handler.php';
 
 function create_block_advanced_heading_block_init()
 {
-	define('ADVANCEDHEADING_BLOCK_VERSION', "1.1.0");
+	define('ADVANCEDHEADING_BLOCK_VERSION', "1.1.1");
 	define('ADVANCEDHEADING_BLOCK_ADMIN_URL', plugin_dir_url(__FILE__));
 	define('ADVANCEDHEADING_BLOCK_ADMIN_PATH', dirname(__FILE__));
 
@@ -44,6 +45,7 @@ function create_block_advanced_heading_block_init()
 		'wp-element',
 		'wp-block-editor',
 		'advancedheading-block-controls-util',
+		'essential-blocks-eb-animation'
 	));
 
 	wp_register_script(
@@ -51,6 +53,15 @@ function create_block_advanced_heading_block_init()
 		$index_js,
 		$all_dependencies,
 		$script_asset['version'],
+		true
+	);
+
+	$load_animation_js = ADVANCEDHEADING_BLOCK_ADMIN_URL . 'lib/resources/js/eb-animation-load.js';
+	wp_register_script(
+		'essential-blocks-eb-animation',
+		$load_animation_js,
+		array(),
+		ADVANCEDHEADING_BLOCK_VERSION,
 		true
 	);
 
@@ -78,23 +89,37 @@ function create_block_advanced_heading_block_init()
 		'all'
 	);
 
+	$animate_css = ADVANCEDHEADING_BLOCK_ADMIN_URL . 'lib/resources/css/animate.min.css';
+	wp_register_style(
+		'essential-blocks-animation',
+		$animate_css,
+		array(),
+		ADVANCEDHEADING_BLOCK_VERSION
+	);
+
 	$style_css = ADVANCEDHEADING_BLOCK_ADMIN_URL . 'dist/style.css';
 	//Editor Style
 	wp_register_style(
 		'create-block-advancedheading-block-editor-style',
 		$style_css,
 		array(
-			'fontawesome-frontend-css', 
+			'fontawesome-frontend-css',
 			'fontpicker-default-theme',
-			'fontpicker-material-theme'
+			'fontpicker-material-theme',
+			'essential-blocks-animation'
 		),
 		ADVANCEDHEADING_BLOCK_VERSION
 	);
+
+
 	//Frontend Style
 	wp_register_style(
 		'create-block-advancedheading-block-frontend-style',
 		$style_css,
-		array('fontawesome-frontend-css'),
+		array(
+			'fontawesome-frontend-css',
+			'essential-blocks-animation'
+		),
 		ADVANCEDHEADING_BLOCK_VERSION
 	);
 
@@ -107,6 +132,7 @@ function create_block_advanced_heading_block_init()
 				'render_callback' => function ($attributes, $content) {
 					if (!is_admin()) {
 						wp_enqueue_style('create-block-advancedheading-block-frontend-style');
+						wp_enqueue_script('essential-blocks-eb-animation');
 					}
 					return $content;
 				}
@@ -114,4 +140,4 @@ function create_block_advanced_heading_block_init()
 		);
 	}
 }
-add_action( 'init', 'create_block_advanced_heading_block_init' );
+add_action('init', 'create_block_advanced_heading_block_init', 99);
