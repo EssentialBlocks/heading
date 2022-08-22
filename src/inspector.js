@@ -57,11 +57,6 @@ const {
 	AdvancedControls,
 } = window.EBAdvHeadingControls;
 
-const editorStoreForGettingPreivew =
-	eb_conditional_localize.editor_type === "edit-site"
-		? "core/edit-site"
-		: "core/edit-post";
-
 import objAttributes from "./attributes";
 
 function Inspector(props) {
@@ -90,13 +85,6 @@ function Inspector(props) {
 		seperatorStyle,
 		separatorIcon,
 	} = attributes;
-
-	// this useEffect is for setting the resOption attribute to desktop/tab/mobile depending on the added 'eb-res-option-' class only the first time once
-	useEffect(() => {
-		setAttributes({
-			resOption: select(editorStoreForGettingPreivew).__experimentalGetPreviewDeviceType(),
-		});
-	}, []);
 
 	const resRequiredProps = {
 		setAttributes,
