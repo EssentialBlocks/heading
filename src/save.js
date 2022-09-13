@@ -11,6 +11,7 @@ const Save = ({ attributes }) => {
 		subtitleText,
 		seperatorType,
 		displaySeperator,
+		seperatorPosition,
 		separatorIcon,
 		classHook,
 	} = attributes;
@@ -19,6 +20,16 @@ const Save = ({ attributes }) => {
 		<div {...useBlockProps.save()}>
 			<div className={`eb-parent-wrapper eb-parent-${blockId} ${classHook}`}>
 				<div className={`eb-advance-heading-wrapper ${blockId} ${preset}`} data-id={blockId}>
+					{displaySeperator && seperatorPosition === "top" && (
+						<div className={"eb-ah-separator " + seperatorType}>
+							{seperatorType === "icon" && (
+								<i
+									className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+										}`}
+								></i>
+							)}
+						</div>
+					)}
 					<RichText.Content
 						tagName={tagName}
 						className="eb-ah-title"
@@ -35,10 +46,13 @@ const Save = ({ attributes }) => {
 							onChange={(subtitleText) => setAttributes({ subtitleText })}
 						/>
 					)}
-					{displaySeperator && (
+					{displaySeperator && seperatorPosition === "bottom" && (
 						<div className={"eb-ah-separator " + seperatorType}>
 							{seperatorType === "icon" && (
-								<i className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"}`}></i>
+								<i
+									className={`${separatorIcon ? separatorIcon : "fas fa-arrow-circle-down"
+										}`}
+								></i>
 							)}
 						</div>
 					)}
