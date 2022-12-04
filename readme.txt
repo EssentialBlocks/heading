@@ -28,7 +28,7 @@ This Block is brought to you by [WPDeveloper](https://wpdeveloper.com), the team
 - For documentation and tutorials go to our [documentation](https://essential-blocks.com/docs/)
 - To report issue and contribution visit [Github](https://github.com/EssentialBlocks/advanced-heading/).
 - If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/advanced-heading/).
-- For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.net/).
+- For more information about features, FAQs and documentation, check out our website at [WPDeveloper](https://wpdeveloper.com/).
 
 ## 🙌 JOIN THE COMMUNITY ##
 
@@ -80,7 +80,7 @@ Yes, it will work with any standard WordPress theme.
 
 == Changelog ==
 
-= 1.1.3 - dev =
+= 1.1.3 - 4/12/2022 =
 * Improved: Update controls and structure
 * Fixed: Minor bug fixing
 
