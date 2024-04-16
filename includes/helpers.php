@@ -47,11 +47,11 @@ class Advanced_Heading_Helper
          */
         if ($pagenow == 'post-new.php' || $pagenow == 'post.php' || $pagenow == 'site-editor.php' || ($pagenow == 'themes.php' && !empty($_SERVER['QUERY_STRING']) && str_contains($_SERVER['QUERY_STRING'], 'gutenberg-edit-site'))) {
 
-            $controls_dependencies = include_once ADVANCEDHEADING_BLOCK_ADMIN_PATH . '/dist/controls.asset.php';
+            $controls_dependencies = include_once ADVANCEDHEADING_BLOCK_ADMIN_PATH . '/dist/modules.asset.php';
             wp_register_script(
                 "advancedheading-block-controls-util",
-                ADVANCEDHEADING_BLOCK_ADMIN_URL . '/dist/controls.js',
-                array_merge($controls_dependencies['dependencies']),
+                ADVANCEDHEADING_BLOCK_ADMIN_URL . 'dist/modules.js',
+                array_merge($controls_dependencies['dependencies'],['lodash']),
                 $controls_dependencies['version'],
                 true
             );
@@ -59,6 +59,7 @@ class Advanced_Heading_Helper
             wp_localize_script('advancedheading-block-controls-util', 'EssentialBlocksLocalize', array(
                 'eb_wp_version' => (float) get_bloginfo('version'),
                 'rest_rootURL' => get_rest_url(),
+                'fontAwesome' => "true"
             ));
 
             if ($pagenow == 'post-new.php' || $pagenow == 'post.php') {
@@ -71,10 +72,18 @@ class Advanced_Heading_Helper
                 ));
             }
 
+            wp_register_style(
+				'essential-blocks-iconpicker-css',
+				ADVANCEDHEADING_BLOCK_ADMIN_URL . 'dist/style-modules.css',
+				[],
+				ADVANCEDHEADING_BLOCK_VERSION,
+				'all'
+			);
+
             wp_enqueue_style(
                 'essential-blocks-editor-css',
-                ADVANCEDHEADING_BLOCK_ADMIN_URL . '/dist/controls.css',
-                array(),
+                ADVANCEDHEADING_BLOCK_ADMIN_URL . '/dist/modules.css',
+                array('essential-blocks-iconpicker-css'),
                 $controls_dependencies['version'],
                 'all'
             );
