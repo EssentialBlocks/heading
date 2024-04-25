@@ -56,7 +56,7 @@ class Advanced_Heading_Helper
                 true
             );
 
-            wp_localize_script('advancedheading-block-controls-util', 'EssentialBlocksLocalize', array(
+            wp_localize_script('advancedheading-block-controls-util', 'EssentialBlocksLocalizeHeading', array(
                 'eb_wp_version' => (float) get_bloginfo('version'),
                 'rest_rootURL' => get_rest_url(),
                 'fontAwesome' => "true"

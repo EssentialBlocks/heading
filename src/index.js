@@ -1,5 +1,5 @@
 import { __ } from "@wordpress/i18n";
-import { registerBlockType } from "@wordpress/blocks";
+import { createBlock, registerBlockType } from "@wordpress/blocks";
 
 import "./style.scss";
 import Edit from "./edit";
@@ -26,5 +26,19 @@ ebConditionalRegisterBlockType(metadata, {
 	edit: Edit,
 	save,
 	example: Example,
-	deprecated
+	deprecated,
+	transforms: {
+		to: [
+			{
+				type: 'block',
+				blocks: ['essential-blocks/advanced-heading'],
+				transform: (attributes) => {
+					console.log('attributes', attributes)
+					return createBlock('essential-blocks/advanced-heading',
+						attributes
+					);
+				},
+			}
+		]
+	}
 });

@@ -121,7 +121,7 @@ function create_block_advanced_heading_block_init() {
         ADVANCEDHEADING_BLOCK_VERSION
     );
 
-    if ( ! WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/advanced-heading' ) ) {
+    // if (  WP_Block_Type_Registry::get_instance()->is_registered( 'essential-blocks/advanced-heading' ) ) {
         register_block_type(
             Advanced_Heading_Helper::get_block_register_path( "advanced-heading/advanced-heading", ADVANCEDHEADING_BLOCK_ADMIN_PATH ),
             [
@@ -136,6 +136,6 @@ function create_block_advanced_heading_block_init() {
                 }
             ]
         );
-    }
+    // }
 }
 add_action( 'init', 'create_block_advanced_heading_block_init', 99 );

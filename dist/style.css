@@ -1,1 +1,29 @@
-.eb-advance-heading-wrapper h1.eb-ah-title{font-size:36px}.eb-advance-heading-wrapper h2.eb-ah-title{font-size:30px}.eb-advance-heading-wrapper h3.eb-ah-title{font-size:24px}.eb-advance-heading-wrapper h4.eb-ah-title{font-size:20px}.eb-advance-heading-wrapper h5.eb-ah-title{font-size:18px}.eb-advance-heading-wrapper h6.eb-ah-title{font-size:14px}.eb-advance-heading-wrapper p.eb-ah-title{font-size:13px}.eb-advance-heading-wrapper>*{transition:all .3s ease-in-out}
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.eb-advance-heading-wrapper h1.eb-ah-title {
+  font-size: 36px;
+}
+.eb-advance-heading-wrapper h2.eb-ah-title {
+  font-size: 30px;
+}
+.eb-advance-heading-wrapper h3.eb-ah-title {
+  font-size: 24px;
+}
+.eb-advance-heading-wrapper h4.eb-ah-title {
+  font-size: 20px;
+}
+.eb-advance-heading-wrapper h5.eb-ah-title {
+  font-size: 18px;
+}
+.eb-advance-heading-wrapper h6.eb-ah-title {
+  font-size: 14px;
+}
+.eb-advance-heading-wrapper p.eb-ah-title {
+  font-size: 13px;
+}
+.eb-advance-heading-wrapper > * {
+  transition: all 0.3s ease-in-out;
+}
+
+/*# sourceMappingURL=style.css.map*/
